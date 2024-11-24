@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Clouds Do Not Exist Yet.ogg-6d373ff52897b2ab5cea120d8d516ff7.oggstr"
+
+[deps]
+
+source_file="res://assets/audio/music/Clouds Do Not Exist Yet.ogg"
+dest_files=[ "res://.import/Clouds Do Not Exist Yet.ogg-6d373ff52897b2ab5cea120d8d516ff7.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=130.0

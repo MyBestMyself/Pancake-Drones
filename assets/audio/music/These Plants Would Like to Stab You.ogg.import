@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/These Plants Would Like to Stab You.ogg-4b12739638918a7082ff582c9353e450.oggstr"
+
+[deps]
+
+source_file="res://assets/audio/music/These Plants Would Like to Stab You.ogg"
+dest_files=[ "res://.import/These Plants Would Like to Stab You.ogg-4b12739638918a7082ff582c9353e450.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=115.2

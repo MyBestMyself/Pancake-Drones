@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/A Considerable Lack of Salted Popsicles.ogg-401eb9659120891a2757a474658f4c1e.oggstr"
+
+[deps]
+
+source_file="res://assets/audio/music/A Considerable Lack of Salted Popsicles.ogg"
+dest_files=[ "res://.import/A Considerable Lack of Salted Popsicles.ogg-401eb9659120891a2757a474658f4c1e.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=144.0

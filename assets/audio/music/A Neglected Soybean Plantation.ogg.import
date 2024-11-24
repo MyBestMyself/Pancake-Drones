@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/A Neglected Soybean Plantation.ogg-0395bf72b4afa4e5d1345afb989184d8.oggstr"
+
+[deps]
+
+source_file="res://assets/audio/music/A Neglected Soybean Plantation.ogg"
+dest_files=[ "res://.import/A Neglected Soybean Plantation.ogg-0395bf72b4afa4e5d1345afb989184d8.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=128.0

@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/A Spoonful of Sharp Things.ogg-3649278408ec6c34b77289bad3fa8bcb.oggstr"
+
+[deps]
+
+source_file="res://assets/audio/music/A Spoonful of Sharp Things.ogg"
+dest_files=[ "res://.import/A Spoonful of Sharp Things.ogg-3649278408ec6c34b77289bad3fa8bcb.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=128.0
