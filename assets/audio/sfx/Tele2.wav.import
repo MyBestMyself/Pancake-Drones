@@ -1,13 +1,14 @@
 [remap]
 
 importer="wav"
-type="AudioStreamSample"
-path="res://.import/Tele2.wav-b71fe703f15f7b51bfae69217375dbdf.sample"
+type="AudioStreamWAV"
+uid="uid://bedhus71vv5kh"
+path="res://.godot/imported/Tele2.wav-b71fe703f15f7b51bfae69217375dbdf.sample"
 
 [deps]
 
 source_file="res://assets/audio/sfx/Tele2.wav"
-dest_files=[ "res://.import/Tele2.wav-b71fe703f15f7b51bfae69217375dbdf.sample" ]
+dest_files=["res://.godot/imported/Tele2.wav-b71fe703f15f7b51bfae69217375dbdf.sample"]
 
 [params]
 

@@ -1,13 +1,14 @@
 [remap]
 
 importer="wav"
-type="AudioStreamSample"
-path="res://.import/Munch1.wav-edccb046f68f7de9d717c60de6950b39.sample"
+type="AudioStreamWAV"
+uid="uid://dc73oy37il7h4"
+path="res://.godot/imported/Munch1.wav-edccb046f68f7de9d717c60de6950b39.sample"
 
 [deps]
 
 source_file="res://assets/audio/sfx/Munch1.wav"
-dest_files=[ "res://.import/Munch1.wav-edccb046f68f7de9d717c60de6950b39.sample" ]
+dest_files=["res://.godot/imported/Munch1.wav-edccb046f68f7de9d717c60de6950b39.sample"]
 
 [params]
 

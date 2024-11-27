@@ -1,0 +1,240 @@
+[gd_scene load_steps=15 format=3 uid="uid://bttabeh4b5myk"]
+
+[ext_resource type="Script" path="res://scripts/game.gd" id="1_gbuxs"]
+[ext_resource type="Texture2D" uid="uid://cxbpobuxselms" path="res://sprites/game/levels/OceanBG.png" id="1_t08x5"]
+[ext_resource type="Texture2D" uid="uid://dx23pcox80ye2" path="res://sprites/game/levels/OceanFG.png" id="2_jjtf1"]
+[ext_resource type="Texture2D" uid="uid://ct7ik42vf6n0y" path="res://sprites/game/levels/ExperimentalWall.png" id="2_xc8js"]
+[ext_resource type="PackedScene" uid="uid://cuuw6vndai55" path="res://scenes/waves.tscn" id="3_bv77e"]
+[ext_resource type="PackedScene" uid="uid://sgi1m4n3mwg2" path="res://scenes/Boundaries/oceanBoundary.tscn" id="4_nuea1"]
+[ext_resource type="PackedScene" uid="uid://dyfw8dcv4chwx" path="res://scenes/you.tscn" id="5_y02nm"]
+[ext_resource type="PackedScene" uid="uid://dyq8b588am7dq" path="res://scenes/droneCarrier.tscn" id="6_5epu4"]
+[ext_resource type="Texture2D" uid="uid://c1ueeu8o5hpe2" path="res://sprites/menu/White.png" id="8_dsq65"]
+[ext_resource type="Texture2D" uid="uid://crioytf5werre" path="res://sprites/menu/ui/BiggestDot.png" id="10_xaiyh"]
+[ext_resource type="PackedScene" uid="uid://xwpp50utr3r8" path="res://scenes/configMenuLight.tscn" id="11_cibyt"]
+[ext_resource type="PackedScene" uid="uid://dwbi8jt37ecwf" path="res://scenes/configMenu.tscn" id="11_id2qm"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_3c78f"]
+light_mode = 2
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_5r3b3"]
+light_mode = 2
+
+[node name="Game" type="Node2D"]
+texture_filter = 1
+script = ExtResource("1_gbuxs")
+
+[node name="Label" type="Label" parent="."]
+visible = false
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="Level" type="Node2D" parent="."]
+z_index = -2
+material = SubResource("CanvasItemMaterial_3c78f")
+scale = Vector2(2.4, 2.4)
+metadata/_edit_group_ = true
+
+[node name="TrueBackground" type="Sprite2D" parent="Level"]
+z_index = -1
+position = Vector2(80, 45)
+texture = ExtResource("2_xc8js")
+
+[node name="Background" type="Sprite2D" parent="Level"]
+light_mask = 6
+use_parent_material = true
+position = Vector2(80, 45)
+texture = ExtResource("1_t08x5")
+
+[node name="Waves" parent="Level" instance=ExtResource("3_bv77e")]
+visibility_layer = 1
+position = Vector2(8, 85.5)
+
+[node name="Foreground" type="Sprite2D" parent="Level"]
+light_mask = 6
+use_parent_material = true
+position = Vector2(80, 45)
+texture = ExtResource("2_jjtf1")
+
+[node name="Boundary" parent="Level" instance=ExtResource("4_nuea1")]
+light_mask = 2
+use_parent_material = true
+scale = Vector2(0.416667, 0.416667)
+
+[node name="You" parent="." instance=ExtResource("5_y02nm")]
+position = Vector2(192, 176)
+
+[node name="DroneCarrier" parent="." instance=ExtResource("6_5epu4")]
+light_mask = 6
+material = SubResource("CanvasItemMaterial_5r3b3")
+
+[node name="SpawnRate" type="Timer" parent="DroneCarrier"]
+one_shot = true
+
+[node name="SpriteMask" type="PointLight2D" parent="."]
+position = Vector2(154, 137.75)
+scale = Vector2(1.75, 1.84434)
+energy = 0.0
+texture = ExtResource("8_dsq65")
+
+[node name="Other" type="PointLight2D" parent="."]
+position = Vector2(144, 108)
+scale = Vector2(2.73333, 2.13333)
+energy = 0.0
+range_item_cull_mask = 4
+texture = ExtResource("10_xaiyh")
+
+[node name="Config" type="Node2D" parent="."]
+scale = Vector2(2.4, 2.4)
+
+[node name="ConfigMenu" parent="Config" instance=ExtResource("11_id2qm")]
+z_index = -3
+scale = Vector2(0.416667, 0.416667)
+
+[node name="Lights" type="Node2D" parent="Config"]
+
+[node name="1" parent="Config/Lights" instance=ExtResource("11_cibyt")]
+position = Vector2(152, 5)
+
+[node name="Light" type="PointLight2D" parent="Config/Lights/1"]
+position = Vector2(4.12499, -2.63584)
+scale = Vector2(0.203472, 0.178292)
+energy = 0.0
+range_item_cull_mask = 4
+texture = ExtResource("10_xaiyh")
+
+[node name="2" parent="Config/Lights" instance=ExtResource("11_cibyt")]
+position = Vector2(136, 5)
+id = 2
+
+[node name="Light" type="PointLight2D" parent="Config/Lights/2"]
+position = Vector2(-0.230006, -2.63584)
+scale = Vector2(0.137833, 0.178292)
+energy = 0.0
+range_item_cull_mask = 4
+texture = ExtResource("10_xaiyh")
+
+[node name="3" parent="Config/Lights" instance=ExtResource("11_cibyt")]
+position = Vector2(152, 21)
+id = 3
+
+[node name="Light" type="PointLight2D" parent="Config/Lights/3"]
+position = Vector2(4.12499, 1.86416)
+scale = Vector2(0.203472, 0.103292)
+energy = 0.0
+range_item_cull_mask = 2
+texture = ExtResource("10_xaiyh")
+
+[node name="Light2" type="PointLight2D" parent="Config/Lights/3"]
+position = Vector2(4.12499, -6)
+scale = Vector2(0.203472, 0.0347222)
+energy = 0.0
+range_item_cull_mask = 4
+texture = ExtResource("10_xaiyh")
+
+[node name="4" parent="Config/Lights" instance=ExtResource("11_cibyt")]
+position = Vector2(136, 21)
+id = 4
+
+[node name="Light" type="PointLight2D" parent="Config/Lights/4"]
+position = Vector2(-0.230006, 1.86416)
+scale = Vector2(0.137833, 0.103292)
+energy = 0.0
+range_item_cull_mask = 2
+texture = ExtResource("10_xaiyh")
+
+[node name="Light2" type="PointLight2D" parent="Config/Lights/4"]
+position = Vector2(-0.230006, -6)
+scale = Vector2(0.137833, 0.0347222)
+energy = 0.0
+range_item_cull_mask = 6
+texture = ExtResource("10_xaiyh")
+
+[node name="5" parent="Config/Lights" instance=ExtResource("11_cibyt")]
+position = Vector2(152, 37)
+id = 5
+
+[node name="Light" type="PointLight2D" parent="Config/Lights/5"]
+position = Vector2(4.12499, 0)
+scale = Vector2(0.203472, 0.134361)
+energy = 0.0
+range_item_cull_mask = 2
+texture = ExtResource("10_xaiyh")
+
+[node name="6" parent="Config/Lights" instance=ExtResource("11_cibyt")]
+position = Vector2(136, 37)
+id = 6
+
+[node name="Light" type="PointLight2D" parent="Config/Lights/6"]
+position = Vector2(-0.230006, 0)
+scale = Vector2(0.137833, 0.134361)
+energy = 0.0
+range_item_cull_mask = 2
+texture = ExtResource("10_xaiyh")
+
+[node name="7" parent="Config/Lights" instance=ExtResource("11_cibyt")]
+position = Vector2(152, 53)
+id = 7
+
+[node name="Light" type="PointLight2D" parent="Config/Lights/7"]
+position = Vector2(4.12499, 0)
+scale = Vector2(0.203472, 0.134361)
+energy = 0.0
+range_item_cull_mask = 2
+texture = ExtResource("10_xaiyh")
+
+[node name="8" parent="Config/Lights" instance=ExtResource("11_cibyt")]
+position = Vector2(136, 53)
+id = 8
+
+[node name="Light" type="PointLight2D" parent="Config/Lights/8"]
+position = Vector2(-0.230006, 0)
+scale = Vector2(0.137833, 0.134361)
+energy = 0.0
+range_item_cull_mask = 2
+texture = ExtResource("10_xaiyh")
+
+[node name="9" parent="Config/Lights" instance=ExtResource("11_cibyt")]
+position = Vector2(152, 69)
+id = 9
+
+[node name="Light" type="PointLight2D" parent="Config/Lights/9"]
+position = Vector2(4.12499, 0)
+scale = Vector2(0.203472, 0.134361)
+energy = 0.0
+range_item_cull_mask = 2
+texture = ExtResource("10_xaiyh")
+
+[node name="10" parent="Config/Lights" instance=ExtResource("11_cibyt")]
+position = Vector2(136, 69)
+id = 10
+
+[node name="Light" type="PointLight2D" parent="Config/Lights/10"]
+position = Vector2(-0.230006, 0)
+scale = Vector2(0.137833, 0.134361)
+energy = 0.0
+range_item_cull_mask = 2
+texture = ExtResource("10_xaiyh")
+
+[node name="11" parent="Config/Lights" instance=ExtResource("11_cibyt")]
+position = Vector2(152, 85)
+id = 11
+
+[node name="Light" type="PointLight2D" parent="Config/Lights/11"]
+position = Vector2(4.12499, 2.63583)
+scale = Vector2(0.203472, 0.178292)
+energy = 0.0
+range_item_cull_mask = 2
+texture = ExtResource("10_xaiyh")
+
+[node name="12" parent="Config/Lights" instance=ExtResource("11_cibyt")]
+position = Vector2(136, 85)
+id = 12
+
+[node name="Light" type="PointLight2D" parent="Config/Lights/12"]
+position = Vector2(-0.230006, 2.63583)
+scale = Vector2(0.137833, 0.178292)
+energy = 0.0
+range_item_cull_mask = 2
+texture = ExtResource("10_xaiyh")
+
+[connection signal="timeout" from="DroneCarrier/SpawnRate" to="DroneCarrier" method="make"]

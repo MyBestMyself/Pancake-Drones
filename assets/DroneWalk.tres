@@ -1,49 +1,73 @@
-[gd_resource type="SpriteFrames" load_steps=11 format=2]
+[gd_resource type="SpriteFrames" load_steps=11 format=3 uid="uid://mtah6nni2vvq"]
 
-[ext_resource path="res://sprites/game/DroneWalk.png" type="Texture" id=1]
-[ext_resource path="res://sprites/game/DroneJump.png" type="Texture" id=2]
+[ext_resource type="Texture2D" uid="uid://bfi1djuoxgomj" path="res://sprites/game/DroneWalk.png" id="1"]
+[ext_resource type="Texture2D" uid="uid://clcrsd6btg2wy" path="res://sprites/game/DroneJump.png" id="2"]
 
-[sub_resource type="AtlasTexture" id=13]
-atlas = ExtResource( 2 )
-region = Rect2( 32, 0, 32, 36 )
+[sub_resource type="AtlasTexture" id="13"]
+atlas = ExtResource("2")
+region = Rect2(32, 0, 32, 36)
 
-[sub_resource type="AtlasTexture" id=14]
-atlas = ExtResource( 2 )
-region = Rect2( 0, 0, 32, 36 )
+[sub_resource type="AtlasTexture" id="14"]
+atlas = ExtResource("2")
+region = Rect2(0, 0, 32, 36)
 
-[sub_resource type="AtlasTexture" id=11]
-atlas = ExtResource( 1 )
-region = Rect2( 0, 0, 32, 36 )
+[sub_resource type="AtlasTexture" id="11"]
+atlas = ExtResource("1")
+region = Rect2(0, 0, 32, 36)
 
-[sub_resource type="AtlasTexture" id=6]
-atlas = ExtResource( 1 )
-region = Rect2( 32, 0, 32, 36 )
+[sub_resource type="AtlasTexture" id="6"]
+atlas = ExtResource("1")
+region = Rect2(32, 0, 32, 36)
 
-[sub_resource type="AtlasTexture" id=7]
-atlas = ExtResource( 1 )
-region = Rect2( 64, 0, 32, 36 )
+[sub_resource type="AtlasTexture" id="7"]
+atlas = ExtResource("1")
+region = Rect2(64, 0, 32, 36)
 
-[sub_resource type="AtlasTexture" id=8]
-atlas = ExtResource( 1 )
-region = Rect2( 96, 0, 32, 36 )
+[sub_resource type="AtlasTexture" id="8"]
+atlas = ExtResource("1")
+region = Rect2(96, 0, 32, 36)
 
-[sub_resource type="AtlasTexture" id=9]
-atlas = ExtResource( 1 )
-region = Rect2( 128, 0, 32, 36 )
+[sub_resource type="AtlasTexture" id="9"]
+atlas = ExtResource("1")
+region = Rect2(128, 0, 32, 36)
 
-[sub_resource type="AtlasTexture" id=10]
-atlas = ExtResource( 1 )
-region = Rect2( 160, 0, 32, 36 )
+[sub_resource type="AtlasTexture" id="10"]
+atlas = ExtResource("1")
+region = Rect2(160, 0, 32, 36)
 
 [resource]
-animations = [ {
-"frames": [ SubResource( 13 ), SubResource( 14 ) ],
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("13")
+}, {
+"duration": 1.0,
+"texture": SubResource("14")
+}],
 "loop": false,
-"name": "DroneJump",
+"name": &"DroneJump",
 "speed": 2.0
 }, {
-"frames": [ SubResource( 11 ), SubResource( 6 ), SubResource( 7 ), SubResource( 8 ), SubResource( 9 ), SubResource( 10 ) ],
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("11")
+}, {
+"duration": 1.0,
+"texture": SubResource("6")
+}, {
+"duration": 1.0,
+"texture": SubResource("7")
+}, {
+"duration": 1.0,
+"texture": SubResource("8")
+}, {
+"duration": 1.0,
+"texture": SubResource("9")
+}, {
+"duration": 1.0,
+"texture": SubResource("10")
+}],
 "loop": true,
-"name": "DroneWalk",
-"speed": 20.0
-} ]
+"name": &"DroneWalk",
+"speed": 15.0
+}]

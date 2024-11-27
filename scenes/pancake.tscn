@@ -1,0 +1,117 @@
+[gd_scene load_steps=10 format=3 uid="uid://bp3g3tvr4rt1g"]
+
+[ext_resource type="Script" path="res://scripts/pancake.gd" id="1_ags22"]
+[ext_resource type="Texture2D" uid="uid://csonx7xhpxl3d" path="res://sprites/game/Pancake.png" id="2_5h44p"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_psqdy"]
+light_mode = 2
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_d7shx"]
+radius = 6.66667
+height = 24.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_2di11"]
+radius = 9.33333
+
+[sub_resource type="Animation" id="Animation_u16p6"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Pancake:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_whqfq"]
+resource_name = "swayLeft"
+length = 2.4
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Pancake:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.8, 1.6, 2.4),
+"transitions": PackedFloat32Array(-2, -2, -2, 1),
+"update": 0,
+"values": [0.383972, -0.383972, 0.383972, 0.0]
+}
+
+[sub_resource type="Animation" id="Animation_dit3g"]
+resource_name = "swayRight"
+length = 2.4
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Pancake:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.8, 1.6, 2.4),
+"transitions": PackedFloat32Array(-2, -2, -2, 1),
+"update": 0,
+"values": [-0.383972, 0.383972, -0.383972, 0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_xqufd"]
+_data = {
+"RESET": SubResource("Animation_u16p6"),
+"swayLeft": SubResource("Animation_whqfq"),
+"swayRight": SubResource("Animation_dit3g")
+}
+
+[node name="Pancake" type="Node2D"]
+light_mask = 3
+z_index = -1
+texture_filter = 1
+material = SubResource("CanvasItemMaterial_psqdy")
+position = Vector2(0, 18)
+scale = Vector2(0.75, 0.75)
+script = ExtResource("1_ags22")
+
+[node name="Pancake" type="Sprite2D" parent="."]
+light_mask = 3
+use_parent_material = true
+texture = ExtResource("2_5h44p")
+offset = Vector2(0, 14)
+
+[node name="Eat" type="Area2D" parent="Pancake"]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Pancake/Eat"]
+position = Vector2(0, 26.6667)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_d7shx")
+
+[node name="PancakeFall" type="Area2D" parent="Pancake"]
+collision_layer = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Pancake/PancakeFall"]
+position = Vector2(0, 21.3333)
+shape = SubResource("CircleShape2D_2di11")
+
+[node name="ParachuteFall" type="Area2D" parent="Pancake"]
+collision_layer = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Pancake/ParachuteFall"]
+position = Vector2(0, 13.3333)
+shape = SubResource("CircleShape2D_2di11")
+
+[node name="Animate" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_xqufd")
+}
+
+[connection signal="area_entered" from="Pancake/Eat" to="." method="_on_eat_area_entered"]
+[connection signal="area_entered" from="Pancake/PancakeFall" to="." method="_on_pancake_fall_area_entered"]
+[connection signal="area_entered" from="Pancake/ParachuteFall" to="." method="_on_parachute_fall_area_entered"]

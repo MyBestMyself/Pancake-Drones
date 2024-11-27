@@ -1,13 +1,14 @@
 [remap]
 
 importer="wav"
-type="AudioStreamSample"
-path="res://.import/Inflate.wav-c0519c8edeb1e6b0a0b4bb6f018a0e24.sample"
+type="AudioStreamWAV"
+uid="uid://cs8q1cr6o1wxh"
+path="res://.godot/imported/Inflate.wav-c0519c8edeb1e6b0a0b4bb6f018a0e24.sample"
 
 [deps]
 
 source_file="res://assets/audio/sfx/Inflate.wav"
-dest_files=[ "res://.import/Inflate.wav-c0519c8edeb1e6b0a0b4bb6f018a0e24.sample" ]
+dest_files=["res://.godot/imported/Inflate.wav-c0519c8edeb1e6b0a0b4bb6f018a0e24.sample"]
 
 [params]
 

@@ -1,0 +1,74 @@
+[gd_scene load_steps=8 format=3 uid="uid://cxyhjteymej58"]
+
+[ext_resource type="Script" path="res://scripts/pancakeFall.gd" id="1_445ab"]
+[ext_resource type="SpriteFrames" uid="uid://bvpu7p671i7sq" path="res://assets/pancakeFall.tres" id="2_4hnaf"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_w1qyo"]
+light_mode = 2
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ud2mn"]
+size = Vector2(24, 2)
+
+[sub_resource type="Animation" id="Animation_we1gk"]
+resource_name = "Fade"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(1, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_8ilig"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_6vjlb"]
+_data = {
+"Fade": SubResource("Animation_we1gk"),
+"RESET": SubResource("Animation_8ilig")
+}
+
+[node name="SyrupPancakeFall" type="CharacterBody2D"]
+texture_filter = 1
+position = Vector2(-1, 0)
+scale = Vector2(0.75, 0.75)
+collision_layer = 0
+script = ExtResource("1_445ab")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+light_mask = 6
+material = SubResource("CanvasItemMaterial_w1qyo")
+position = Vector2(0, -1)
+sprite_frames = ExtResource("2_4hnaf")
+animation = &"PancakeFall"
+autoplay = "PancakeFall"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1.33333, 8.33333)
+shape = SubResource("RectangleShape2D_ud2mn")
+
+[node name="Animate" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_6vjlb")
+}
+autoplay = "Fade"
+
+[connection signal="animation_finished" from="Animate" to="." method="_on_animate_animation_finished"]

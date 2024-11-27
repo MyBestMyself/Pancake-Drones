@@ -1,0 +1,43 @@
+[gd_scene load_steps=3 format=3 uid="uid://cuuw6vndai55"]
+
+[ext_resource type="SpriteFrames" uid="uid://cg6vgnpj8fn47" path="res://assets/Waves.tres" id="1_2s5cr"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_qfv4o"]
+light_mode = 2
+
+[node name="Waves" type="Node2D"]
+light_mask = 2
+visibility_layer = 2
+material = SubResource("CanvasItemMaterial_qfv4o")
+
+[node name="Wave1" type="AnimatedSprite2D" parent="."]
+light_mask = 6
+use_parent_material = true
+sprite_frames = ExtResource("1_2s5cr")
+animation = &"Wave"
+autoplay = "Wave"
+frame_progress = 0.737749
+
+[node name="Wave2" type="AnimatedSprite2D" parent="."]
+light_mask = 6
+use_parent_material = true
+position = Vector2(48, 0)
+sprite_frames = ExtResource("1_2s5cr")
+animation = &"Wave"
+autoplay = "Wave"
+
+[node name="Wave3" type="AnimatedSprite2D" parent="."]
+light_mask = 6
+use_parent_material = true
+position = Vector2(96, 0)
+sprite_frames = ExtResource("1_2s5cr")
+animation = &"Wave"
+autoplay = "Wave"
+
+[node name="Wave4" type="AnimatedSprite2D" parent="."]
+light_mask = 6
+use_parent_material = true
+position = Vector2(144, 0)
+sprite_frames = ExtResource("1_2s5cr")
+animation = &"Wave"
+autoplay = "Wave"

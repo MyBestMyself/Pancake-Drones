@@ -1,0 +1,80 @@
+[gd_scene load_steps=7 format=3 uid="uid://crx5s1fsdu202"]
+
+[ext_resource type="Script" path="res://scripts/droneWalk.gd" id="1_lfhfq"]
+[ext_resource type="SpriteFrames" uid="uid://mtah6nni2vvq" path="res://assets/DroneWalk.tres" id="2_xm83q"]
+[ext_resource type="Texture2D" uid="uid://b2hpal1bsmfw" path="res://sprites/game/overlay/Pancake.png" id="3_84eyc"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_h617n"]
+light_mode = 2
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_y33q6"]
+radius = 1.0
+height = 32.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_i53hg"]
+radius = 1.0
+height = 34.6667
+
+[node name="DroneWalk" type="CharacterBody2D"]
+light_mask = 2
+z_index = 1
+texture_filter = 1
+material = SubResource("CanvasItemMaterial_h617n")
+scale = Vector2(0.75, 0.75)
+collision_layer = 0
+collision_mask = 65
+script = ExtResource("1_lfhfq")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+light_mask = 6
+use_parent_material = true
+sprite_frames = ExtResource("2_xm83q")
+animation = &"DroneJump"
+autoplay = "DroneWalk"
+frame = 1
+frame_progress = 1.0
+
+[node name="Overlay" type="Sprite2D" parent="."]
+light_mask = 6
+use_parent_material = true
+texture = ExtResource("3_84eyc")
+
+[node name="Eye" type="Sprite2D" parent="Overlay"]
+light_mask = 6
+use_parent_material = true
+
+[node name="Toes" type="CollisionShape2D" parent="."]
+position = Vector2(0, 17)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_y33q6")
+
+[node name="Jump" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 128
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Jump"]
+position = Vector2(0, 17)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_i53hg")
+
+[node name="Raycasts" type="Node2D" parent="."]
+modulate = Color(0, 0, 1, 1)
+
+[node name="DetectHighWall" type="RayCast2D" parent="Raycasts"]
+position = Vector2(0, 11.8)
+target_position = Vector2(16.2, 0)
+
+[node name="DetectWall" type="RayCast2D" parent="Raycasts"]
+position = Vector2(0, 16)
+target_position = Vector2(16.2, 0)
+
+[node name="DetectFloor" type="RayCast2D" parent="Raycasts"]
+position = Vector2(0, 17.0667)
+target_position = Vector2(0, 1.7)
+
+[node name="DetectRise" type="RayCast2D" parent="Raycasts"]
+position = Vector2(0, 16.2667)
+target_position = Vector2(0, 1.7)
+
+[connection signal="frame_changed" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_frame_changed"]
+[connection signal="area_entered" from="Jump" to="." method="_on_jump_area_entered"]

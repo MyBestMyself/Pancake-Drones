@@ -1,0 +1,152 @@
+[gd_scene load_steps=14 format=3 uid="uid://dyfw8dcv4chwx"]
+
+[ext_resource type="Script" path="res://scripts/you.gd" id="1_1fqyg"]
+[ext_resource type="Texture2D" uid="uid://c1fp0v8in7jvj" path="res://sprites/menu/body_parts/Skin2.png" id="2_bhogk"]
+[ext_resource type="Texture2D" uid="uid://bsfvoy2tvlj70" path="res://sprites/menu/body_parts/Hair1.png" id="2_je1qm"]
+[ext_resource type="Texture2D" uid="uid://b3u2o1mg5qjgs" path="res://sprites/menu/body_parts/Pants1.png" id="3_8i33w"]
+[ext_resource type="Texture2D" uid="uid://x7604hr177ft" path="res://sprites/menu/body_parts/Shirt1-2.png" id="4_p4lrp"]
+[ext_resource type="Texture2D" uid="uid://dk2bnlqy7pf2x" path="res://sprites/menu/body_parts/Teeth1.png" id="5_06a2d"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_5e7ef"]
+light_mode = 2
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_m3w4o"]
+size = Vector2(17, 10)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_s30qq"]
+size = Vector2(18, 2.00002)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_3jv7p"]
+radius = 1.0
+height = 16.0
+
+[sub_resource type="Animation" id="Animation_mpxal"]
+resource_name = "Iframes"
+length = 1.5
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1, 1.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_jetk3"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_bp3lk"]
+_data = {
+"Iframes": SubResource("Animation_mpxal"),
+"RESET": SubResource("Animation_jetk3")
+}
+
+[node name="You" type="CharacterBody2D"]
+light_mask = 2
+z_index = -1
+texture_filter = 1
+material = SubResource("CanvasItemMaterial_5e7ef")
+collision_layer = 0
+collision_mask = 65
+script = ExtResource("1_1fqyg")
+metadata/_edit_lock_ = true
+
+[node name="Body" type="Node2D" parent="."]
+use_parent_material = true
+
+[node name="Skin" type="Sprite2D" parent="Body"]
+light_mask = 6
+use_parent_material = true
+texture = ExtResource("2_bhogk")
+
+[node name="Pants" type="Sprite2D" parent="Body"]
+light_mask = 6
+use_parent_material = true
+texture = ExtResource("3_8i33w")
+
+[node name="Shirt" type="Sprite2D" parent="Body"]
+light_mask = 6
+use_parent_material = true
+texture = ExtResource("4_p4lrp")
+
+[node name="Teeth" type="Sprite2D" parent="Body"]
+light_mask = 6
+use_parent_material = true
+texture = ExtResource("5_06a2d")
+
+[node name="Hair" type="Sprite2D" parent="Body"]
+light_mask = 6
+use_parent_material = true
+position = Vector2(5, -6)
+rotation = -1.5708
+texture = ExtResource("2_je1qm")
+
+[node name="Hitbox" type="Area2D" parent="."]
+position = Vector2(0, 23)
+collision_layer = 2
+collision_mask = 32
+monitoring = false
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+position = Vector2(-0.5, -28)
+shape = SubResource("RectangleShape2D_m3w4o")
+
+[node name="Back" type="CollisionShape2D" parent="."]
+position = Vector2(-0.999996, 11)
+rotation = 1.5708
+shape = SubResource("RectangleShape2D_s30qq")
+metadata/_edit_lock_ = true
+
+[node name="Toes" type="CollisionShape2D" parent="."]
+position = Vector2(0, 23)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_3jv7p")
+metadata/_edit_lock_ = true
+
+[node name="Raycasts" type="Node2D" parent="."]
+modulate = Color(0, 0, 1, 1)
+
+[node name="DetectHighWall" type="RayCast2D" parent="Raycasts"]
+position = Vector2(0, 19.8)
+target_position = Vector2(8.2, 0)
+
+[node name="DetectWall" type="RayCast2D" parent="Raycasts"]
+position = Vector2(0, 23.2)
+target_position = Vector2(8.2, 0)
+
+[node name="DetectFloor" type="RayCast2D" parent="Raycasts"]
+position = Vector2(0, 22.4)
+target_position = Vector2(0, 1.7)
+
+[node name="DetectRise" type="RayCast2D" parent="Raycasts"]
+position = Vector2(0, 21.6)
+target_position = Vector2(0, 1.7)
+
+[node name="Animate" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_bp3lk")
+}
+
+[node name="WalkTimer" type="Timer" parent="."]
+wait_time = 0.1
+
+[connection signal="animation_finished" from="Animate" to="." method="_on_animate_animation_finished"]
+[connection signal="timeout" from="WalkTimer" to="." method="walk"]

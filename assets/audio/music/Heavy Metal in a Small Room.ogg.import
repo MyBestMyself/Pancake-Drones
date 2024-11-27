@@ -1,15 +1,19 @@
 [remap]
 
-importer="ogg_vorbis"
-type="AudioStreamOGGVorbis"
-path="res://.import/Heavy Metal in a Small Room.ogg-f52dcc7f6ea25999999b6a55ad8d86ce.oggstr"
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://bmgj2bmk0krbv"
+path="res://.godot/imported/Heavy Metal in a Small Room.ogg-f52dcc7f6ea25999999b6a55ad8d86ce.oggvorbisstr"
 
 [deps]
 
 source_file="res://assets/audio/music/Heavy Metal in a Small Room.ogg"
-dest_files=[ "res://.import/Heavy Metal in a Small Room.ogg-f52dcc7f6ea25999999b6a55ad8d86ce.oggstr" ]
+dest_files=["res://.godot/imported/Heavy Metal in a Small Room.ogg-f52dcc7f6ea25999999b6a55ad8d86ce.oggvorbisstr"]
 
 [params]
 
 loop=true
 loop_offset=192.0
+bpm=0
+beat_count=0
+bar_beats=4

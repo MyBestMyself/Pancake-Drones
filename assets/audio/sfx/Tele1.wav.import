@@ -1,13 +1,14 @@
 [remap]
 
 importer="wav"
-type="AudioStreamSample"
-path="res://.import/Tele1.wav-5ebd220dc73f3ea6c06e415296763d50.sample"
+type="AudioStreamWAV"
+uid="uid://bke27h5e82nhx"
+path="res://.godot/imported/Tele1.wav-5ebd220dc73f3ea6c06e415296763d50.sample"
 
 [deps]
 
 source_file="res://assets/audio/sfx/Tele1.wav"
-dest_files=[ "res://.import/Tele1.wav-5ebd220dc73f3ea6c06e415296763d50.sample" ]
+dest_files=["res://.godot/imported/Tele1.wav-5ebd220dc73f3ea6c06e415296763d50.sample"]
 
 [params]
 

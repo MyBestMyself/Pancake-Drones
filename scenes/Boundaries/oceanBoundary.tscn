@@ -1,0 +1,69 @@
+[gd_scene load_steps=6 format=3 uid="uid://sgi1m4n3mwg2"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_enyhu"]
+size = Vector2(240, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2r1tb"]
+size = Vector2(240, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uu4ub"]
+size = Vector2(16, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_672gw"]
+size = Vector2(8, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4xd85"]
+size = Vector2(8, 16)
+
+[node name="Boundary" type="Node2D"]
+
+[node name="Ground" type="StaticBody2D" parent="."]
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ground"]
+position = Vector2(192, 208)
+shape = SubResource("RectangleShape2D_enyhu")
+
+[node name="GroundCheck" type="Area2D" parent="."]
+collision_mask = 12
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GroundCheck"]
+position = Vector2(192, 208)
+shape = SubResource("RectangleShape2D_2r1tb")
+
+[node name="LeftWall" type="StaticBody2D" parent="."]
+position = Vector2(-152, -24)
+collision_layer = 64
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LeftWall"]
+position = Vector2(208, 224)
+shape = SubResource("RectangleShape2D_uu4ub")
+
+[node name="LeftJump" type="Area2D" parent="."]
+modulate = Color(0, 1, 0, 1)
+position = Vector2(-152, -24)
+collision_layer = 128
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LeftJump"]
+position = Vector2(212, 224)
+shape = SubResource("RectangleShape2D_672gw")
+
+[node name="RightWall" type="StaticBody2D" parent="."]
+collision_layer = 64
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RightWall"]
+position = Vector2(328, 200)
+shape = SubResource("RectangleShape2D_uu4ub")
+
+[node name="RightJump" type="Area2D" parent="."]
+modulate = Color(0, 1, 0, 1)
+position = Vector2(-152, -24)
+collision_layer = 128
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RightJump"]
+position = Vector2(476, 224)
+shape = SubResource("RectangleShape2D_4xd85")

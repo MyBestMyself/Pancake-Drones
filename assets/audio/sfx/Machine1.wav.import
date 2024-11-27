@@ -1,13 +1,14 @@
 [remap]
 
 importer="wav"
-type="AudioStreamSample"
-path="res://.import/Machine1.wav-030f279807adbf62f1475eb706579eb9.sample"
+type="AudioStreamWAV"
+uid="uid://d3dgmmarr1bfs"
+path="res://.godot/imported/Machine1.wav-030f279807adbf62f1475eb706579eb9.sample"
 
 [deps]
 
 source_file="res://assets/audio/sfx/Machine1.wav"
-dest_files=[ "res://.import/Machine1.wav-030f279807adbf62f1475eb706579eb9.sample" ]
+dest_files=["res://.godot/imported/Machine1.wav-030f279807adbf62f1475eb706579eb9.sample"]
 
 [params]
 

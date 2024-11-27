@@ -1,13 +1,14 @@
 [remap]
 
 importer="wav"
-type="AudioStreamSample"
-path="res://.import/BitCrash.wav-fdf8fda959f7ff4eae53baa53eb507d5.sample"
+type="AudioStreamWAV"
+uid="uid://c12cvxj1jckbk"
+path="res://.godot/imported/BitCrash.wav-fdf8fda959f7ff4eae53baa53eb507d5.sample"
 
 [deps]
 
 source_file="res://assets/audio/sfx/BitCrash.wav"
-dest_files=[ "res://.import/BitCrash.wav-fdf8fda959f7ff4eae53baa53eb507d5.sample" ]
+dest_files=["res://.godot/imported/BitCrash.wav-fdf8fda959f7ff4eae53baa53eb507d5.sample"]
 
 [params]
 

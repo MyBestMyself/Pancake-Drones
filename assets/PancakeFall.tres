@@ -1,19 +1,25 @@
-[gd_resource type="SpriteFrames" load_steps=4 format=2]
+[gd_resource type="SpriteFrames" load_steps=4 format=3 uid="uid://bvpu7p671i7sq"]
 
-[ext_resource path="res://sprites/game/PancakeFall.png" type="Texture" id=1]
+[ext_resource type="Texture2D" uid="uid://bhtc4stwwka4f" path="res://sprites/game/SyrupPancakeFall.png" id="1_dpwyk"]
 
-[sub_resource type="AtlasTexture" id=2]
-atlas = ExtResource( 1 )
-region = Rect2( 24, 0, 24, 20 )
+[sub_resource type="AtlasTexture" id="AtlasTexture_fg0f7"]
+atlas = ExtResource("1_dpwyk")
+region = Rect2(28, 0, 28, 22)
 
-[sub_resource type="AtlasTexture" id=3]
-atlas = ExtResource( 1 )
-region = Rect2( 48, 0, 24, 20 )
+[sub_resource type="AtlasTexture" id="AtlasTexture_myi40"]
+atlas = ExtResource("1_dpwyk")
+region = Rect2(56, 0, 28, 22)
 
 [resource]
-animations = [ {
-"frames": [ SubResource( 2 ), SubResource( 3 ) ],
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fg0f7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_myi40")
+}],
 "loop": false,
-"name": "PancakeFall",
-"speed": 7.0
-} ]
+"name": &"PancakeFall",
+"speed": 4.0
+}]

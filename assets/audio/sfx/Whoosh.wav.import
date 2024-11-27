@@ -1,13 +1,14 @@
 [remap]
 
 importer="wav"
-type="AudioStreamSample"
-path="res://.import/Whoosh.wav-d443ca8bee36381695fef0e6ad1b923a.sample"
+type="AudioStreamWAV"
+uid="uid://draywoljwttp7"
+path="res://.godot/imported/Whoosh.wav-d443ca8bee36381695fef0e6ad1b923a.sample"
 
 [deps]
 
 source_file="res://assets/audio/sfx/Whoosh.wav"
-dest_files=[ "res://.import/Whoosh.wav-d443ca8bee36381695fef0e6ad1b923a.sample" ]
+dest_files=["res://.godot/imported/Whoosh.wav-d443ca8bee36381695fef0e6ad1b923a.sample"]
 
 [params]
 

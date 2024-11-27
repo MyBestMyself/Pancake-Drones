@@ -1,0 +1,49 @@
+[gd_scene load_steps=6 format=3 uid="uid://d0rhv0cgewbvi"]
+
+[ext_resource type="Script" path="res://scripts/parasite.gd" id="1_07j3v"]
+[ext_resource type="Texture2D" uid="uid://dvo32t5r6xcs3" path="res://sprites/game/Parasite.png" id="2_phvq2"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_psqdy"]
+light_mode = 2
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_05mhg"]
+radius = 9.0
+height = 23.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_w386c"]
+size = Vector2(14, 31.9999)
+
+[node name="Drone" type="Node2D"]
+light_mask = 3
+z_index = -1
+texture_filter = 1
+material = SubResource("CanvasItemMaterial_psqdy")
+position = Vector2(0, -5)
+scale = Vector2(0.5, 0.5)
+script = ExtResource("1_07j3v")
+flavor = "parasite"
+
+[node name="Drone" type="Sprite2D" parent="."]
+light_mask = 3
+use_parent_material = true
+texture = ExtResource("2_phvq2")
+
+[node name="Eat" type="Area2D" parent="Drone"]
+collision_layer = 32
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Drone/Eat"]
+position = Vector2(0, 9)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_05mhg")
+
+[node name="GroundCheck" type="Area2D" parent="Drone"]
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Drone/GroundCheck"]
+position = Vector2(-1.02957e-05, 21)
+rotation = 1.5708
+shape = SubResource("RectangleShape2D_w386c")
+
+[connection signal="area_entered" from="Drone/Eat" to="." method="_on_eat_area_entered"]
+[connection signal="area_entered" from="Drone/GroundCheck" to="." method="_on_ground_check_area_entered"]

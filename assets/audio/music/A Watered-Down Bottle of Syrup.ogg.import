@@ -1,15 +1,19 @@
 [remap]
 
-importer="ogg_vorbis"
-type="AudioStreamOGGVorbis"
-path="res://.import/A Watered-Down Bottle of Syrup.ogg-8aa9737adbe2e2c958b6a8f5db9a1728.oggstr"
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://c7eknwyybx0wk"
+path="res://.godot/imported/A Watered-Down Bottle of Syrup.ogg-8aa9737adbe2e2c958b6a8f5db9a1728.oggvorbisstr"
 
 [deps]
 
 source_file="res://assets/audio/music/A Watered-Down Bottle of Syrup.ogg"
-dest_files=[ "res://.import/A Watered-Down Bottle of Syrup.ogg-8aa9737adbe2e2c958b6a8f5db9a1728.oggstr" ]
+dest_files=["res://.godot/imported/A Watered-Down Bottle of Syrup.ogg-8aa9737adbe2e2c958b6a8f5db9a1728.oggvorbisstr"]
 
 [params]
 
 loop=true
 loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

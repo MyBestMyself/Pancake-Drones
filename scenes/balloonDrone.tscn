@@ -1,0 +1,65 @@
+[gd_scene load_steps=7 format=3 uid="uid://bdgqw8g2q1nx8"]
+
+[ext_resource type="Script" path="res://scripts/balloonDrone.gd" id="1_mhhfd"]
+[ext_resource type="SpriteFrames" uid="uid://oltrgdvjhx86" path="res://assets/BalloonDrone.tres" id="2_4we7e"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_psqdy"]
+light_mode = 2
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_05mhg"]
+radius = 7.16667
+height = 23.0
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_iudu5"]
+light_mode = 2
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_i1t3a"]
+size = Vector2(32, 2.16667)
+
+[node name="Drone" type="CharacterBody2D"]
+light_mask = 3
+z_index = -1
+texture_filter = 1
+material = SubResource("CanvasItemMaterial_psqdy")
+position = Vector2(0, 18)
+scale = Vector2(0.75, 0.75)
+collision_layer = 0
+script = ExtResource("1_mhhfd")
+
+[node name="Drone" type="AnimatedSprite2D" parent="."]
+light_mask = 3
+use_parent_material = true
+position = Vector2(0, -17.3333)
+sprite_frames = ExtResource("2_4we7e")
+animation = &"Down"
+offset = Vector2(0, 13)
+
+[node name="Eat" type="Area2D" parent="Drone"]
+position = Vector2(0, 17.3333)
+collision_layer = 32
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Drone/Eat"]
+position = Vector2(0, 22.1667)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_05mhg")
+
+[node name="Wait" type="Timer" parent="."]
+one_shot = true
+
+[node name="Overlay" type="AnimatedSprite2D" parent="."]
+modulate = Color(1, 1, 1, 0)
+light_mask = 4
+material = SubResource("CanvasItemMaterial_iudu5")
+position = Vector2(0, -17.3333)
+sprite_frames = ExtResource("2_4we7e")
+animation = &"LoonBloon"
+offset = Vector2(0, 13)
+
+[node name="Toes" type="CollisionShape2D" parent="."]
+position = Vector2(0, 32.1)
+shape = SubResource("RectangleShape2D_i1t3a")
+
+[connection signal="animation_finished" from="Drone" to="." method="_on_drone_animation_finished"]
+[connection signal="area_entered" from="Drone/Eat" to="." method="_on_eat_area_entered"]
+[connection signal="timeout" from="Wait" to="." method="_on_wait_timeout"]

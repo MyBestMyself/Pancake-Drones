@@ -1,13 +1,14 @@
 [remap]
 
 importer="wav"
-type="AudioStreamSample"
-path="res://.import/Noises of a Warm Laptop.wav-c89c51c68f0d37f32363b45b06b09abb.sample"
+type="AudioStreamWAV"
+uid="uid://cooogx26he7fp"
+path="res://.godot/imported/Noises of a Warm Laptop.wav-c89c51c68f0d37f32363b45b06b09abb.sample"
 
 [deps]
 
 source_file="res://assets/audio/sfx/Noises of a Warm Laptop.wav"
-dest_files=[ "res://.import/Noises of a Warm Laptop.wav-c89c51c68f0d37f32363b45b06b09abb.sample" ]
+dest_files=["res://.godot/imported/Noises of a Warm Laptop.wav-c89c51c68f0d37f32363b45b06b09abb.sample"]
 
 [params]
 
