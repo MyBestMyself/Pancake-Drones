@@ -10,15 +10,26 @@ var pantsColor = Color(0.043137, 0.152941, 0.815686, 1)
 var points = 0
 var health = 36
 var iFrames = false
-var planePosition = 0
+var isBlack = false
+var planePosition = Vector2(0,0)
 var planeRotation = 0
+var planeSide = "Left"
+var playerPosition = Vector2(0,0)
 var playerDirection = "Right"
 var landingPos
+var landingRot
 var landingFlavor
 var splitNum
 var splitSway
 var splittingPos
 var splitMomentum
+var splitSeed
+var chunkDirection
+var teleportsLeft
+var jumpPos
+var jumpRotation
+var jumpMomentum
+var jumpSide
 var pancakeSpawnList = ["pancake", "syrupPancake", "pancake"]
 var droneSpawnList = ["drone", "drone", "transformer"]
 var pancakeSeed = [1,4,2,3, 2,1,3,4, 3,2,4,1, 4,3,1,2] 
@@ -32,11 +43,12 @@ var spawnRate = 1
 
 signal resetQueue()
 signal spawn(scene)
+signal spawn_on_plane(scene)
 
 func set_pancake_spawn_list():
 	if Global.pancakeSpawnList.has("pancake") and Global.pancakeSpawnList.has("syrupPancake"):
 		Global.pancakeCycles += 1
-		if Global.pancakeCycles > 3:
+		if Global.pancakeCycles > 18:
 			Global.pancakeCycles = 1
 		
 		if Global.pancakeCycles == 1:
@@ -45,3 +57,33 @@ func set_pancake_spawn_list():
 			Global.pancakeSpawnList = ["syrupPancake", "pancake", "pancake"]
 		elif Global.pancakeCycles == 3:
 			Global.pancakeSpawnList = ["pancake", "syrupPancake", "pancake"]
+		elif Global.pancakeCycles == 4:
+			Global.pancakeSpawnList = ["pancake", "pancake", "syrupPancake"]
+		elif Global.pancakeCycles == 5:
+			Global.pancakeSpawnList = ["pancake", "syrupPancake", "pancake"]
+		elif Global.pancakeCycles == 6:
+			Global.pancakeSpawnList = ["syrupPancake", "pancake", "pancake"]
+		elif Global.pancakeCycles == 7:
+			Global.pancakeSpawnList = ["syrupPancake", "pancake", "pancake"]
+		elif Global.pancakeCycles == 8:
+			Global.pancakeSpawnList = ["pancake", "pancake", "syrupPancake"]
+		elif Global.pancakeCycles == 9:
+			Global.pancakeSpawnList = ["pancake", "syrupPancake", "pancake"]
+		elif Global.pancakeCycles == 10:
+			Global.pancakeSpawnList = ["syrupPancake", "pancake", "pancake"]
+		elif Global.pancakeCycles == 11:
+			Global.pancakeSpawnList = ["pancake", "syrupPancake", "pancake"]
+		elif Global.pancakeCycles == 12:
+			Global.pancakeSpawnList = ["pancake", "pancake", "syrupPancake"]
+		elif Global.pancakeCycles == 13:
+			Global.pancakeSpawnList = ["pancake", "syrupPancake", "pancake"]
+		elif Global.pancakeCycles == 14:
+			Global.pancakeSpawnList = ["pancake", "pancake", "syrupPancake"]
+		elif Global.pancakeCycles == 15:
+			Global.pancakeSpawnList = ["syrupPancake", "pancake", "pancake"]
+		elif Global.pancakeCycles == 16:
+			Global.pancakeSpawnList = ["pancake", "syrupPancake", "pancake"]
+		elif Global.pancakeCycles == 17:
+			Global.pancakeSpawnList = ["syrupPancake", "pancake", "pancake"]
+		elif Global.pancakeCycles == 18:
+			Global.pancakeSpawnList = ["pancake", "pancake", "syrupPancake"]

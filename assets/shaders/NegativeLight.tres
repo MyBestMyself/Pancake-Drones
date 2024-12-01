@@ -1,9 +1,12 @@
-[gd_resource type="Shader" format=2]
+[gd_resource type="Shader" format=3 uid="uid://dyx2k8icdje08"]
 
 [resource]
 code = "shader_type canvas_item;
 
-void fragment(){
-	COLOR = texture(SCREEN_TEXTURE, SCREEN_UV);
-	COLOR.a = texture(TEXTURE, UV).a;
+uniform sampler2D screen_texture : hint_screen_texture;
+
+void fragment() {
+    vec4 screen_color = texture(screen_texture, SCREEN_UV);
+    float alpha = texture(TEXTURE, UV).a;
+    COLOR = vec4(screen_color.rgb, alpha);
 }"

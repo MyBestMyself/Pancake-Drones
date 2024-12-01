@@ -126,8 +126,6 @@ metadata/_edit_group_ = true
 metadata/_edit_lock_ = true
 
 [node name="Dot" parent="Dots/1" instance=ExtResource("2_id80y")]
-light_mask = 6
-use_parent_material = true
 id = 1
 
 [node name="2" type="Node2D" parent="Dots"]
@@ -138,8 +136,6 @@ metadata/_edit_group_ = true
 metadata/_edit_lock_ = true
 
 [node name="Dot" parent="Dots/2" instance=ExtResource("2_id80y")]
-light_mask = 6
-use_parent_material = true
 id = 2
 
 [node name="3" type="Node2D" parent="Dots"]
@@ -150,8 +146,6 @@ metadata/_edit_group_ = true
 metadata/_edit_lock_ = true
 
 [node name="Dot" parent="Dots/3" instance=ExtResource("2_id80y")]
-light_mask = 6
-use_parent_material = true
 id = 3
 
 [node name="4" type="Node2D" parent="Dots"]
@@ -162,8 +156,6 @@ metadata/_edit_group_ = true
 metadata/_edit_lock_ = true
 
 [node name="Dot" parent="Dots/4" instance=ExtResource("2_id80y")]
-light_mask = 6
-use_parent_material = true
 id = 4
 
 [node name="5" type="Node2D" parent="Dots"]
@@ -174,8 +166,6 @@ metadata/_edit_group_ = true
 metadata/_edit_lock_ = true
 
 [node name="Dot" parent="Dots/5" instance=ExtResource("2_id80y")]
-light_mask = 6
-use_parent_material = true
 id = 5
 
 [node name="6" type="Node2D" parent="Dots"]
@@ -187,8 +177,6 @@ metadata/_edit_group_ = true
 metadata/_edit_lock_ = true
 
 [node name="Dot" parent="Dots/6" instance=ExtResource("2_id80y")]
-light_mask = 6
-use_parent_material = true
 id = 6
 size = 0
 
@@ -202,8 +190,6 @@ metadata/_edit_group_ = true
 metadata/_edit_lock_ = true
 
 [node name="Dot" parent="Dots/7" instance=ExtResource("2_id80y")]
-light_mask = 6
-use_parent_material = true
 id = 7
 size = 3
 
@@ -216,8 +202,6 @@ metadata/_edit_group_ = true
 metadata/_edit_lock_ = true
 
 [node name="Dot" parent="Dots/8" instance=ExtResource("2_id80y")]
-light_mask = 6
-use_parent_material = true
 id = 8
 size = 0
 
@@ -229,8 +213,6 @@ metadata/_edit_group_ = true
 metadata/_edit_lock_ = true
 
 [node name="Dot" parent="Dots/9" instance=ExtResource("2_id80y")]
-light_mask = 6
-use_parent_material = true
 id = 9
 
 [node name="10" type="Node2D" parent="Dots"]
@@ -242,8 +224,6 @@ metadata/_edit_group_ = true
 metadata/_edit_lock_ = true
 
 [node name="Dot" parent="Dots/10" instance=ExtResource("2_id80y")]
-light_mask = 6
-use_parent_material = true
 id = 10
 size = 2
 
@@ -256,8 +236,6 @@ metadata/_edit_group_ = true
 metadata/_edit_lock_ = true
 
 [node name="Dot" parent="Dots/11" instance=ExtResource("2_id80y")]
-light_mask = 6
-use_parent_material = true
 id = 11
 
 [node name="12" type="Node2D" parent="Dots"]
@@ -269,8 +247,6 @@ metadata/_edit_group_ = true
 metadata/_edit_lock_ = true
 
 [node name="Dot" parent="Dots/12" instance=ExtResource("2_id80y")]
-light_mask = 6
-use_parent_material = true
 id = 12
 
 [node name="13" type="Node2D" parent="Dots"]
@@ -280,8 +256,6 @@ metadata/_edit_group_ = true
 metadata/_edit_lock_ = true
 
 [node name="Dot" parent="Dots/13" instance=ExtResource("2_id80y")]
-light_mask = 6
-use_parent_material = true
 id = 13
 
 [node name="14" type="Node2D" parent="Dots"]
@@ -293,8 +267,6 @@ metadata/_edit_group_ = true
 metadata/_edit_lock_ = true
 
 [node name="Dot" parent="Dots/14" instance=ExtResource("2_id80y")]
-light_mask = 6
-use_parent_material = true
 id = 14
 
 [node name="15" type="Node2D" parent="Dots"]
@@ -306,8 +278,6 @@ metadata/_edit_group_ = true
 metadata/_edit_lock_ = true
 
 [node name="Dot" parent="Dots/15" instance=ExtResource("2_id80y")]
-light_mask = 6
-use_parent_material = true
 id = 15
 
 [node name="16" type="Node2D" parent="Dots"]
@@ -319,8 +289,6 @@ metadata/_edit_group_ = true
 metadata/_edit_lock_ = true
 
 [node name="Dot" parent="Dots/16" instance=ExtResource("2_id80y")]
-light_mask = 6
-use_parent_material = true
 id = 16
 size = 2
 
@@ -332,8 +300,6 @@ metadata/_edit_group_ = true
 metadata/_edit_lock_ = true
 
 [node name="Dot" parent="Dots/17" instance=ExtResource("2_id80y")]
-light_mask = 6
-use_parent_material = true
 id = 17
 
 [node name="18" type="Node2D" parent="Dots"]
@@ -344,8 +310,6 @@ metadata/_edit_group_ = true
 metadata/_edit_lock_ = true
 
 [node name="Dot" parent="Dots/18" instance=ExtResource("2_id80y")]
-light_mask = 6
-use_parent_material = true
 id = 18
 
 [node name="19" type="Node2D" parent="Dots"]
@@ -356,8 +320,6 @@ metadata/_edit_group_ = true
 metadata/_edit_lock_ = true
 
 [node name="Dot" parent="Dots/19" instance=ExtResource("2_id80y")]
-light_mask = 6
-use_parent_material = true
 id = 19
 
 [node name="20" type="Node2D" parent="Dots"]
@@ -368,8 +330,6 @@ metadata/_edit_group_ = true
 metadata/_edit_lock_ = true
 
 [node name="Dot" parent="Dots/20" instance=ExtResource("2_id80y")]
-light_mask = 6
-use_parent_material = true
 id = 20
 
 [node name="21" type="Node2D" parent="Dots"]
@@ -380,8 +340,6 @@ metadata/_edit_group_ = true
 metadata/_edit_lock_ = true
 
 [node name="Dot" parent="Dots/21" instance=ExtResource("2_id80y")]
-light_mask = 6
-use_parent_material = true
 id = 21
 
 [node name="22" type="Node2D" parent="Dots"]
@@ -392,8 +350,6 @@ metadata/_edit_group_ = true
 metadata/_edit_lock_ = true
 
 [node name="Dot" parent="Dots/22" instance=ExtResource("2_id80y")]
-light_mask = 6
-use_parent_material = true
 id = 22
 
 [node name="23" type="Node2D" parent="Dots"]
@@ -404,8 +360,6 @@ metadata/_edit_group_ = true
 metadata/_edit_lock_ = true
 
 [node name="Dot" parent="Dots/23" instance=ExtResource("2_id80y")]
-light_mask = 6
-use_parent_material = true
 id = 23
 
 [node name="24" type="Node2D" parent="Dots"]
@@ -416,8 +370,6 @@ metadata/_edit_group_ = true
 metadata/_edit_lock_ = true
 
 [node name="Dot" parent="Dots/24" instance=ExtResource("2_id80y")]
-light_mask = 6
-use_parent_material = true
 id = 24
 
 [node name="25" type="Node2D" parent="Dots"]
@@ -429,8 +381,6 @@ metadata/_edit_group_ = true
 metadata/_edit_lock_ = true
 
 [node name="Dot" parent="Dots/25" instance=ExtResource("2_id80y")]
-light_mask = 6
-use_parent_material = true
 id = 25
 
 [node name="26" type="Node2D" parent="Dots"]
@@ -441,8 +391,6 @@ metadata/_edit_group_ = true
 metadata/_edit_lock_ = true
 
 [node name="Dot" parent="Dots/26" instance=ExtResource("2_id80y")]
-light_mask = 6
-use_parent_material = true
 id = 26
 
 [node name="27" type="Node2D" parent="Dots"]
@@ -453,8 +401,6 @@ metadata/_edit_group_ = true
 metadata/_edit_lock_ = true
 
 [node name="Dot" parent="Dots/27" instance=ExtResource("2_id80y")]
-light_mask = 6
-use_parent_material = true
 id = 27
 
 [node name="28" type="Node2D" parent="Dots"]
@@ -465,8 +411,6 @@ metadata/_edit_group_ = true
 metadata/_edit_lock_ = true
 
 [node name="Dot" parent="Dots/28" instance=ExtResource("2_id80y")]
-light_mask = 6
-use_parent_material = true
 id = 28
 
 [node name="29" type="Node2D" parent="Dots"]
@@ -478,8 +422,6 @@ metadata/_edit_group_ = true
 metadata/_edit_lock_ = true
 
 [node name="Dot" parent="Dots/29" instance=ExtResource("2_id80y")]
-light_mask = 6
-use_parent_material = true
 id = 29
 
 [node name="30" type="Node2D" parent="Dots"]
@@ -490,8 +432,6 @@ metadata/_edit_group_ = true
 metadata/_edit_lock_ = true
 
 [node name="Dot" parent="Dots/30" instance=ExtResource("2_id80y")]
-light_mask = 6
-use_parent_material = true
 id = 30
 
 [node name="31" type="Node2D" parent="Dots"]
@@ -502,8 +442,6 @@ metadata/_edit_group_ = true
 metadata/_edit_lock_ = true
 
 [node name="Dot" parent="Dots/31" instance=ExtResource("2_id80y")]
-light_mask = 6
-use_parent_material = true
 id = 31
 
 [node name="32" type="Node2D" parent="Dots"]
@@ -514,8 +452,6 @@ metadata/_edit_group_ = true
 metadata/_edit_lock_ = true
 
 [node name="Dot" parent="Dots/32" instance=ExtResource("2_id80y")]
-light_mask = 6
-use_parent_material = true
 id = 32
 
 [node name="33" type="Node2D" parent="Dots"]
@@ -526,8 +462,6 @@ metadata/_edit_group_ = true
 metadata/_edit_lock_ = true
 
 [node name="Dot" parent="Dots/33" instance=ExtResource("2_id80y")]
-light_mask = 6
-use_parent_material = true
 id = 33
 
 [node name="34" type="Node2D" parent="Dots"]
@@ -538,8 +472,6 @@ metadata/_edit_group_ = true
 metadata/_edit_lock_ = true
 
 [node name="Dot" parent="Dots/34" instance=ExtResource("2_id80y")]
-light_mask = 6
-use_parent_material = true
 id = 34
 
 [node name="35" type="Node2D" parent="Dots"]
@@ -550,8 +482,6 @@ metadata/_edit_group_ = true
 metadata/_edit_lock_ = true
 
 [node name="Dot" parent="Dots/35" instance=ExtResource("2_id80y")]
-light_mask = 6
-use_parent_material = true
 id = 35
 
 [node name="36" type="Node2D" parent="Dots"]
@@ -562,8 +492,6 @@ metadata/_edit_group_ = true
 metadata/_edit_lock_ = true
 
 [node name="Dot" parent="Dots/36" instance=ExtResource("2_id80y")]
-light_mask = 6
-use_parent_material = true
 id = 36
 
 [node name="Animate" type="AnimationPlayer" parent="."]

@@ -1,27 +1,46 @@
-[gd_resource type="ParticlesMaterial" load_steps=3 format=2]
+[gd_resource type="ParticleProcessMaterial" load_steps=8 format=3 uid="uid://b4pkdoelp21wm"]
 
-[sub_resource type="Gradient" id=1]
-offsets = PoolRealArray( 0, 0.852792, 1 )
-colors = PoolColorArray( 1, 1, 1, 1, 1, 1, 1, 0.959391, 1, 1, 1, 0 )
+[sub_resource type="Curve" id="Curve_mu8j2"]
+max_value = 2.0
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 1, Vector2(1, 1), 0.0, 0.0, 1, 0]
+point_count = 2
 
-[sub_resource type="GradientTexture" id=2]
-gradient = SubResource( 1 )
+[sub_resource type="CurveTexture" id="CurveTexture_saf3n"]
+curve = SubResource("Curve_mu8j2")
+
+[sub_resource type="Curve" id="Curve_ontx5"]
+max_value = 2.0
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 1, Vector2(1, 1), 0.0, 0.0, 1, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_ddvyh"]
+curve = SubResource("Curve_ontx5")
+
+[sub_resource type="Gradient" id="1"]
+offsets = PackedFloat32Array(0, 0.852792, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0.959391, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="2"]
+gradient = SubResource("1")
+
+[sub_resource type="CurveXYZTexture" id="CurveXYZTexture_o01kt"]
 
 [resource]
-emission_shape = 2
-emission_box_extents = Vector3( 3, 1, 1 )
-flag_disable_z = true
-direction = Vector3( 0, -1, 0 )
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(3, 3, 1)
+angle_min = -180.0
+angle_max = 180.0
+angle_curve = SubResource("CurveTexture_saf3n")
+direction = Vector3(0, 1, 0)
 spread = 90.0
-gravity = Vector3( 0, -200, 0 )
-initial_velocity = -150.0
-initial_velocity_random = 1.0
-angular_velocity = 180.0
-angular_velocity_random = 1.0
-orbit_velocity = 0.0
-orbit_velocity_random = 0.0
-radial_accel = 10.0
-radial_accel_random = 1.0
-angle = 180.0
-angle_random = 1.0
-color_ramp = SubResource( 2 )
+initial_velocity_min = 100.0
+initial_velocity_max = 200.0
+angular_velocity_min = -100.0
+angular_velocity_max = 100.0
+angular_velocity_curve = SubResource("CurveTexture_ddvyh")
+directional_velocity_min = 1.0
+directional_velocity_max = 1.0
+directional_velocity_curve = SubResource("CurveXYZTexture_o01kt")
+gravity = Vector3(0, 200, 0)
+color_ramp = SubResource("2")

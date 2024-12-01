@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://crx5s1fsdu202"]
+[gd_scene load_steps=12 format=3 uid="uid://crx5s1fsdu202"]
 
 [ext_resource type="Script" path="res://scripts/droneWalk.gd" id="1_lfhfq"]
 [ext_resource type="SpriteFrames" uid="uid://mtah6nni2vvq" path="res://assets/DroneWalk.tres" id="2_xm83q"]
@@ -14,6 +14,103 @@ height = 32.0
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_i53hg"]
 radius = 1.0
 height = 34.6667
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_k70go"]
+radius = 8.43274
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_n74yt"]
+radius = 29.3333
+
+[sub_resource type="Animation" id="Animation_ehebb"]
+resource_name = "Explode"
+length = 1.5
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Explosion:monitoring")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.5),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Explosion/CollisionShape2D:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.5, 1, 1.5),
+"transitions": PackedFloat32Array(0.5, 2, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(3.5, 3.5), Vector2(1, 1)]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.5, 1),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [],
+"method": &"explode"
+}, {
+"args": [],
+"method": &"disappear"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_wg0qm"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Explosion:monitoring")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("RadiusCheck:monitoring")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Explosion/CollisionShape2D:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_r5cpm"]
+_data = {
+"Explode": SubResource("Animation_ehebb"),
+"RESET": SubResource("Animation_wg0qm")
+}
 
 [node name="DroneWalk" type="CharacterBody2D"]
 light_mask = 2
@@ -57,6 +154,35 @@ position = Vector2(0, 17)
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_i53hg")
 
+[node name="CanExplode" type="Timer" parent="."]
+wait_time = 2.5
+one_shot = true
+
+[node name="Explosion" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+monitoring = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Explosion"]
+position = Vector2(-4.85064e-12, 0)
+rotation = 1.5708
+shape = SubResource("CircleShape2D_k70go")
+
+[node name="RadiusCheck" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+monitoring = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RadiusCheck"]
+position = Vector2(-4.85064e-12, 0)
+rotation = 1.5708
+shape = SubResource("CircleShape2D_n74yt")
+
+[node name="Explode" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_r5cpm")
+}
+
 [node name="Raycasts" type="Node2D" parent="."]
 modulate = Color(0, 0, 1, 1)
 
@@ -78,3 +204,7 @@ target_position = Vector2(0, 1.7)
 
 [connection signal="frame_changed" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_frame_changed"]
 [connection signal="area_entered" from="Jump" to="." method="_on_jump_area_entered"]
+[connection signal="timeout" from="CanExplode" to="." method="_on_can_explode_timeout"]
+[connection signal="area_entered" from="Explosion" to="." method="_on_explosion_area_entered"]
+[connection signal="area_entered" from="RadiusCheck" to="." method="_on_radius_check_area_entered"]
+[connection signal="animation_finished" from="Explode" to="." method="_on_explode_animation_finished"]

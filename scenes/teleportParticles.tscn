@@ -1,0 +1,114 @@
+[gd_scene load_steps=14 format=3 uid="uid://bbaf6ubjtxc8l"]
+
+[ext_resource type="Script" path="res://scripts/teleportParticles.gd" id="1_a2bao"]
+[ext_resource type="Material" uid="uid://cnyaa2nlcignd" path="res://assets/particles/SmallRing.tres" id="2_fwgup"]
+[ext_resource type="Material" uid="uid://h8vo7717n285" path="res://assets/particles/SmallerRing.tres" id="3_klpwq"]
+
+[sub_resource type="Curve" id="Curve_m8coo"]
+min_value = -200.0
+_data = [Vector2(0, -200), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_28eq0"]
+curve = SubResource("Curve_m8coo")
+
+[sub_resource type="Curve" id="Curve_5f8ug"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_40n2d"]
+curve = SubResource("Curve_5f8ug")
+
+[sub_resource type="Curve" id="Curve_85y20"]
+min_value = -200.0
+max_value = 200.0
+_data = [Vector2(0, -200), 0.0, 0.0, 0, 0, Vector2(1, -200), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_uubmg"]
+curve = SubResource("Curve_85y20")
+
+[sub_resource type="Curve" id="Curve_nx2k0"]
+max_value = 2.0
+_data = [Vector2(0, 1), 0.0, 3.94737, 0, 1, Vector2(0.253333, 2), 0.0, 0.0, 0, 0, Vector2(1, 0), -2.67857, 0.0, 1, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_tahhw"]
+curve = SubResource("Curve_nx2k0")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_wiv0v"]
+particle_flag_disable_z = true
+spread = 180.0
+initial_velocity_min = 25.0
+initial_velocity_max = 25.0
+orbit_velocity_min = -0.0999999
+orbit_velocity_max = -0.0999999
+orbit_velocity_curve = SubResource("CurveTexture_40n2d")
+gravity = Vector3(0, 0, 0)
+linear_accel_min = 0.999998
+linear_accel_max = 0.999998
+linear_accel_curve = SubResource("CurveTexture_28eq0")
+radial_accel_min = 0.249998
+radial_accel_max = 0.249998
+radial_accel_curve = SubResource("CurveTexture_uubmg")
+scale_curve = SubResource("CurveTexture_tahhw")
+
+[sub_resource type="Curve" id="Curve_sp3mr"]
+max_value = 2.0
+_data = [Vector2(0, 1), 0.0, 3.95556, 0, 1, Vector2(0.252809, 2), 0.0, 0.0, 0, 0, Vector2(1, 0), -2.67669, 0.0, 1, 0]
+point_count = 3
+
+[node name="TeleportParticles" type="Node2D"]
+z_index = -2
+scale = Vector2(3, 3)
+script = ExtResource("1_a2bao")
+
+[node name="Burst" type="GPUParticles2D" parent="."]
+modulate = Color(0.8, 0.8, 0.8, 1)
+position = Vector2(0, 5)
+emitting = false
+amount = 60
+process_material = SubResource("ParticleProcessMaterial_wiv0v")
+lifetime = 0.5
+one_shot = true
+explosiveness = 0.9
+randomness = 1.0
+
+[node name="SmallBurst" type="GPUParticles2D" parent="."]
+modulate = Color(0.8, 0.8, 0.8, 1)
+position = Vector2(0, 5)
+emitting = false
+amount = 40
+process_material = ExtResource("2_fwgup")
+lifetime = 0.5
+one_shot = true
+explosiveness = 0.9
+randomness = 1.0
+
+[node name="SmallerBurst" type="GPUParticles2D" parent="."]
+modulate = Color(0.8, 0.8, 0.8, 1)
+position = Vector2(0, 5)
+emitting = false
+amount = 20
+process_material = ExtResource("3_klpwq")
+lifetime = 0.5
+one_shot = true
+explosiveness = 0.9
+randomness = 1.0
+
+[node name="Sparkles" type="CPUParticles2D" parent="."]
+position = Vector2(0, 5)
+emitting = false
+amount = 500
+one_shot = true
+explosiveness = 1.0
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 25.0
+initial_velocity_max = 25.0
+orbit_velocity_min = -1.0
+linear_accel_min = -50.0
+linear_accel_max = -50.0
+radial_accel_min = -50.0
+radial_accel_max = -50.0
+scale_amount_curve = SubResource("Curve_sp3mr")

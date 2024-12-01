@@ -1,16 +1,22 @@
-[gd_scene load_steps=6 format=3 uid="uid://d1lxyf8me57cb"]
+[gd_scene load_steps=7 format=3 uid="uid://d1lxyf8me57cb"]
 
 [ext_resource type="Script" path="res://scripts/pancakeParticles.gd" id="1_ondvf"]
-[ext_resource type="Material" path="res://assets/particles/PancakeExplode.tres" id="2_ghy6q"]
+[ext_resource type="Material" uid="uid://c8k37xy365gkr" path="res://assets/particles/PancakeExplode.tres" id="2_ghy6q"]
 [ext_resource type="Texture2D" uid="uid://cmptl1grknjcj" path="res://sprites/particles/DroneParts4.png" id="3_mw0cf"]
 [ext_resource type="Texture2D" uid="uid://bhshya2eev7mk" path="res://sprites/particles/BreadCrumb.png" id="4_jkh40"]
 [ext_resource type="Texture2D" uid="uid://cidbvuy3chc3d" path="res://sprites/particles/ButterSquare.png" id="5_653b6"]
 
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_b0geg"]
+light_mode = 2
+
 [node name="PancakeParticles" type="Node2D"]
 texture_filter = 1
+material = SubResource("CanvasItemMaterial_b0geg")
 script = ExtResource("1_ondvf")
 
 [node name="BigChunks" type="GPUParticles2D" parent="."]
+light_mask = 6
+use_parent_material = true
 emitting = false
 amount = 30
 process_material = ExtResource("2_ghy6q")
@@ -22,6 +28,8 @@ explosiveness = 1.0
 randomness = 1.0
 
 [node name="BreadCrumbs" type="GPUParticles2D" parent="."]
+light_mask = 6
+use_parent_material = true
 emitting = false
 amount = 30
 process_material = ExtResource("2_ghy6q")
@@ -33,6 +41,8 @@ explosiveness = 1.0
 randomness = 1.0
 
 [node name="ButterSquares" type="GPUParticles2D" parent="."]
+light_mask = 6
+use_parent_material = true
 emitting = false
 amount = 4
 process_material = ExtResource("2_ghy6q")

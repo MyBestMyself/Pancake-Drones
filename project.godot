@@ -13,6 +13,7 @@ config_version=5
 config/name="Pancake Drones"
 run/main_scene="res://scenes/game.tscn"
 config/features=PackedStringArray("4.3", "GL Compatibility")
+boot_splash/show_image=false
 config/icon="res://icon.svg"
 
 [autoload]
@@ -20,6 +21,7 @@ config/icon="res://icon.svg"
 Global="*res://scripts/Global.gd"
 Heart="*res://scenes/Heart.tscn"
 Score="*res://scenes/Score.tscn"
+IrisWipe="*res://scenes/irisWipe.tscn"
 
 [display]
 
@@ -57,8 +59,4 @@ ui_right={
 2d_physics/layer_6="EatDrone"
 2d_physics/layer_7="Boundary"
 2d_physics/layer_8="Jump"
-
-[rendering]
-
-renderer/rendering_method="gl_compatibility"
-renderer/rendering_method.mobile="gl_compatibility"
+2d_physics/layer_9="Disabler"

@@ -1,0 +1,124 @@
+[gd_scene load_steps=13 format=3 uid="uid://0fmh4d5torte"]
+
+[ext_resource type="Script" path="res://scripts/botfly.gd" id="1_ydibr"]
+[ext_resource type="Texture2D" uid="uid://cm5ropxub3yl7" path="res://sprites/game/Botfly.png" id="2_bsrwb"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_knnhd"]
+light_mode = 2
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y8cil"]
+atlas = ExtResource("2_bsrwb")
+region = Rect2(0, 0, 32, 36)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_448y0"]
+atlas = ExtResource("2_bsrwb")
+region = Rect2(64, 0, 32, 36)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sowwr"]
+atlas = ExtResource("2_bsrwb")
+region = Rect2(32, 0, 32, 36)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q6o8r"]
+atlas = ExtResource("2_bsrwb")
+region = Rect2(96, 0, 32, 36)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0ggbd"]
+atlas = ExtResource("2_bsrwb")
+region = Rect2(160, 0, 32, 36)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jy1le"]
+atlas = ExtResource("2_bsrwb")
+region = Rect2(128, 0, 32, 36)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tnleo"]
+atlas = ExtResource("2_bsrwb")
+region = Rect2(192, 0, 32, 36)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_bv2ef"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y8cil")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_448y0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sowwr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q6o8r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0ggbd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jy1le")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tnleo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jy1le")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0ggbd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q6o8r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sowwr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_448y0")
+}],
+"loop": true,
+"name": &"default",
+"speed": 50.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_mb2l3"]
+radius = 7.16667
+height = 23.0
+
+[node name="Botfly" type="Node"]
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="."]
+remote_path = NodePath("../Drone")
+update_rotation = false
+update_scale = false
+script = ExtResource("1_ydibr")
+
+[node name="Flyaway" type="Timer" parent="RemoteTransform2D"]
+wait_time = 2.5
+one_shot = true
+autostart = true
+
+[node name="KillTimer" type="Timer" parent="RemoteTransform2D"]
+wait_time = 3.0
+one_shot = true
+
+[node name="Drone" type="AnimatedSprite2D" parent="."]
+light_mask = 3
+z_index = -1
+texture_filter = 1
+material = SubResource("CanvasItemMaterial_knnhd")
+use_parent_material = true
+scale = Vector2(0.75, 0.75)
+sprite_frames = SubResource("SpriteFrames_bv2ef")
+autoplay = "default"
+
+[node name="Eat" type="Area2D" parent="Drone"]
+position = Vector2(0, -3.8147e-05)
+collision_layer = 32
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Drone/Eat"]
+position = Vector2(0, 7.50003)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_mb2l3")
+
+[connection signal="timeout" from="RemoteTransform2D/Flyaway" to="RemoteTransform2D" method="_on_flyaway_timeout"]
+[connection signal="timeout" from="RemoteTransform2D/KillTimer" to="RemoteTransform2D" method="_on_kill_timer_timeout"]
+[connection signal="area_entered" from="Drone/Eat" to="RemoteTransform2D" method="_on_eat_area_entered"]

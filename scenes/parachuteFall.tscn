@@ -3,7 +3,8 @@
 [ext_resource type="Script" path="res://scripts/parachuteFall.gd" id="1_0i7nk"]
 [ext_resource type="SpriteFrames" uid="uid://cwstfn7ea5ffb" path="res://assets/ParachuteFall.tres" id="2_34vvq"]
 
-[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_2f8v2"]
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_tk8v2"]
+light_mode = 2
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ud2mn"]
 size = Vector2(24, 2)
@@ -47,13 +48,14 @@ _data = {
 
 [node name="ParachuteFall" type="CharacterBody2D"]
 texture_filter = 1
+material = SubResource("CanvasItemMaterial_tk8v2")
 scale = Vector2(0.75, 0.75)
 collision_layer = 0
 script = ExtResource("1_0i7nk")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 light_mask = 6
-material = SubResource("CanvasItemMaterial_2f8v2")
+use_parent_material = true
 sprite_frames = ExtResource("2_34vvq")
 animation = &"ParachuteFall"
 autoplay = "ParachuteFall"

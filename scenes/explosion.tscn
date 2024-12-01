@@ -1,0 +1,179 @@
+[gd_scene load_steps=11 format=3 uid="uid://d1i7l6e1sl2kh"]
+
+[ext_resource type="Script" path="res://scripts/explosion.gd" id="1_1cj84"]
+[ext_resource type="Texture2D" uid="uid://cmptl1grknjcj" path="res://sprites/particles/DroneParts4.png" id="2_oj5v5"]
+[ext_resource type="Texture2D" uid="uid://bhshya2eev7mk" path="res://sprites/particles/BreadCrumb.png" id="3_sr2l2"]
+[ext_resource type="Texture2D" uid="uid://bsg1irdrck6d8" path="res://sprites/particles/DroneParts1.png" id="4_cc4ux"]
+[ext_resource type="Texture2D" uid="uid://dlj8py13axuqn" path="res://sprites/particles/DroneParts2.png" id="5_5f0wu"]
+[ext_resource type="Texture2D" uid="uid://ci2e3u0n2djyn" path="res://sprites/particles/DroneParts3.png" id="6_ru10d"]
+[ext_resource type="Texture2D" uid="uid://dptlxw6n0tv4p" path="res://sprites/particles/Smoke.png" id="8_s7q6d"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_c2nu5"]
+light_mode = 2
+
+[sub_resource type="Curve" id="Curve_38w3t"]
+max_value = 2.0
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.490654, 1.98077), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Gradient" id="Gradient_1jwl6"]
+colors = PackedColorArray(1, 0, 0, 1, 1, 1, 0, 1)
+
+[node name="Explosion" type="Node2D"]
+z_index = 1
+texture_filter = 1
+material = SubResource("CanvasItemMaterial_c2nu5")
+scale = Vector2(0.75, 0.75)
+script = ExtResource("1_1cj84")
+
+[node name="KillTimer" type="Timer" parent="."]
+wait_time = 2.0
+
+[node name="BigChunks" type="CPUParticles2D" parent="."]
+light_mask = 6
+use_parent_material = true
+rotation = -1.5708
+emitting = false
+amount = 30
+lifetime = 2.0
+one_shot = true
+explosiveness = 1.0
+texture = ExtResource("2_oj5v5")
+direction = Vector2(0, 0)
+spread = 90.0
+gravity = Vector2(0, 250)
+initial_velocity_min = 100.0
+initial_velocity_max = 200.0
+angular_velocity_min = -1000.0
+angular_velocity_max = 1000.0
+angle_min = -180.0
+angle_max = 180.0
+
+[node name="BreadCrumbs" type="CPUParticles2D" parent="."]
+light_mask = 6
+use_parent_material = true
+rotation = -1.5708
+emitting = false
+amount = 30
+lifetime = 2.0
+one_shot = true
+explosiveness = 1.0
+texture = ExtResource("3_sr2l2")
+direction = Vector2(0, 0)
+spread = 90.0
+gravity = Vector2(0, 250)
+initial_velocity_min = 100.0
+initial_velocity_max = 200.0
+angular_velocity_min = -1000.0
+angular_velocity_max = 1000.0
+angle_min = -180.0
+angle_max = 180.0
+
+[node name="DroneParts" type="CPUParticles2D" parent="."]
+light_mask = 6
+use_parent_material = true
+rotation = -1.5708
+emitting = false
+amount = 2
+lifetime = 2.0
+one_shot = true
+explosiveness = 1.0
+texture = ExtResource("4_cc4ux")
+direction = Vector2(0, 0)
+spread = 90.0
+gravity = Vector2(0, 250)
+initial_velocity_min = 100.0
+initial_velocity_max = 200.0
+angular_velocity_min = -1000.0
+angular_velocity_max = 1000.0
+angle_min = -180.0
+angle_max = 180.0
+
+[node name="DroneParts2" type="CPUParticles2D" parent="."]
+light_mask = 6
+use_parent_material = true
+rotation = -1.5708
+emitting = false
+amount = 4
+lifetime = 2.0
+one_shot = true
+explosiveness = 1.0
+texture = ExtResource("5_5f0wu")
+direction = Vector2(0, 0)
+spread = 90.0
+gravity = Vector2(0, 250)
+initial_velocity_min = 100.0
+initial_velocity_max = 200.0
+angular_velocity_min = -1000.0
+angular_velocity_max = 1000.0
+angle_min = -180.0
+angle_max = 180.0
+
+[node name="DroneParts3" type="CPUParticles2D" parent="."]
+light_mask = 6
+use_parent_material = true
+rotation = -1.5708
+emitting = false
+amount = 2
+lifetime = 2.0
+one_shot = true
+explosiveness = 1.0
+texture = ExtResource("6_ru10d")
+direction = Vector2(0, 0)
+spread = 90.0
+gravity = Vector2(0, 250)
+initial_velocity_min = 100.0
+initial_velocity_max = 200.0
+angular_velocity_min = -1000.0
+angular_velocity_max = 1000.0
+angle_min = -180.0
+angle_max = 180.0
+
+[node name="Fireball" type="CPUParticles2D" parent="."]
+light_mask = 6
+use_parent_material = true
+emitting = false
+amount = 20
+one_shot = true
+explosiveness = 0.5
+texture = ExtResource("8_s7q6d")
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 45.0
+initial_velocity_max = 45.0
+scale_amount_curve = SubResource("Curve_38w3t")
+color_ramp = SubResource("Gradient_1jwl6")
+
+[node name="Fireball2" type="CPUParticles2D" parent="."]
+light_mask = 6
+use_parent_material = true
+emitting = false
+amount = 20
+one_shot = true
+speed_scale = 1.5
+explosiveness = 0.5
+texture = ExtResource("8_s7q6d")
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 45.0
+initial_velocity_max = 45.0
+scale_amount_curve = SubResource("Curve_38w3t")
+color_ramp = SubResource("Gradient_1jwl6")
+
+[node name="Fireball3" type="CPUParticles2D" parent="."]
+light_mask = 6
+use_parent_material = true
+emitting = false
+amount = 20
+one_shot = true
+speed_scale = 2.0
+explosiveness = 0.5
+texture = ExtResource("8_s7q6d")
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 45.0
+initial_velocity_max = 45.0
+scale_amount_curve = SubResource("Curve_38w3t")
+color_ramp = SubResource("Gradient_1jwl6")
+
+[connection signal="timeout" from="KillTimer" to="." method="_on_kill_timer_timeout"]

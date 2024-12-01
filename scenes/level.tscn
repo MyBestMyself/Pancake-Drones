@@ -1,0 +1,42 @@
+[gd_scene load_steps=7 format=3 uid="uid://dm7317a2v0vwd"]
+
+[ext_resource type="Texture2D" uid="uid://ct7ik42vf6n0y" path="res://sprites/game/levels/ExperimentalWall.png" id="1_40py6"]
+[ext_resource type="Texture2D" uid="uid://cxbpobuxselms" path="res://sprites/game/levels/OceanBG.png" id="2_q40n1"]
+[ext_resource type="PackedScene" uid="uid://cuuw6vndai55" path="res://scenes/waves.tscn" id="3_xrym6"]
+[ext_resource type="Texture2D" uid="uid://dx23pcox80ye2" path="res://sprites/game/levels/OceanFG.png" id="4_3vtqx"]
+[ext_resource type="PackedScene" uid="uid://sgi1m4n3mwg2" path="res://scenes/Boundaries/oceanBoundary.tscn" id="5_13tje"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_3c78f"]
+light_mode = 2
+
+[node name="Level" type="Node2D"]
+z_index = -2
+material = SubResource("CanvasItemMaterial_3c78f")
+scale = Vector2(2.4, 2.4)
+metadata/_edit_group_ = true
+
+[node name="TrueBackground" type="Sprite2D" parent="."]
+z_index = -1
+position = Vector2(80, 45)
+texture = ExtResource("1_40py6")
+
+[node name="Background" type="Sprite2D" parent="."]
+light_mask = 6
+use_parent_material = true
+position = Vector2(80, 45)
+texture = ExtResource("2_q40n1")
+
+[node name="Waves" parent="." instance=ExtResource("3_xrym6")]
+visibility_layer = 1
+position = Vector2(8, 85.5)
+
+[node name="Foreground" type="Sprite2D" parent="."]
+light_mask = 6
+use_parent_material = true
+position = Vector2(80, 45)
+texture = ExtResource("4_3vtqx")
+
+[node name="Boundary" parent="." instance=ExtResource("5_13tje")]
+light_mask = 2
+use_parent_material = true
+scale = Vector2(0.416667, 0.416667)

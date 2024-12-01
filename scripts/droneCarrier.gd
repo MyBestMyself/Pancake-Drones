@@ -10,7 +10,13 @@ var spawnables = {
 	"transformer" : preload("res://scenes/transformer.tscn"),
 	"multiDrone" : preload("res://scenes/multiDrone.tscn"),
 	"nest" : preload("res://scenes/nest.tscn"),
-	"balloonDrone" : preload("res://scenes/balloonDrone.tscn")
+	"balloonDrone" : preload("res://scenes/balloonDrone.tscn"),
+	"telephony" : preload("res://scenes/telephony.tscn"),
+	"kiteDrone" : preload("res://scenes/kiteDrone.tscn"),
+	"botfly" : preload("res://scenes/botfly.tscn"),
+	"IEDrone" : preload("res://scenes/IEDrone.tscn"),
+	"sparkler" : preload("res://scenes/sparkler.tscn"),
+	"stuntDrone" : preload("res://scenes/stuntDrone.tscn")
 }
 
 var rng = RandomNumberGenerator.new()
@@ -40,7 +46,13 @@ func make():
 			Global.pancakeSeed.remove_at(0)
 			
 	elif Global.droneSpawnList != []:
-		Global.emit_signal("spawn", spawnables[droneQueue[0]])
+		
+		if droneQueue[0] == "stuntDrone" or droneQueue[0] == "thumper":
+			Global.emit_signal("spawn_on_plane", spawnables[droneQueue[0]])
+		else:
+			Global.emit_signal("spawn", spawnables[droneQueue[0]])
+		
+		
 		droneQueue.remove_at(0)
 		if droneQueue.size() == 0:
 			set_drone_queue()

@@ -1,28 +1,52 @@
-[gd_resource type="ParticlesMaterial" load_steps=5 format=2]
+[gd_resource type="ParticleProcessMaterial" load_steps=9 format=3 uid="uid://h8vo7717n285"]
 
-[sub_resource type="Gradient" id=1]
-offsets = PoolRealArray( 0.797927, 1 )
-colors = PoolColorArray( 1, 1, 1, 1, 1, 1, 1, 0 )
+[sub_resource type="Curve" id="Curve_m8coo"]
+min_value = -200.0
+_data = [Vector2(0, -200), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
 
-[sub_resource type="GradientTexture" id=2]
-gradient = SubResource( 1 )
+[sub_resource type="CurveTexture" id="CurveTexture_28eq0"]
+curve = SubResource("Curve_m8coo")
 
-[sub_resource type="Curve" id=3]
-_data = [ Vector2( 0, 0.475962 ), 0.0, 4.29086, 0, 0, Vector2( 1, 0 ), 0.0, 0.0, 0, 0 ]
+[sub_resource type="Curve" id="Curve_2qvff"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
 
-[sub_resource type="CurveTexture" id=4]
-curve = SubResource( 3 )
+[sub_resource type="CurveTexture" id="CurveTexture_sep4x"]
+curve = SubResource("Curve_2qvff")
+
+[sub_resource type="Curve" id="Curve_85y20"]
+min_value = -200.0
+max_value = 200.0
+_data = [Vector2(0, -200), 0.0, 0.0, 0, 0, Vector2(1, -200), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_uubmg"]
+curve = SubResource("Curve_85y20")
+
+[sub_resource type="Curve" id="Curve_nx2k0"]
+max_value = 2.0
+_data = [Vector2(0, 1), 0.0, 3.94737, 0, 1, Vector2(0.253333, 2), 0.0, 0.0, 0, 0, Vector2(1, 0), -2.67857, 0.0, 1, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_tahhw"]
+curve = SubResource("Curve_nx2k0")
 
 [resource]
-flag_disable_z = true
-direction = Vector3( 0, 0, 0 )
+particle_flag_disable_z = true
 spread = 180.0
-gravity = Vector3( 0, 0, 0 )
-initial_velocity = 10.0
-orbit_velocity = 0.1
-orbit_velocity_random = 1.0
-linear_accel = -50.0
-radial_accel = -50.0
-scale = 0.33
-scale_curve = SubResource( 4 )
-color_ramp = SubResource( 2 )
+initial_velocity_min = 10.0
+initial_velocity_max = 10.0
+orbit_velocity_min = -0.0999999
+orbit_velocity_max = -0.0999999
+orbit_velocity_curve = SubResource("CurveTexture_sep4x")
+gravity = Vector3(0, 0, 0)
+linear_accel_min = 0.749998
+linear_accel_max = 0.749998
+linear_accel_curve = SubResource("CurveTexture_28eq0")
+radial_accel_min = 0.249998
+radial_accel_max = 0.249998
+radial_accel_curve = SubResource("CurveTexture_uubmg")
+scale_min = 0.33
+scale_max = 0.33
+scale_curve = SubResource("CurveTexture_tahhw")

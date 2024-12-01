@@ -1,7 +1,7 @@
-[gd_scene load_steps=15 format=3 uid="uid://xdbpyrledwjq"]
+[gd_scene load_steps=11 format=3 uid="uid://dymib55gpo3pi"]
 
-[ext_resource type="Script" path="res://scripts/telephony.gd" id="1_i42op"]
-[ext_resource type="SpriteFrames" uid="uid://cvpeshtuy57vh" path="res://assets/TeleDrone.tres" id="2_mieqr"]
+[ext_resource type="Script" path="res://scripts/drone.gd" id="1_2ftf0"]
+[ext_resource type="Texture2D" uid="uid://b7mepw3rnx24q" path="res://sprites/game/IEDrone.png" id="2_nxd2b"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_psqdy"]
 light_mode = 2
@@ -16,9 +16,6 @@ height = 23.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_q8yn4"]
 radius = 9.33333
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_1l1pu"]
-radius = 18.6667
 
 [sub_resource type="Animation" id="Animation_u16p6"]
 length = 0.001
@@ -37,7 +34,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_whqfq"]
 resource_name = "swayLeft"
-length = 5.6
+length = 2.4
 step = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -46,15 +43,15 @@ tracks/0/path = NodePath("Drone:rotation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.8, 1.6, 2.4, 3.2, 4, 4.8),
-"transitions": PackedFloat32Array(-2, -2, -2, -2, -2, -2, 1),
+"times": PackedFloat32Array(0, 0.8, 1.6, 2.4),
+"transitions": PackedFloat32Array(-2, -2, -2, 1),
 "update": 0,
-"values": [0.383972, -0.383972, 0.383972, -0.383972, 0.383972, -0.383972, 0.0]
+"values": [0.383972, -0.383972, 0.383972, 0.0]
 }
 
 [sub_resource type="Animation" id="Animation_dit3g"]
 resource_name = "swayRight"
-length = 5.6
+length = 2.4
 step = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -63,10 +60,10 @@ tracks/0/path = NodePath("Drone:rotation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.8, 1.6, 2.4, 3.2, 4, 4.8),
-"transitions": PackedFloat32Array(-2, -2, -2, -2, -2, -2, 1),
+"times": PackedFloat32Array(0, 0.8, 1.6, 2.4),
+"transitions": PackedFloat32Array(-2, -2, -2, 1),
 "update": 0,
-"values": [-0.383972, 0.383972, -0.383972, 0.383972, -0.383972, 0.383972, 0.0]
+"values": [-0.383972, 0.383972, -0.383972, 0.0]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_xqufd"]
@@ -76,32 +73,6 @@ _data = {
 "swayRight": SubResource("Animation_dit3g")
 }
 
-[sub_resource type="Animation" id="Animation_fqi6j"]
-resource_name = "FadeIn"
-length = 0.2
-step = 0.1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Drone:self_modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
-}
-
-[sub_resource type="Animation" id="Animation_op6mo"]
-length = 0.001
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_j5o0j"]
-_data = {
-"FadeIn": SubResource("Animation_fqi6j"),
-"RESET": SubResource("Animation_op6mo")
-}
-
 [node name="Drone" type="Node2D"]
 light_mask = 3
 z_index = -1
@@ -109,17 +80,18 @@ texture_filter = 1
 material = SubResource("CanvasItemMaterial_psqdy")
 position = Vector2(0, 18)
 scale = Vector2(0.75, 0.75)
-script = ExtResource("1_i42op")
+script = ExtResource("1_2ftf0")
+flavor = "IEDrone"
 
-[node name="Drone" type="AnimatedSprite2D" parent="."]
+[node name="Drone" type="Sprite2D" parent="."]
 light_mask = 3
 use_parent_material = true
 position = Vector2(0, -17.3333)
-sprite_frames = ExtResource("2_mieqr")
-animation = &"Triangulate"
+texture = ExtResource("2_nxd2b")
 offset = Vector2(0, 31.3333)
 
 [node name="Eat" type="Area2D" parent="Drone"]
+visible = false
 position = Vector2(0, 17.3333)
 collision_layer = 32
 collision_mask = 2
@@ -130,6 +102,7 @@ rotation = 1.5708
 shape = SubResource("CapsuleShape2D_05mhg")
 
 [node name="PancakeFall" type="Area2D" parent="Drone"]
+visible = false
 position = Vector2(0, 17.3333)
 collision_layer = 0
 
@@ -137,30 +110,18 @@ collision_layer = 0
 position = Vector2(0, 23.5)
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_6eqj8")
-disabled = true
 
 [node name="ParachuteFall" type="Area2D" parent="Drone"]
+visible = false
 position = Vector2(0, 17.3333)
 collision_layer = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Drone/ParachuteFall"]
 position = Vector2(0, 10.6666)
 shape = SubResource("CircleShape2D_q8yn4")
-disabled = true
 
-[node name="TeleportCheck" type="Area2D" parent="Drone"]
-position = Vector2(0, 17.3333)
-collision_layer = 0
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Drone/TeleportCheck"]
-position = Vector2(0, 18)
-shape = SubResource("CircleShape2D_1l1pu")
-
-[node name="Pause1" type="Timer" parent="."]
-one_shot = true
-
-[node name="Pause2" type="Timer" parent="."]
-wait_time = 0.5
+[node name="KillTimer" type="Timer" parent="."]
+wait_time = 2.0
 one_shot = true
 
 [node name="Animate" type="AnimationPlayer" parent="."]
@@ -168,14 +129,7 @@ libraries = {
 "": SubResource("AnimationLibrary_xqufd")
 }
 
-[node name="Fade" type="AnimationPlayer" parent="."]
-libraries = {
-"": SubResource("AnimationLibrary_j5o0j")
-}
-
 [connection signal="area_entered" from="Drone/Eat" to="." method="_on_eat_area_entered"]
 [connection signal="area_entered" from="Drone/PancakeFall" to="." method="_on_pancake_fall_area_entered"]
 [connection signal="area_entered" from="Drone/ParachuteFall" to="." method="_on_parachute_fall_area_entered"]
-[connection signal="area_entered" from="Drone/TeleportCheck" to="." method="_on_teleport_check_area_entered"]
-[connection signal="timeout" from="Pause1" to="." method="_on_pause_1_timeout"]
-[connection signal="timeout" from="Pause2" to="." method="_on_pause_2_timeout"]
+[connection signal="timeout" from="KillTimer" to="." method="_on_kill_timer_timeout"]

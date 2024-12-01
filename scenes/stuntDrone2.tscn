@@ -1,0 +1,50 @@
+[gd_scene load_steps=6 format=3 uid="uid://bf2xfwwf1144u"]
+
+[ext_resource type="Script" path="res://scripts/stuntDrone2.gd" id="1_xugw3"]
+[ext_resource type="Texture2D" uid="uid://dhk65rvmrsyg5" path="res://sprites/game/StuntDrone.png" id="2_0emaq"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_snrin"]
+light_mode = 2
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_cy8f0"]
+radius = 10.5
+height = 24.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_j517k"]
+radius = 5.6667
+height = 14.0
+
+[node name="Drone" type="Node2D"]
+z_index = 1
+texture_filter = 1
+material = SubResource("CanvasItemMaterial_snrin")
+scale = Vector2(0.75, 0.75)
+script = ExtResource("1_xugw3")
+
+[node name="StuntDrone" type="Sprite2D" parent="."]
+light_mask = 4
+use_parent_material = true
+texture = ExtResource("2_0emaq")
+hframes = 7
+
+[node name="Eat" type="Area2D" parent="."]
+position = Vector2(0, 0.3333)
+collision_layer = 32
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Eat"]
+position = Vector2(0, -1.8333)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_cy8f0")
+
+[node name="GroundCheck" type="Area2D" parent="."]
+position = Vector2(0, 0.3333)
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GroundCheck"]
+position = Vector2(0, -15)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_j517k")
+
+[connection signal="area_entered" from="Eat" to="." method="_on_eat_area_entered"]
+[connection signal="area_entered" from="GroundCheck" to="." method="_on_ground_check_area_entered"]

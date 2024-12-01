@@ -1,0 +1,401 @@
+[gd_scene load_steps=14 format=3 uid="uid://cor66teemdpjb"]
+
+[ext_resource type="Script" path="res://scripts/sparkler.gd" id="1_rxb75"]
+[ext_resource type="Texture2D" uid="uid://djm5ca6h7nd0c" path="res://sprites/game/Sparkler.png" id="2_1v0j6"]
+[ext_resource type="Texture2D" uid="uid://dd3f86oovtk7m" path="res://sprites/game/PseudoNums.png" id="3_tlrgd"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_psqdy"]
+light_mode = 2
+
+[sub_resource type="Gradient" id="Gradient_hgg5l"]
+colors = PackedColorArray(1, 1, 0, 1, 1, 0.235294, 0, 0)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_vipu8"]
+radius = 8.43274
+
+[sub_resource type="Animation" id="Animation_u16p6"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Drone:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_whqfq"]
+resource_name = "swayLeft"
+length = 2.4
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Drone:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.8, 1.6, 2.4),
+"transitions": PackedFloat32Array(-2, -2, -2, 1),
+"update": 0,
+"values": [0.383972, -0.383972, 0.383972, 0.0]
+}
+
+[sub_resource type="Animation" id="Animation_dit3g"]
+resource_name = "swayRight"
+length = 2.4
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Drone:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.8, 1.6, 2.4),
+"transitions": PackedFloat32Array(-2, -2, -2, 1),
+"update": 0,
+"values": [-0.383972, 0.383972, -0.383972, 0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_xqufd"]
+_data = {
+"RESET": SubResource("Animation_u16p6"),
+"swayLeft": SubResource("Animation_whqfq"),
+"swayRight": SubResource("Animation_dit3g")
+}
+
+[sub_resource type="Animation" id="Animation_8b6q7"]
+resource_name = "Explode"
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Drone/Explosion:monitoring")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Drone/Explosion/CollisionShape2D:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(0.5, 2, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(3.5, 3.5), Vector2(1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Drone:self_modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Drone/Nums:self_modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath(".:falling")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.2),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_3vgvf"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Drone/Explosion:monitoring")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Drone/Explosion/CollisionShape2D:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Drone:self_modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Drone/Nums:self_modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath(".:falling")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_eq0he"]
+_data = {
+"Explode": SubResource("Animation_8b6q7"),
+"RESET": SubResource("Animation_3vgvf")
+}
+
+[node name="Drone" type="Node2D"]
+light_mask = 3
+z_index = -1
+texture_filter = 1
+material = SubResource("CanvasItemMaterial_psqdy")
+position = Vector2(0, 18)
+scale = Vector2(0.75, 0.75)
+script = ExtResource("1_rxb75")
+flavor = "sparkler"
+
+[node name="Drone" type="Sprite2D" parent="."]
+light_mask = 3
+use_parent_material = true
+position = Vector2(0, -17.3333)
+texture = ExtResource("2_1v0j6")
+offset = Vector2(0, 31.3333)
+
+[node name="Nums" type="Sprite2D" parent="Drone"]
+modulate = Color(1, 0, 0, 1)
+light_mask = 3
+use_parent_material = true
+position = Vector2(0, 31.8333)
+texture = ExtResource("3_tlrgd")
+hframes = 3
+
+[node name="Sparks" type="Node2D" parent="Drone"]
+position = Vector2(0, 17.3333)
+scale = Vector2(0.75, 0.75)
+
+[node name="Sparks1" type="CPUParticles2D" parent="Drone/Sparks"]
+light_mask = 3
+position = Vector2(-7.3, -10.667)
+emitting = false
+amount = 50
+lifetime = 0.5
+preprocess = 0.5
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_max = 50.0
+scale_amount_min = 0.75
+scale_amount_max = 0.75
+color_ramp = SubResource("Gradient_hgg5l")
+
+[node name="Sparks2" type="CPUParticles2D" parent="Drone/Sparks"]
+light_mask = 3
+position = Vector2(11, -6.6)
+emitting = false
+amount = 50
+lifetime = 0.5
+preprocess = 0.5
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_max = 50.0
+scale_amount_min = 0.75
+scale_amount_max = 0.75
+color_ramp = SubResource("Gradient_hgg5l")
+
+[node name="Sparks3" type="CPUParticles2D" parent="Drone/Sparks"]
+light_mask = 3
+position = Vector2(7.44444, -1.26667)
+emitting = false
+amount = 50
+lifetime = 0.5
+preprocess = 0.5
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_max = 50.0
+scale_amount_min = 0.75
+scale_amount_max = 0.75
+color_ramp = SubResource("Gradient_hgg5l")
+
+[node name="Sparks4" type="CPUParticles2D" parent="Drone/Sparks"]
+light_mask = 3
+position = Vector2(16.6, 6.5)
+emitting = false
+amount = 50
+lifetime = 0.5
+preprocess = 0.5
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_max = 50.0
+scale_amount_min = 0.75
+scale_amount_max = 0.75
+color_ramp = SubResource("Gradient_hgg5l")
+
+[node name="Sparks5" type="CPUParticles2D" parent="Drone/Sparks"]
+light_mask = 3
+position = Vector2(21.933, 25.3)
+emitting = false
+amount = 50
+lifetime = 0.5
+preprocess = 0.5
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_max = 50.0
+scale_amount_min = 0.75
+scale_amount_max = 0.75
+color_ramp = SubResource("Gradient_hgg5l")
+
+[node name="Sparks6" type="CPUParticles2D" parent="Drone/Sparks"]
+light_mask = 3
+position = Vector2(12.75, 33.3)
+emitting = false
+amount = 50
+lifetime = 0.5
+preprocess = 0.5
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_max = 50.0
+scale_amount_min = 0.75
+scale_amount_max = 0.75
+color_ramp = SubResource("Gradient_hgg5l")
+
+[node name="Sparks7" type="CPUParticles2D" parent="Drone/Sparks"]
+light_mask = 3
+position = Vector2(-7.25, 37)
+emitting = false
+amount = 50
+lifetime = 0.5
+preprocess = 0.5
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_max = 50.0
+scale_amount_min = 0.75
+scale_amount_max = 0.75
+color_ramp = SubResource("Gradient_hgg5l")
+
+[node name="Sparks8" type="CPUParticles2D" parent="Drone/Sparks"]
+light_mask = 3
+position = Vector2(-17.917, 29)
+emitting = false
+amount = 50
+lifetime = 0.5
+preprocess = 0.5
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_max = 50.0
+scale_amount_min = 0.75
+scale_amount_max = 0.75
+color_ramp = SubResource("Gradient_hgg5l")
+
+[node name="Sparks9" type="CPUParticles2D" parent="Drone/Sparks"]
+light_mask = 3
+position = Vector2(-20.75, 12)
+emitting = false
+amount = 50
+lifetime = 0.5
+preprocess = 0.5
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_max = 50.0
+scale_amount_min = 0.75
+scale_amount_max = 0.75
+color_ramp = SubResource("Gradient_hgg5l")
+
+[node name="Sparks10" type="CPUParticles2D" parent="Drone/Sparks"]
+light_mask = 3
+position = Vector2(-12.6, 2.75)
+emitting = false
+amount = 50
+lifetime = 0.5
+preprocess = 0.5
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_max = 50.0
+scale_amount_min = 0.75
+scale_amount_max = 0.75
+color_ramp = SubResource("Gradient_hgg5l")
+
+[node name="Explosion" type="Area2D" parent="Drone"]
+position = Vector2(0, 32)
+collision_layer = 0
+collision_mask = 2
+monitoring = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Drone/Explosion"]
+position = Vector2(-4.85064e-12, 0)
+rotation = 1.5708
+shape = SubResource("CircleShape2D_vipu8")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.35
+autostart = true
+
+[node name="Animate" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_xqufd")
+}
+
+[node name="Explode" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_eq0he")
+}
+
+[connection signal="area_entered" from="Drone/Explosion" to="." method="_on_explosion_area_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="animation_finished" from="Explode" to="." method="_on_explode_animation_finished"]

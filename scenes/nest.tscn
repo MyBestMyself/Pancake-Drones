@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://boxxiyfroiysq" path="res://sprites/particles/DroneParts5.png" id="6_0d8t6"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_psqdy"]
+light_mode = 2
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_q8yn4"]
 radius = 9.33333
@@ -275,6 +276,8 @@ shape = SubResource("CircleShape2D_q8yn4")
 
 [node name="Head1" type="AnimatedSprite2D" parent="Drone"]
 visible = false
+light_mask = 3
+use_parent_material = true
 position = Vector2(0, 40.5)
 scale = Vector2(0.75, 0.75)
 sprite_frames = ExtResource("3_xicmg")
@@ -282,9 +285,13 @@ animation = &"PopOut"
 offset = Vector2(0, -7.99997)
 
 [node name="Crumbs" type="Node2D" parent="Drone/Head1"]
+light_mask = 3
+use_parent_material = true
 position = Vector2(0, -10.5)
 
 [node name="Crumbs1" type="GPUParticles2D" parent="Drone/Head1/Crumbs"]
+light_mask = 3
+use_parent_material = true
 emitting = false
 amount = 2
 process_material = ExtResource("4_m4ehk")
@@ -293,6 +300,8 @@ one_shot = true
 explosiveness = 1.0
 
 [node name="Crumbs2" type="GPUParticles2D" parent="Drone/Head1/Crumbs"]
+light_mask = 3
+use_parent_material = true
 emitting = false
 amount = 2
 process_material = ExtResource("4_m4ehk")
@@ -302,6 +311,8 @@ explosiveness = 1.0
 
 [node name="Head2" type="AnimatedSprite2D" parent="Drone"]
 visible = false
+light_mask = 3
+use_parent_material = true
 position = Vector2(0, 40.5)
 scale = Vector2(0.75, 0.75)
 sprite_frames = ExtResource("3_xicmg")
@@ -309,9 +320,13 @@ animation = &"PopOut"
 offset = Vector2(0, -7.99997)
 
 [node name="Crumbs" type="Node2D" parent="Drone/Head2"]
+light_mask = 3
+use_parent_material = true
 position = Vector2(0, -10.5)
 
 [node name="Crumbs1" type="GPUParticles2D" parent="Drone/Head2/Crumbs"]
+light_mask = 3
+use_parent_material = true
 emitting = false
 amount = 2
 process_material = ExtResource("4_m4ehk")
@@ -320,6 +335,8 @@ one_shot = true
 explosiveness = 1.0
 
 [node name="Crumbs2" type="GPUParticles2D" parent="Drone/Head2/Crumbs"]
+light_mask = 3
+use_parent_material = true
 emitting = false
 amount = 2
 process_material = ExtResource("4_m4ehk")
@@ -329,6 +346,8 @@ explosiveness = 1.0
 
 [node name="Head3" type="AnimatedSprite2D" parent="Drone"]
 visible = false
+light_mask = 3
+use_parent_material = true
 position = Vector2(0, 40.5)
 scale = Vector2(0.75, 0.75)
 sprite_frames = ExtResource("3_xicmg")
@@ -336,9 +355,13 @@ animation = &"PopOut"
 offset = Vector2(0, -7.99997)
 
 [node name="Crumbs" type="Node2D" parent="Drone/Head3"]
+light_mask = 3
+use_parent_material = true
 position = Vector2(0, -10.5)
 
 [node name="Crumbs1" type="GPUParticles2D" parent="Drone/Head3/Crumbs"]
+light_mask = 3
+use_parent_material = true
 emitting = false
 amount = 2
 process_material = ExtResource("4_m4ehk")
@@ -347,6 +370,8 @@ one_shot = true
 explosiveness = 1.0
 
 [node name="Crumbs2" type="GPUParticles2D" parent="Drone/Head3/Crumbs"]
+light_mask = 3
+use_parent_material = true
 emitting = false
 amount = 2
 process_material = ExtResource("4_m4ehk")

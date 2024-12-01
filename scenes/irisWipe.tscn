@@ -1,0 +1,127 @@
+[gd_scene load_steps=10 format=3 uid="uid://csegr6d4gklwg"]
+
+[ext_resource type="Texture2D" uid="uid://dky3p5u04uf7j" path="res://sprites/game/Dot.png" id="1_2qpjw"]
+[ext_resource type="Script" path="res://scripts/irisWipe.gd" id="1_bncaw"]
+[ext_resource type="Shader" uid="uid://dyx2k8icdje08" path="res://assets/shaders/NegativeLight.tres" id="2_tkjl8"]
+[ext_resource type="Texture2D" uid="uid://cnd7i8rvdddag" path="res://sprites/menu/ui/Iris.png" id="3_2l112"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_4pbwr"]
+shader = ExtResource("2_tkjl8")
+
+[sub_resource type="Animation" id="Animation_5ytph"]
+resource_name = "Open"
+length = 2.0
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(192, 176)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("BackBufferCopy/Iris:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.7, 2),
+"transitions": PackedFloat32Array(1, -2, 1),
+"update": 0,
+"values": [Vector2(1e-05, 1e-05), Vector2(1e-05, 1e-05), Vector2(50, 50)]
+}
+
+[sub_resource type="Animation" id="Animation_bivkp"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(192, 176)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("BackBufferCopy/Iris:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1e-05, 1e-05)]
+}
+
+[sub_resource type="Animation" id="Animation_eslq3"]
+resource_name = "Wipe"
+length = 2.8
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BackBufferCopy/Iris:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.3, 1.5, 2.8),
+"transitions": PackedFloat32Array(-2, 1, -2, 1),
+"update": 0,
+"values": [Vector2(50, 50), Vector2(1e-05, 1e-05), Vector2(1e-05, 1e-05), Vector2(50, 50)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(1.4),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"reload"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_v6cqp"]
+_data = {
+"Open": SubResource("Animation_5ytph"),
+"RESET": SubResource("Animation_bivkp"),
+"Wipe": SubResource("Animation_eslq3")
+}
+
+[node name="IrisWipe" type="Node2D"]
+z_index = 5
+texture_filter = 1
+position = Vector2(192, 176)
+script = ExtResource("1_bncaw")
+
+[node name="BackBufferCopy" type="BackBufferCopy" parent="."]
+copy_mode = 2
+
+[node name="Black" type="Sprite2D" parent="BackBufferCopy"]
+modulate = Color(0, 0, 0, 1)
+scale = Vector2(1000, 625)
+texture = ExtResource("1_2qpjw")
+
+[node name="Iris" type="Sprite2D" parent="BackBufferCopy"]
+material = SubResource("ShaderMaterial_4pbwr")
+scale = Vector2(1e-05, 1e-05)
+texture = ExtResource("3_2l112")
+
+[node name="Animate" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_v6cqp")
+}

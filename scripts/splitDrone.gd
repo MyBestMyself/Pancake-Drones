@@ -57,6 +57,8 @@ func _on_pancake_fall_area_entered(area: Area2D) -> void:
 	Global.emit_signal("spawn", pancakeFall)
 	
 	position.y -= 12.5
+	
+	$Drone.hframes = 1
 	$Drone.texture = parachute
 
 

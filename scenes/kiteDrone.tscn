@@ -1,0 +1,361 @@
+[gd_scene load_steps=21 format=3 uid="uid://cxb7y1yylmhmu"]
+
+[ext_resource type="Script" path="res://scripts/kiteDrone.gd" id="1_bx0rf"]
+[ext_resource type="SpriteFrames" uid="uid://cvfap6nvhov4u" path="res://assets/KiteDrone.tres" id="2_od7vn"]
+[ext_resource type="Texture2D" uid="uid://dptlxw6n0tv4p" path="res://sprites/particles/Smoke.png" id="3_luun7"]
+[ext_resource type="Material" uid="uid://b4pkdoelp21wm" path="res://assets/particles/DroneParts.tres" id="4_b3lo8"]
+[ext_resource type="Texture2D" uid="uid://bsg1irdrck6d8" path="res://sprites/particles/DroneParts1.png" id="5_33mhn"]
+[ext_resource type="Texture2D" uid="uid://dlj8py13axuqn" path="res://sprites/particles/DroneParts2.png" id="6_tvug7"]
+[ext_resource type="Texture2D" uid="uid://ci2e3u0n2djyn" path="res://sprites/particles/DroneParts3.png" id="7_yjfb5"]
+[ext_resource type="Texture2D" uid="uid://cmptl1grknjcj" path="res://sprites/particles/DroneParts4.png" id="8_x28pf"]
+[ext_resource type="Texture2D" uid="uid://boxxiyfroiysq" path="res://sprites/particles/DroneParts5.png" id="9_wl3vw"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_psqdy"]
+light_mode = 2
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_05mhg"]
+radius = 7.16667
+height = 23.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_6eqj8"]
+radius = 9.0
+height = 23.0
+
+[sub_resource type="Animation" id="Animation_x2tnp"]
+resource_name = "CurveLeft"
+length = 1.4
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1, 1.4),
+"transitions": PackedFloat32Array(-2, -2, 2, -2),
+"update": 0,
+"values": [0.0, 2.70526, 0.0, 0.785398]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:speed")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [3.0, 6.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Drone:light_mask")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [7]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:z_index")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [3, 1]
+}
+
+[sub_resource type="Animation" id="Animation_rcatl"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:speed")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [2.5]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Drone:light_mask")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [3]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath(".:z_index")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [-1]
+}
+
+[sub_resource type="Animation" id="Animation_ytr3h"]
+resource_name = "Fade"
+length = 1.5
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(0.8, 0.8, 0.8, 1), Color(0.8, 0.8, 0.8, 1), Color(0.8, 0.8, 0.8, 0)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(1.5),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"kill"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_406h6"]
+resource_name = "CurveRight"
+length = 1.4
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1, 1.4),
+"transitions": PackedFloat32Array(-2, -2, 2, -2),
+"update": 0,
+"values": [0.0, -2.70526, 0.0, -0.785398]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:speed")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [3.0, 6.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Drone:light_mask")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [7]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:z_index")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [3, 1]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_jd63h"]
+_data = {
+"CurveLeft": SubResource("Animation_x2tnp"),
+"CurveRight": SubResource("Animation_406h6"),
+"Fade": SubResource("Animation_ytr3h"),
+"RESET": SubResource("Animation_rcatl")
+}
+
+[sub_resource type="Gradient" id="Gradient_7roe3"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_jecw2"]
+gradient = SubResource("Gradient_7roe3")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_yp6yt"]
+particle_flag_disable_z = true
+direction = Vector3(0, 1, 0)
+spread = 25.0
+initial_velocity_min = 50.0
+initial_velocity_max = 50.0
+gravity = Vector3(0, 0, 0)
+color = Color(0.5, 0.5, 0.5, 1)
+color_ramp = SubResource("GradientTexture1D_jecw2")
+
+[node name="Drone" type="CharacterBody2D"]
+light_mask = 3
+z_index = -1
+texture_filter = 1
+material = SubResource("CanvasItemMaterial_psqdy")
+position = Vector2(0, 18)
+scale = Vector2(0.75, -0.75)
+collision_layer = 0
+script = ExtResource("1_bx0rf")
+
+[node name="Drone" type="AnimatedSprite2D" parent="."]
+light_mask = 3
+use_parent_material = true
+position = Vector2(0, -17.3333)
+sprite_frames = ExtResource("2_od7vn")
+animation = &"Be A Kite"
+autoplay = "Be A Kite"
+frame_progress = 0.104963
+offset = Vector2(0, 31.3333)
+
+[node name="Eat" type="Area2D" parent="Drone"]
+position = Vector2(0, 17.3333)
+collision_layer = 32
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Drone/Eat"]
+position = Vector2(-0.000135422, 3.50004)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_05mhg")
+
+[node name="PancakeFall" type="Area2D" parent="Drone"]
+position = Vector2(0, 17.3333)
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Drone/PancakeFall"]
+position = Vector2(-0.000165939, 0.833334)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_6eqj8")
+
+[node name="Animate" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_jd63h")
+}
+
+[node name="Particles" type="Node2D" parent="."]
+use_parent_material = true
+position = Vector2(0, 6)
+
+[node name="Smoke" type="GPUParticles2D" parent="Particles"]
+use_parent_material = true
+position = Vector2(0, 10.6667)
+emitting = false
+amount = 10
+process_material = SubResource("ParticleProcessMaterial_yp6yt")
+texture = ExtResource("3_luun7")
+lifetime = 2.0
+one_shot = true
+explosiveness = 0.5
+
+[node name="Parts" type="GPUParticles2D" parent="Particles"]
+use_parent_material = true
+emitting = false
+amount = 2
+process_material = ExtResource("4_b3lo8")
+texture = ExtResource("5_33mhn")
+lifetime = 2.0
+one_shot = true
+explosiveness = 1.0
+
+[node name="Parts2" type="GPUParticles2D" parent="Particles"]
+use_parent_material = true
+emitting = false
+amount = 4
+process_material = ExtResource("4_b3lo8")
+texture = ExtResource("6_tvug7")
+lifetime = 2.0
+one_shot = true
+explosiveness = 1.0
+
+[node name="Parts3" type="GPUParticles2D" parent="Particles"]
+use_parent_material = true
+emitting = false
+amount = 2
+process_material = ExtResource("4_b3lo8")
+texture = ExtResource("7_yjfb5")
+lifetime = 2.0
+one_shot = true
+explosiveness = 1.0
+
+[node name="Parts4" type="GPUParticles2D" parent="Particles"]
+use_parent_material = true
+emitting = false
+process_material = ExtResource("4_b3lo8")
+texture = ExtResource("8_x28pf")
+lifetime = 2.0
+one_shot = true
+explosiveness = 1.0
+
+[node name="Parts5" type="GPUParticles2D" parent="Particles"]
+use_parent_material = true
+emitting = false
+process_material = ExtResource("4_b3lo8")
+texture = ExtResource("9_wl3vw")
+lifetime = 2.0
+one_shot = true
+explosiveness = 1.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.000162125, -0.499964)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_05mhg")
+
+[connection signal="area_entered" from="Drone/Eat" to="." method="_on_eat_area_entered"]
+[connection signal="area_entered" from="Drone/PancakeFall" to="." method="_on_pancake_fall_area_entered"]
