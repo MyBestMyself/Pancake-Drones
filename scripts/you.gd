@@ -2,6 +2,7 @@ extends CharacterBody2D
 
 var lost = false
 var legs = "Idle"
+var shockwave = false
 
 var idle = preload("res://sprites/menu/body_parts/Pants1.png")
 var walk1 = preload("res://sprites/menu/body_parts/Pants2.png")
@@ -12,6 +13,8 @@ func _ready() -> void:
 	$Body/Pants.modulate = Global.pantsColor
 	$Body/Shirt.modulate = Global.shirtColor
 	$Body/Skin.modulate = Global.skinColor
+	
+	Global.cameraShake.connect(start_shockwave)
 
 func _process(delta: float) -> void:
 	Global.playerPosition = position
@@ -23,7 +26,7 @@ func _process(delta: float) -> void:
 			lose()
 
 func _physics_process(delta: float) -> void:
-	if !lost:
+	if !lost and !shockwave:
 		if (Input.is_action_pressed("ui_left") and !Input.is_action_pressed("ui_right")) or (Input.is_action_pressed("ui_right") and !Input.is_action_pressed("ui_left")):
 			if $WalkTimer.is_stopped():
 				walk()
@@ -48,6 +51,10 @@ func _physics_process(delta: float) -> void:
 				$Raycasts.scale.x = 1
 		
 		tiny_jump()
+	elif shockwave:
+		$WalkTimer.stop()
+		$Body/Pants.texture = idle
+		legs = "Idle"
 	
 	move_and_collide(Vector2(0,4))
 
@@ -88,3 +95,10 @@ func lose():
 
 func _on_animate_animation_finished(anim_name: StringName) -> void:
 	Global.iFrames = false
+
+func start_shockwave():
+	shockwave = true
+	$ShockwaveTImer.start()
+
+func _on_shockwave_t_imer_timeout() -> void:
+	shockwave = false

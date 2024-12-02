@@ -3,6 +3,8 @@ extends AnimatedSprite2D
 var pancakeQueue = []
 var droneQueue = []
 
+var isCentered = false
+
 var spawnables = {
 	"pancake" : preload("res://scenes/pancake.tscn"),
 	"syrupPancake" : preload("res://scenes/syrupPancake.tscn"),
@@ -16,7 +18,8 @@ var spawnables = {
 	"botfly" : preload("res://scenes/botfly.tscn"),
 	"IEDrone" : preload("res://scenes/IEDrone.tscn"),
 	"sparkler" : preload("res://scenes/sparkler.tscn"),
-	"stuntDrone" : preload("res://scenes/stuntDrone.tscn")
+	"stuntDrone" : preload("res://scenes/stuntDrone.tscn"),
+	"thumper" : preload("res://scenes/thumper.tscn")
 }
 
 var rng = RandomNumberGenerator.new()
@@ -24,10 +27,21 @@ var rng = RandomNumberGenerator.new()
 func _ready() -> void:
 	Global.resetQueue.connect(reset_queues)
 	reset_queues()
+	sync()
 
 func _process(delta: float) -> void:
 	Global.planePosition = position
 	Global.planeRotation = rotation_degrees
+	
+	if Global.planeCentered and !isCentered:
+		isCentered = true
+		$Animate.play("RESET")
+	elif !Global.planeCentered and isCentered:
+		isCentered = false
+		sync()
+
+func sync():
+	$Animate.play("SmallLoop")
 
 func make():
 	$SpawnRate.start()

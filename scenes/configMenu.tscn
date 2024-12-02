@@ -1,12 +1,17 @@
-[gd_scene load_steps=18 format=3 uid="uid://dwbi8jt37ecwf"]
+[gd_scene load_steps=23 format=3 uid="uid://dwbi8jt37ecwf"]
 
 [ext_resource type="Script" path="res://scripts/configMenu.gd" id="1_j4a7g"]
 [ext_resource type="Texture2D" uid="uid://bmm53s4kub6jr" path="res://sprites/menu/ui/buttons/NoCheckbox.png" id="2_e1m1s"]
 [ext_resource type="Texture2D" uid="uid://v3h73p2qe8p2" path="res://sprites/menu/ui/wireframe/Drone.png" id="2_w07nm"]
 [ext_resource type="Texture2D" uid="uid://g8islxigmbp" path="res://sprites/menu/ui/buttons/YesCheckbox.png" id="3_hwr3s"]
 [ext_resource type="Texture2D" uid="uid://bvrmww55jmku7" path="res://sprites/menu/ui/wireframe/Pancake.png" id="4_esuue"]
+[ext_resource type="FontFile" path="res://assets/font/Squares.tres" id="4_s4lnl"]
+[ext_resource type="Texture2D" uid="uid://bsinh6hmjgo3m" path="res://sprites/menu/ui/buttons/LeftArrow.png" id="5_opbkc"]
 [ext_resource type="Texture2D" uid="uid://revorff8hguk" path="res://sprites/menu/ui/wireframe/SyrupPancake.png" id="5_yy54d"]
+[ext_resource type="Texture2D" uid="uid://dmeaxdjppksyt" path="res://sprites/menu/ui/buttons/LeftArrowPressed.png" id="6_fwogu"]
 [ext_resource type="Texture2D" uid="uid://b3teel41gvabk" path="res://sprites/menu/ui/wireframe/Transformer.png" id="7_1bq62"]
+[ext_resource type="Texture2D" uid="uid://qbrak7abwnao" path="res://sprites/menu/ui/buttons/RightArrow.png" id="7_asjcx"]
+[ext_resource type="Texture2D" uid="uid://dxxf0s67ae247" path="res://sprites/menu/ui/buttons/RightArrowPressed.png" id="8_7u15h"]
 [ext_resource type="Texture2D" uid="uid://b156mt8oehi0e" path="res://sprites/menu/ui/wireframe/MultiDrone.png" id="8_jjvss"]
 [ext_resource type="Texture2D" uid="uid://jnkm8ltrn8q4" path="res://sprites/menu/ui/wireframe/Nest.png" id="9_73pu6"]
 [ext_resource type="Texture2D" uid="uid://dporli7q8e0ta" path="res://sprites/menu/ui/wireframe/BalloonDrone.png" id="10_che3o"]
@@ -26,10 +31,51 @@ script = ExtResource("1_j4a7g")
 modulate = Color(0.9, 0.9, 0.9, 1)
 layout_direction = 2
 offset_left = 307.0
-offset_top = 30.0
+offset_top = 1.0
 offset_right = 427.0
-offset_bottom = 316.0
+offset_bottom = 330.0
 scale = Vector2(0.65, 0.65)
+
+[node name="Center Plane" type="HBoxContainer" parent="SpawnList"]
+layout_mode = 2
+
+[node name="Center Plane" type="TextureButton" parent="SpawnList/Center Plane"]
+layout_mode = 2
+size_flags_vertical = 4
+toggle_mode = true
+texture_normal = ExtResource("2_e1m1s")
+texture_pressed = ExtResource("3_hwr3s")
+
+[node name="Label" type="Label" parent="SpawnList/Center Plane"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_s4lnl")
+theme_override_font_sizes/font_size = 20
+text = "Center Plane"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Level" type="HBoxContainer" parent="SpawnList"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="Left" type="TextureButton" parent="SpawnList/Level"]
+layout_mode = 2
+size_flags_vertical = 4
+texture_normal = ExtResource("5_opbkc")
+texture_pressed = ExtResource("6_fwogu")
+
+[node name="Label" type="Label" parent="SpawnList/Level"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_s4lnl")
+theme_override_font_sizes/font_size = 20
+text = "Level 1"
+horizontal_alignment = 1
+
+[node name="Right" type="TextureButton" parent="SpawnList/Level"]
+layout_mode = 2
+size_flags_vertical = 4
+texture_normal = ExtResource("7_asjcx")
+texture_pressed = ExtResource("8_7u15h")
 
 [node name="Pancakes" type="HBoxContainer" parent="SpawnList"]
 layout_mode = 2
@@ -255,6 +301,9 @@ texture = ExtResource("17_h06uy")
 expand_mode = 2
 stretch_mode = 3
 
+[connection signal="toggled" from="SpawnList/Center Plane/Center Plane" to="." method="_on_center_plane_toggled"]
+[connection signal="pressed" from="SpawnList/Level/Left" to="." method="_on_left_pressed"]
+[connection signal="pressed" from="SpawnList/Level/Right" to="." method="_on_right_pressed"]
 [connection signal="toggled" from="SpawnList/Pancakes/1" to="." method="_on__pancake_toggled"]
 [connection signal="toggled" from="SpawnList/Pancakes/2" to="." method="_on__syrupPancake_toggled"]
 [connection signal="toggled" from="SpawnList/Mimetic/3" to="." method="_on__drone_toggled"]
@@ -268,3 +317,4 @@ stretch_mode = 3
 [connection signal="toggled" from="SpawnList/Acrobatic/11" to="." method="_on__IEDrone_toggled"]
 [connection signal="toggled" from="SpawnList/Acrobatic/12" to="." method="_on__sparkler_toggled"]
 [connection signal="toggled" from="SpawnList/Acrobatic2/13" to="." method="_on__stuntDrone_toggled"]
+[connection signal="toggled" from="SpawnList/Acrobatic2/14" to="." method="_on__thumper_toggled"]

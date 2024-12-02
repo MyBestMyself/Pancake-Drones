@@ -2,12 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://msy30yloq2ch"
-valid=false
+uid="uid://bsinh6hmjgo3m"
+path="res://.godot/imported/LeftArrow.png-a66af7028d5b8123cc4aa2c6c25015e2.ctex"
+metadata={
+"vram_texture": false
+}
 
 [deps]
 
-source_file="res://sprites/game/levels/ExperimentalBG.png"
+source_file="res://sprites/menu/ui/buttons/LeftArrow.png"
+dest_files=["res://.godot/imported/LeftArrow.png-a66af7028d5b8123cc4aa2c6c25015e2.ctex"]
 
 [params]
 

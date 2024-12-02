@@ -9,6 +9,10 @@ func wipe():
 	position = Global.playerPosition
 	$Animate.play("Wipe")
 
+func quick_wipe():
+	position = Global.playerPosition
+	$Animate.play("QuickWipe")
+
 func reload():
 	get_tree().reload_current_scene()
 	position = Vector2(192, 176)

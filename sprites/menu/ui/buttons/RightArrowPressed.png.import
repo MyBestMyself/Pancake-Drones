@@ -2,12 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://msy30yloq2ch"
-valid=false
+uid="uid://dxxf0s67ae247"
+path="res://.godot/imported/RightArrowPressed.png-22d55eb4b85600d0cc735e13ce372f57.ctex"
+metadata={
+"vram_texture": false
+}
 
 [deps]
 
-source_file="res://sprites/game/levels/ExperimentalBG.png"
+source_file="res://sprites/menu/ui/buttons/RightArrowPressed.png"
+dest_files=["res://.godot/imported/RightArrowPressed.png-22d55eb4b85600d0cc735e13ce372f57.ctex"]
 
 [params]
 

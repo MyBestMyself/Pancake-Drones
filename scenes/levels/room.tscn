@@ -1,0 +1,94 @@
+[gd_scene load_steps=8 format=3 uid="uid://de0gmtlu4tl4l"]
+
+[ext_resource type="Texture2D" uid="uid://bd2okm86mxleg" path="res://sprites/game/levels/RoomBG.png" id="1_3aqwx"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_3c78f"]
+light_mode = 2
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_futbi"]
+size = Vector2(384, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_puw2r"]
+size = Vector2(384, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bhg2f"]
+size = Vector2(16, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6dell"]
+size = Vector2(8, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jw5gc"]
+size = Vector2(8, 16)
+
+[node name="Level" type="Node2D"]
+z_index = -2
+texture_filter = 1
+material = SubResource("CanvasItemMaterial_3c78f")
+scale = Vector2(2.4, 2.4)
+metadata/_edit_group_ = true
+
+[node name="Background" type="Sprite2D" parent="."]
+light_mask = 6
+use_parent_material = true
+position = Vector2(80, 45)
+texture = ExtResource("1_3aqwx")
+
+[node name="Foreground" type="Sprite2D" parent="."]
+light_mask = 6
+use_parent_material = true
+position = Vector2(80, 45)
+
+[node name="Boundary" type="Node2D" parent="."]
+z_index = 2
+scale = Vector2(0.416667, 0.416667)
+
+[node name="Ground" type="StaticBody2D" parent="Boundary"]
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Boundary/Ground"]
+position = Vector2(192, 208)
+shape = SubResource("RectangleShape2D_futbi")
+
+[node name="GroundCheck" type="Area2D" parent="Boundary"]
+collision_mask = 12
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Boundary/GroundCheck"]
+position = Vector2(192, 208)
+shape = SubResource("RectangleShape2D_puw2r")
+
+[node name="LeftWall" type="StaticBody2D" parent="Boundary"]
+position = Vector2(-152, -24)
+collision_layer = 64
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Boundary/LeftWall"]
+position = Vector2(136, 224)
+shape = SubResource("RectangleShape2D_bhg2f")
+
+[node name="LeftJump" type="Area2D" parent="Boundary"]
+modulate = Color(0, 1, 0, 1)
+position = Vector2(-152, -24)
+collision_layer = 128
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Boundary/LeftJump"]
+position = Vector2(140, 224)
+shape = SubResource("RectangleShape2D_6dell")
+
+[node name="RightWall" type="StaticBody2D" parent="Boundary"]
+collision_layer = 64
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Boundary/RightWall"]
+position = Vector2(400, 200)
+shape = SubResource("RectangleShape2D_bhg2f")
+
+[node name="RightJump" type="Area2D" parent="Boundary"]
+modulate = Color(0, 1, 0, 1)
+position = Vector2(-120, -24)
+collision_layer = 128
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Boundary/RightJump"]
+position = Vector2(516, 224)
+shape = SubResource("RectangleShape2D_jw5gc")

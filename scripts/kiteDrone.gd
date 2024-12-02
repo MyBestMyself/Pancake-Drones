@@ -62,7 +62,7 @@ func _on_pancake_fall_area_entered(area: Area2D) -> void:
 	for x in $Particles.get_children():
 		x.emitting = true
 	
-	#SHAKE CAMERA
+	Global.cameraShakeTiny.emit()
 
 
 func _on_eat_area_entered(area: Area2D) -> void:

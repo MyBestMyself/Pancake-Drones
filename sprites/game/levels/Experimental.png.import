@@ -2,12 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://msy30yloq2ch"
-valid=false
+uid="uid://ct7ik42vf6n0y"
+path="res://.godot/imported/Experimental.png-2d80a6a565be039b7c0834dec7ba97d4.ctex"
+metadata={
+"vram_texture": false
+}
 
 [deps]
 
-source_file="res://sprites/game/levels/ExperimentalBG.png"
+source_file="res://sprites/game/levels/Experimental.png"
+dest_files=["res://.godot/imported/Experimental.png-2d80a6a565be039b7c0834dec7ba97d4.ctex"]
 
 [params]
 

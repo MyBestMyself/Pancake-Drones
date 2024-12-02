@@ -1,0 +1,341 @@
+[gd_scene load_steps=13 format=3 uid="uid://cl0oscbrbiv2v"]
+
+[ext_resource type="Script" path="res://scripts/thumper3.gd" id="1_1vw6o"]
+[ext_resource type="SpriteFrames" uid="uid://cdnsopgkub5p2" path="res://assets/Thumper3.tres" id="2_5tmu3"]
+[ext_resource type="Texture2D" uid="uid://26ctbdced4ky" path="res://sprites/game/overlay/Acrobatic.png" id="3_knd75"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_psqdy"]
+light_mode = 2
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vajfp"]
+size = Vector2(64, 2.66667)
+
+[sub_resource type="Gradient" id="Gradient_aj2en"]
+offsets = PackedFloat32Array(0.833333, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_b5qmy"]
+size = Vector2(64, 27.3)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_4t4au"]
+radius = 34.7691
+
+[sub_resource type="Animation" id="Animation_rdkk2"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [3.14159]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Jump:monitoring")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Drone:animation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"WeightSlideLeft"]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Eye:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(2, 2)]
+}
+
+[sub_resource type="Animation" id="Animation_8o61r"]
+resource_name = "turnLeft"
+length = 1.5
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1, 1.5),
+"transitions": PackedFloat32Array(1, 0.5, -2, 1),
+"update": 0,
+"values": [3.14159, 3.14159, 2.35619, 0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Jump:monitoring")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.5, 1, 1.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"values": [{
+"args": [],
+"method": &"play_animation"
+}, {
+"args": [],
+"method": &"getup"
+}, {
+"args": [],
+"method": &"walk"
+}]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Drone:animation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [&"Flip", &"WeightSlideLeft"]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Drone:frame")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Eye:scale")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-2, 2)]
+}
+
+[sub_resource type="Animation" id="Animation_admyu"]
+resource_name = "turnRight"
+length = 1.5
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1, 1.5),
+"transitions": PackedFloat32Array(1, 0.5, -2, 1),
+"update": 0,
+"values": [-3.14159, -3.14159, -2.35619, 0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Jump:monitoring")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.5, 1, 1.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"values": [{
+"args": [],
+"method": &"play_animation"
+}, {
+"args": [],
+"method": &"getup"
+}, {
+"args": [],
+"method": &"walk"
+}]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Drone:animation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [&"Crawl", &"WeightSlideRight"]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Drone:frame")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_dg7l3"]
+_data = {
+"RESET": SubResource("Animation_rdkk2"),
+"turnLeft": SubResource("Animation_8o61r"),
+"turnRight": SubResource("Animation_admyu")
+}
+
+[node name="Drone" type="CharacterBody2D"]
+light_mask = 6
+texture_filter = 1
+material = SubResource("CanvasItemMaterial_psqdy")
+rotation = 3.14159
+scale = Vector2(0.375, 0.375)
+collision_layer = 0
+script = ExtResource("1_1vw6o")
+
+[node name="Drone" type="AnimatedSprite2D" parent="."]
+light_mask = 6
+use_parent_material = true
+sprite_frames = ExtResource("2_5tmu3")
+animation = &"WeightSlideLeft"
+
+[node name="Eye" type="Sprite2D" parent="."]
+light_mask = 6
+use_parent_material = true
+position = Vector2(0, 2)
+scale = Vector2(2, 2)
+texture = ExtResource("3_knd75")
+
+[node name="Jump" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 128
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Jump"]
+position = Vector2(1.27157e-06, 36)
+shape = SubResource("RectangleShape2D_vajfp")
+metadata/_edit_lock_ = true
+
+[node name="Impact" type="CPUParticles2D" parent="."]
+show_behind_parent = true
+light_mask = 6
+use_parent_material = true
+position = Vector2(3.49691e-06, -34.6667)
+emitting = false
+amount = 50
+lifetime = 0.5
+one_shot = true
+explosiveness = 1.0
+randomness = 0.75
+lifetime_randomness = 0.5
+direction = Vector2(0, 1)
+spread = 90.0
+gravity = Vector2(0, 0)
+initial_velocity_max = 300.0
+color_ramp = SubResource("Gradient_aj2en")
+
+[node name="Impact2" type="CPUParticles2D" parent="."]
+light_mask = 6
+use_parent_material = true
+position = Vector2(3.49691e-06, -34.6667)
+emitting = false
+amount = 50
+lifetime = 0.5
+one_shot = true
+explosiveness = 1.0
+randomness = 0.75
+lifetime_randomness = 0.5
+direction = Vector2(0, 1)
+spread = 90.0
+gravity = Vector2(0, 0)
+initial_velocity_max = 300.0
+color_ramp = SubResource("Gradient_aj2en")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-2.27374e-13, 24.3167)
+shape = SubResource("RectangleShape2D_b5qmy")
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+position = Vector2(-1.13687e-13, -9.53674e-07)
+shape = SubResource("CircleShape2D_4t4au")
+metadata/_edit_lock_ = true
+
+[node name="Raycasts" type="Node2D" parent="."]
+modulate = Color(0, 0, 1, 1)
+position = Vector2(0, 1.6)
+
+[node name="DetectHighWall" type="RayCast2D" parent="Raycasts"]
+position = Vector2(0, 30.4667)
+target_position = Vector2(34, 0)
+
+[node name="DetectWall" type="RayCast2D" parent="Raycasts"]
+position = Vector2(0, 34.6667)
+target_position = Vector2(34, 0)
+
+[node name="DetectFloor" type="RayCast2D" parent="Raycasts"]
+position = Vector2(0, 35.7334)
+target_position = Vector2(0, 1.7)
+
+[node name="DetectRise" type="RayCast2D" parent="Raycasts"]
+position = Vector2(0, 34.9334)
+target_position = Vector2(0, 1.7)
+
+[node name="Animate" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_dg7l3")
+}
+
+[connection signal="frame_changed" from="Drone" to="." method="_on_drone_frame_changed"]
+[connection signal="area_entered" from="Jump" to="." method="_on_jump_area_entered"]

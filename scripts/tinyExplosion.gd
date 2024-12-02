@@ -8,6 +8,7 @@ func _ready():
 	$BigChunks.emitting = true
 	$BreadCrumbs.emitting = true
 	#shake camera
+	Global.cameraShakeTiny.emit()
 	
 	if Global.isBlack:
 		$BigChunks.self_modulate.v = 0

@@ -15,6 +15,9 @@ func _ready():
 	$"SpawnList/Acrobatic/12".set_pressed_no_signal(Global.droneSpawnList.has("sparkler"))
 	$"SpawnList/Acrobatic2/13".set_pressed_no_signal(Global.droneSpawnList.has("stuntDrone")) 
 	$"SpawnList/Acrobatic2/14".set_pressed_no_signal(Global.droneSpawnList.has("thumper"))
+	
+	$"SpawnList/Center Plane/Center Plane".set_pressed_no_signal(Global.planeCentered)
+	$SpawnList/Level/Label.text = "Level " + str(Global.levelNum)
 
 
 func _on__pancake_toggled(toggled_on: bool) -> void:
@@ -118,3 +121,24 @@ func _on__thumper_toggled(toggled_on: bool) -> void:
 	else:
 		Global.droneSpawnList.erase("thumper")
 	Global.resetQueue.emit()
+
+func _on_center_plane_toggled(toggled_on: bool) -> void:
+	Global.planeCentered = toggled_on
+
+func _on_left_pressed() -> void:
+	$SpawnList/Level/Left.disabled = true
+	$SpawnList/Level/Right.disabled = true
+	
+	Global.levelNum -= 1
+	if Global.levelNum < 0:
+		Global.levelNum = Global.levelList.size() - 1
+	IrisWipe.quick_wipe()
+
+func _on_right_pressed() -> void:
+	$SpawnList/Level/Left.disabled = true
+	$SpawnList/Level/Right.disabled = true
+	
+	Global.levelNum += 1
+	if Global.levelNum > Global.levelList.size() - 1:
+		Global.levelNum = 0
+	IrisWipe.quick_wipe()

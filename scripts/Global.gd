@@ -7,6 +7,9 @@ var shirtColor = Color(0, 0.8, 0.266667, 1)
 var pantsColor = Color(0.043137, 0.152941, 0.815686, 1)
 
 #Gameplay
+var levelList = ["The Only Ocean", "Crustacean Caves", "The Ouchlands", "Marble Flats", "Savory Swamp", "Frozen Plateau", "Hectic Maze", "Vinethread Island", "Mechanical Skies", "A Black Room", "Chaotic Cliffs", "Experimental Zone"]
+var levelNum = 1
+var level = levelList[levelNum]
 var points = 0
 var health = 36
 var iFrames = false
@@ -14,6 +17,7 @@ var isBlack = false
 var planePosition = Vector2(0,0)
 var planeRotation = 0
 var planeSide = "Left"
+var planeUnderside = []
 var playerPosition = Vector2(0,0)
 var playerDirection = "Right"
 var landingPos
@@ -40,10 +44,14 @@ var pancakeCycles = 0
 var configMenuOpen = false
 var maxConfigId = 1
 var spawnRate = 1
+var planeCentered = false
 
 signal resetQueue()
 signal spawn(scene)
 signal spawn_on_plane(scene)
+signal cameraShake
+signal cameraShakeLight
+signal cameraShakeTiny
 
 func set_pancake_spawn_list():
 	if Global.pancakeSpawnList.has("pancake") and Global.pancakeSpawnList.has("syrupPancake"):

@@ -1,6 +1,5 @@
-[gd_scene load_steps=7 format=3 uid="uid://dm7317a2v0vwd"]
+[gd_scene load_steps=6 format=3 uid="uid://dm7317a2v0vwd"]
 
-[ext_resource type="Texture2D" uid="uid://ct7ik42vf6n0y" path="res://sprites/game/levels/ExperimentalWall.png" id="1_40py6"]
 [ext_resource type="Texture2D" uid="uid://cxbpobuxselms" path="res://sprites/game/levels/OceanBG.png" id="2_q40n1"]
 [ext_resource type="PackedScene" uid="uid://cuuw6vndai55" path="res://scenes/waves.tscn" id="3_xrym6"]
 [ext_resource type="Texture2D" uid="uid://dx23pcox80ye2" path="res://sprites/game/levels/OceanFG.png" id="4_3vtqx"]
@@ -14,11 +13,6 @@ z_index = -2
 material = SubResource("CanvasItemMaterial_3c78f")
 scale = Vector2(2.4, 2.4)
 metadata/_edit_group_ = true
-
-[node name="TrueBackground" type="Sprite2D" parent="."]
-z_index = -1
-position = Vector2(80, 45)
-texture = ExtResource("1_40py6")
 
 [node name="Background" type="Sprite2D" parent="."]
 light_mask = 6

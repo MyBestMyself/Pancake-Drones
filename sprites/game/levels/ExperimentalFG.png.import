@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ct7ik42vf6n0y"
-path="res://.godot/imported/ExperimentalWall.png-7e54cfe8aa356057eeceb518e900e700.ctex"
+uid="uid://b8qnpg6w2d6pc"
+path="res://.godot/imported/ExperimentalFG.png-f28324979ba7562b77b4e049d674b5ee.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/game/levels/ExperimentalWall.png"
-dest_files=["res://.godot/imported/ExperimentalWall.png-7e54cfe8aa356057eeceb518e900e700.ctex"]
+source_file="res://sprites/game/levels/ExperimentalFG.png"
+dest_files=["res://.godot/imported/ExperimentalFG.png-f28324979ba7562b77b4e049d674b5ee.ctex"]
 
 [params]
 

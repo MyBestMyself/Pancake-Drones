@@ -70,3 +70,5 @@ func _on_eat_area_entered(area: Area2D) -> void:
 		
 		Global.points += pointValue
 		Global.health += pointValue * 1.5
+		if Global.health > 36:
+			Global.health = 36

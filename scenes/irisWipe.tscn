@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://csegr6d4gklwg"]
+[gd_scene load_steps=11 format=3 uid="uid://csegr6d4gklwg"]
 
 [ext_resource type="Texture2D" uid="uid://dky3p5u04uf7j" path="res://sprites/game/Dot.png" id="1_2qpjw"]
 [ext_resource type="Script" path="res://scripts/irisWipe.gd" id="1_bncaw"]
@@ -95,9 +95,40 @@ tracks/1/keys = {
 }]
 }
 
+[sub_resource type="Animation" id="Animation_7s6wh"]
+resource_name = "QuickWipe"
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BackBufferCopy/Iris:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.6, 1),
+"transitions": PackedFloat32Array(-2, 1, -2, 1),
+"update": 0,
+"values": [Vector2(50, 50), Vector2(1e-05, 1e-05), Vector2(1e-05, 1e-05), Vector2(50, 50)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.5),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"reload"
+}]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_v6cqp"]
 _data = {
 "Open": SubResource("Animation_5ytph"),
+"QuickWipe": SubResource("Animation_7s6wh"),
 "RESET": SubResource("Animation_bivkp"),
 "Wipe": SubResource("Animation_eslq3")
 }

@@ -11,7 +11,8 @@ func _ready():
 	$DroneParts.emitting = true
 	$DroneParts2.emitting = true
 	$DroneParts3.emitting = true
-	#shake camera
+	
+	Global.cameraShakeLight.emit()
 	
 	if Global.isBlack:
 		$BigChunks.self_modulate.v = 0

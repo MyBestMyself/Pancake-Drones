@@ -1,0 +1,55 @@
+[gd_scene load_steps=6 format=3 uid="uid://cfo6cyrcp8d33"]
+
+[ext_resource type="Script" path="res://scripts/thumper2.gd" id="1_iixop"]
+[ext_resource type="SpriteFrames" uid="uid://c8220n0vhrqp0" path="res://assets/Thumper2.tres" id="2_kj1c1"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_psqdy"]
+light_mode = 2
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_a82jq"]
+radius = 10.5
+height = 24.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_0pfnp"]
+radius = 5.6667
+height = 14.0
+
+[node name="Drone" type="Node2D"]
+visible = false
+light_mask = 6
+texture_filter = 1
+material = SubResource("CanvasItemMaterial_psqdy")
+rotation = -3.14159
+scale = Vector2(0.375, 0.375)
+script = ExtResource("1_iixop")
+
+[node name="Drone" type="AnimatedSprite2D" parent="."]
+light_mask = 6
+use_parent_material = true
+sprite_frames = ExtResource("2_kj1c1")
+animation = &"Jump"
+offset = Vector2(111.706, -122.908)
+
+[node name="Eat" type="Area2D" parent="."]
+position = Vector2(112, -122.334)
+scale = Vector2(2, 2)
+collision_layer = 32
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Eat"]
+position = Vector2(0, -1.8333)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_a82jq")
+
+[node name="GroundCheck" type="Area2D" parent="."]
+position = Vector2(112, -122.334)
+scale = Vector2(2, 2)
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GroundCheck"]
+position = Vector2(0, -15)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_0pfnp")
+
+[connection signal="area_entered" from="Eat" to="." method="_on_eat_area_entered"]
+[connection signal="area_entered" from="GroundCheck" to="." method="_on_ground_check_area_entered"]
