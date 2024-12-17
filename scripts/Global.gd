@@ -8,12 +8,13 @@ var pantsColor = Color(0.043137, 0.152941, 0.815686, 1)
 
 #Gameplay
 var levelList = ["The Only Ocean", "Crustacean Caves", "The Ouchlands", "Marble Flats", "Savory Swamp", "Frozen Plateau", "Hectic Maze", "Vinethread Island", "Mechanical Skies", "A Black Room", "Chaotic Cliffs", "Experimental Zone"]
-var levelNum = 1
+var levelNum = 5
 var level = levelList[levelNum]
 var points = 0
 var health = 36
 var iFrames = false
 var isBlack = false
+var walkDirection = "Right"
 var planePosition = Vector2(0,0)
 var planeRotation = 0
 var planeSide = "Left"
@@ -39,6 +40,8 @@ var droneSpawnList = ["drone", "drone", "transformer"]
 var pancakeSeed = [1,4,2,3, 2,1,3,4, 3,2,4,1, 4,3,1,2] 
 var pancakeSeedNum = 0
 var pancakeCycles = 0
+var mazeCanShift = false
+var mazeSetup = false
 
 #Config
 var configMenuOpen = false

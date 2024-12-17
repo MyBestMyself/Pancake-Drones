@@ -1,14 +1,13 @@
 [gd_scene load_steps=8 format=3 uid="uid://lv86vlaxvuf2"]
 
 [ext_resource type="Texture2D" uid="uid://m6o4qtv8hkll" path="res://sprites/game/levels/IslandBG.png" id="1_1gpas"]
+[ext_resource type="Texture2D" uid="uid://cbhgf07uap4ni" path="res://sprites/menu/ui/Chip.png" id="2_upmmd"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_3c78f"]
+light_mode = 2
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_futbi"]
-size = Vector2(312, 16)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_puw2r"]
-size = Vector2(312, 16)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hac6g"]
+size = Vector2(422, 21)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bhg2f"]
 size = Vector2(16, 32)
@@ -24,7 +23,6 @@ z_index = -2
 texture_filter = 1
 material = SubResource("CanvasItemMaterial_3c78f")
 scale = Vector2(2.4, 2.4)
-metadata/_edit_group_ = true
 
 [node name="Background" type="Sprite2D" parent="."]
 light_mask = 6
@@ -38,6 +36,14 @@ z_index = 2
 use_parent_material = true
 position = Vector2(80, 45)
 
+[node name="Chip" type="Sprite2D" parent="."]
+use_parent_material = true
+position = Vector2(70, 68.75)
+rotation = 0.436332
+scale = Vector2(0.31, 0.31)
+texture = ExtResource("2_upmmd")
+metadata/_edit_lock_ = true
+
 [node name="Boundary" type="Node2D" parent="."]
 z_index = 2
 scale = Vector2(0.416667, 0.416667)
@@ -45,16 +51,24 @@ scale = Vector2(0.416667, 0.416667)
 [node name="Ground" type="StaticBody2D" parent="Boundary"]
 collision_mask = 0
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Boundary/Ground"]
+[node name="CollisionShape2D" type="CollisionPolygon2D" parent="Boundary/Ground"]
 position = Vector2(192, 208)
-shape = SubResource("RectangleShape2D_futbi")
+polygon = PackedVector2Array(211, -9.00017, -5.00014, -9.00017, -202, 26.9998, 211, 26.9998)
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Boundary/Ground"]
+position = Vector2(192, 245.5)
+shape = SubResource("RectangleShape2D_hac6g")
 
 [node name="GroundCheck" type="Area2D" parent="Boundary"]
 collision_mask = 12
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Boundary/GroundCheck"]
+[node name="CollisionShape2D2" type="CollisionPolygon2D" parent="Boundary/GroundCheck"]
 position = Vector2(192, 208)
-shape = SubResource("RectangleShape2D_puw2r")
+polygon = PackedVector2Array(211, -9.00017, -5.00014, -9.00017, -202, 26.9998, 211, 26.9998)
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Boundary/GroundCheck"]
+position = Vector2(192, 245.5)
+shape = SubResource("RectangleShape2D_hac6g")
 
 [node name="LeftWall" type="StaticBody2D" parent="Boundary"]
 position = Vector2(-152, -24)
@@ -62,7 +76,7 @@ collision_layer = 64
 collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Boundary/LeftWall"]
-position = Vector2(172, 224)
+position = Vector2(117, 259)
 shape = SubResource("RectangleShape2D_bhg2f")
 
 [node name="LeftJump" type="Area2D" parent="Boundary"]
@@ -72,7 +86,7 @@ collision_layer = 128
 collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Boundary/LeftJump"]
-position = Vector2(176, 224)
+position = Vector2(121, 259)
 shape = SubResource("RectangleShape2D_6dell")
 
 [node name="RightWall" type="StaticBody2D" parent="Boundary"]
@@ -80,7 +94,7 @@ collision_layer = 64
 collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Boundary/RightWall"]
-position = Vector2(364, 200)
+position = Vector2(419, 200)
 shape = SubResource("RectangleShape2D_bhg2f")
 
 [node name="RightJump" type="Area2D" parent="Boundary"]
@@ -90,5 +104,5 @@ collision_layer = 128
 collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Boundary/RightJump"]
-position = Vector2(480, 224)
+position = Vector2(535, 224)
 shape = SubResource("RectangleShape2D_jw5gc")

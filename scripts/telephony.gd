@@ -65,8 +65,8 @@ func _on_teleport_check_area_entered(area: Area2D) -> void:
 		falling = false
 		
 		teleport_effect()
-		
-		position = Vector2(rng.randi_range(80,304), 110)
+		#ocean - 80,304
+		position = Vector2(rng.randi_range(48,336), 110)
 		
 		$Pause1.start()
 

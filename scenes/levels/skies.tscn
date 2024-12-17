@@ -1,22 +1,29 @@
-[gd_scene load_steps=8 format=3 uid="uid://dqthyxgi1neyu"]
+[gd_scene load_steps=14 format=3 uid="uid://dqthyxgi1neyu"]
 
+[ext_resource type="Texture2D" uid="uid://cxbpobuxselms" path="res://sprites/game/levels/OceanBG.png" id="1_hw06d"]
 [ext_resource type="Texture2D" uid="uid://bf1nroqn7x4ko" path="res://sprites/game/levels/SkiesBG.png" id="1_kwmee"]
+[ext_resource type="PackedScene" uid="uid://l83n3u0o2ta5" path="res://scenes/cog.tscn" id="2_3gekb"]
+[ext_resource type="Texture2D" uid="uid://6khfm5bc72qc" path="res://sprites/game/levels/FloatingPlatform.png" id="2_px3ia"]
+[ext_resource type="Texture2D" uid="uid://biuaa8ea0lxlj" path="res://sprites/game/levels/SkiesFG.png" id="3_gxujx"]
+[ext_resource type="Texture2D" uid="uid://b8nvk3c5y8evr" path="res://sprites/game/levels/FloatingPlatform3.png" id="3_h3mdg"]
+[ext_resource type="Texture2D" uid="uid://dckxi42phupfi" path="res://sprites/game/levels/FloatingPlatform2.png" id="4_nj63l"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_3c78f"]
+light_mode = 2
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_futbi"]
-size = Vector2(312, 16)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_k48wu"]
+size = Vector2(384, 16)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_puw2r"]
-size = Vector2(312, 16)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5nejf"]
+size = Vector2(384, 16)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_bhg2f"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2u0dx"]
 size = Vector2(16, 32)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_6dell"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3jg5n"]
 size = Vector2(8, 16)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_jw5gc"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_32jbt"]
 size = Vector2(8, 16)
 
 [node name="Level" type="Node2D"]
@@ -24,7 +31,54 @@ z_index = -2
 texture_filter = 1
 material = SubResource("CanvasItemMaterial_3c78f")
 scale = Vector2(2.4, 2.4)
-metadata/_edit_group_ = true
+
+[node name="Sky" type="Sprite2D" parent="."]
+light_mask = 6
+use_parent_material = true
+position = Vector2(80, 45)
+texture = ExtResource("1_hw06d")
+
+[node name="BackgroundPlatforms" type="Node2D" parent="."]
+modulate = Color(0.8, 0.8, 0.8, 1)
+use_parent_material = true
+
+[node name="FloatingPlatform" type="Sprite2D" parent="BackgroundPlatforms"]
+light_mask = 6
+use_parent_material = true
+position = Vector2(6.66667, 36.6667)
+scale = Vector2(0.417, 0.417)
+texture = ExtResource("2_px3ia")
+
+[node name="FloatingPlatform2" type="Sprite2D" parent="BackgroundPlatforms"]
+light_mask = 6
+use_parent_material = true
+position = Vector2(53.3333, 53.3333)
+scale = Vector2(0.348, 0.348)
+texture = ExtResource("2_px3ia")
+
+[node name="FloatingPlatform3" type="Sprite2D" parent="BackgroundPlatforms"]
+light_mask = 6
+use_parent_material = true
+position = Vector2(86.6667, 20)
+rotation = 3.14159
+scale = Vector2(0.348, -0.348)
+texture = ExtResource("3_h3mdg")
+
+[node name="FloatingPlatform4" type="Sprite2D" parent="BackgroundPlatforms"]
+light_mask = 6
+use_parent_material = true
+position = Vector2(146.667, 63.3333)
+rotation = 3.14159
+scale = Vector2(0.5, -0.5)
+texture = ExtResource("4_nj63l")
+
+[node name="FloatingPlatform5" type="Sprite2D" parent="BackgroundPlatforms"]
+light_mask = 6
+use_parent_material = true
+position = Vector2(173.333, 10)
+rotation = 3.14159
+scale = Vector2(-0.5, -0.5)
+texture = ExtResource("4_nj63l")
 
 [node name="Background" type="Sprite2D" parent="."]
 light_mask = 6
@@ -32,11 +86,342 @@ use_parent_material = true
 position = Vector2(80, 45)
 texture = ExtResource("1_kwmee")
 
+[node name="Cogs" type="Node2D" parent="."]
+use_parent_material = true
+
+[node name="BackCogs" type="Node2D" parent="Cogs"]
+modulate = Color(0.313726, 0.341176, 0.34902, 1)
+use_parent_material = true
+
+[node name="Cog" parent="Cogs/BackCogs" instance=ExtResource("2_3gekb")]
+light_mask = 6
+use_parent_material = true
+position = Vector2(-4, 90)
+direction = "Left"
+spun = true
+
+[node name="Cog2" parent="Cogs/BackCogs" instance=ExtResource("2_3gekb")]
+light_mask = 6
+use_parent_material = true
+position = Vector2(3, 93)
+frame = 2
+direction = "Left"
+
+[node name="Cog3" parent="Cogs/BackCogs" instance=ExtResource("2_3gekb")]
+light_mask = 6
+use_parent_material = true
+position = Vector2(10, 89)
+frame = 1
+direction = "Left"
+spun = true
+
+[node name="Cog4" parent="Cogs/BackCogs" instance=ExtResource("2_3gekb")]
+light_mask = 6
+use_parent_material = true
+position = Vector2(17, 93)
+frame = 1
+direction = "Left"
+
+[node name="Cog5" parent="Cogs/BackCogs" instance=ExtResource("2_3gekb")]
+light_mask = 6
+use_parent_material = true
+position = Vector2(23, 88)
+frame = 2
+direction = "Left"
+spun = true
+
+[node name="Cog6" parent="Cogs/BackCogs" instance=ExtResource("2_3gekb")]
+light_mask = 6
+use_parent_material = true
+position = Vector2(30, 93)
+frame = 1
+direction = "Left"
+
+[node name="Cog7" parent="Cogs/BackCogs" instance=ExtResource("2_3gekb")]
+light_mask = 6
+use_parent_material = true
+position = Vector2(36, 88)
+frame = 2
+direction = "Left"
+spun = true
+
+[node name="Cog8" parent="Cogs/BackCogs" instance=ExtResource("2_3gekb")]
+light_mask = 6
+use_parent_material = true
+position = Vector2(44, 92)
+direction = "Left"
+
+[node name="Cog9" parent="Cogs/BackCogs" instance=ExtResource("2_3gekb")]
+light_mask = 6
+use_parent_material = true
+position = Vector2(53, 90)
+direction = "Left"
+spun = true
+
+[node name="Cog10" parent="Cogs/BackCogs" instance=ExtResource("2_3gekb")]
+light_mask = 6
+use_parent_material = true
+position = Vector2(60, 93)
+frame = 2
+direction = "Left"
+
+[node name="Cog11" parent="Cogs/BackCogs" instance=ExtResource("2_3gekb")]
+light_mask = 6
+use_parent_material = true
+position = Vector2(67, 89)
+frame = 1
+direction = "Left"
+spun = true
+
+[node name="Cog12" parent="Cogs/BackCogs" instance=ExtResource("2_3gekb")]
+light_mask = 6
+use_parent_material = true
+position = Vector2(75, 92)
+direction = "Left"
+
+[node name="Cog13" parent="Cogs/BackCogs" instance=ExtResource("2_3gekb")]
+light_mask = 6
+use_parent_material = true
+position = Vector2(84, 89)
+frame = 1
+direction = "Left"
+spun = true
+
+[node name="Cog14" parent="Cogs/BackCogs" instance=ExtResource("2_3gekb")]
+light_mask = 6
+use_parent_material = true
+position = Vector2(91, 93)
+frame = 1
+direction = "Left"
+
+[node name="Cog15" parent="Cogs/BackCogs" instance=ExtResource("2_3gekb")]
+light_mask = 6
+use_parent_material = true
+position = Vector2(97, 88)
+frame = 2
+direction = "Left"
+spun = true
+
+[node name="Cog16" parent="Cogs/BackCogs" instance=ExtResource("2_3gekb")]
+light_mask = 6
+use_parent_material = true
+position = Vector2(105, 92)
+direction = "Left"
+
+[node name="Cog17" parent="Cogs/BackCogs" instance=ExtResource("2_3gekb")]
+light_mask = 6
+use_parent_material = true
+position = Vector2(114, 90)
+direction = "Left"
+spun = true
+
+[node name="Cog18" parent="Cogs/BackCogs" instance=ExtResource("2_3gekb")]
+light_mask = 6
+use_parent_material = true
+position = Vector2(121, 93)
+frame = 2
+direction = "Left"
+
+[node name="Cog19" parent="Cogs/BackCogs" instance=ExtResource("2_3gekb")]
+light_mask = 6
+use_parent_material = true
+position = Vector2(128, 89)
+frame = 1
+direction = "Left"
+spun = true
+
+[node name="Cog20" parent="Cogs/BackCogs" instance=ExtResource("2_3gekb")]
+light_mask = 6
+use_parent_material = true
+position = Vector2(134, 93)
+frame = 2
+direction = "Left"
+
+[node name="Cog21" parent="Cogs/BackCogs" instance=ExtResource("2_3gekb")]
+light_mask = 6
+use_parent_material = true
+position = Vector2(142, 90)
+direction = "Left"
+spun = true
+
+[node name="Cog22" parent="Cogs/BackCogs" instance=ExtResource("2_3gekb")]
+light_mask = 6
+use_parent_material = true
+position = Vector2(150, 93)
+frame = 1
+direction = "Left"
+
+[node name="Cog23" parent="Cogs/BackCogs" instance=ExtResource("2_3gekb")]
+light_mask = 6
+use_parent_material = true
+position = Vector2(156, 88)
+frame = 2
+direction = "Left"
+spun = true
+
+[node name="Cog24" parent="Cogs/BackCogs" instance=ExtResource("2_3gekb")]
+light_mask = 6
+use_parent_material = true
+position = Vector2(164, 92)
+direction = "Left"
+
+[node name="FrontCogs" type="Node2D" parent="Cogs"]
+modulate = Color(0.219608, 0.231373, 0.239216, 1)
+use_parent_material = true
+
+[node name="Cog" parent="Cogs/FrontCogs" instance=ExtResource("2_3gekb")]
+light_mask = 6
+use_parent_material = true
+position = Vector2(-5, 93)
+frame = 2
+
+[node name="Cog2" parent="Cogs/FrontCogs" instance=ExtResource("2_3gekb")]
+light_mask = 6
+use_parent_material = true
+position = Vector2(3, 90)
+spun = true
+
+[node name="Cog3" parent="Cogs/FrontCogs" instance=ExtResource("2_3gekb")]
+light_mask = 6
+use_parent_material = true
+position = Vector2(11, 93)
+frame = 1
+
+[node name="Cog4" parent="Cogs/FrontCogs" instance=ExtResource("2_3gekb")]
+light_mask = 6
+use_parent_material = true
+position = Vector2(18, 89)
+frame = 1
+spun = true
+
+[node name="Cog5" parent="Cogs/FrontCogs" instance=ExtResource("2_3gekb")]
+light_mask = 6
+use_parent_material = true
+position = Vector2(26, 92)
+
+[node name="Cog6" parent="Cogs/FrontCogs" instance=ExtResource("2_3gekb")]
+light_mask = 6
+use_parent_material = true
+position = Vector2(34, 89)
+frame = 1
+spun = true
+
+[node name="Cog7" parent="Cogs/FrontCogs" instance=ExtResource("2_3gekb")]
+light_mask = 6
+use_parent_material = true
+position = Vector2(42, 92)
+
+[node name="Cog8" parent="Cogs/FrontCogs" instance=ExtResource("2_3gekb")]
+light_mask = 6
+use_parent_material = true
+position = Vector2(49, 88)
+frame = 2
+spun = true
+
+[node name="Cog9" parent="Cogs/FrontCogs" instance=ExtResource("2_3gekb")]
+light_mask = 6
+use_parent_material = true
+position = Vector2(55, 93)
+frame = 2
+
+[node name="Cog10" parent="Cogs/FrontCogs" instance=ExtResource("2_3gekb")]
+light_mask = 6
+use_parent_material = true
+position = Vector2(63, 90)
+spun = true
+
+[node name="Cog11" parent="Cogs/FrontCogs" instance=ExtResource("2_3gekb")]
+light_mask = 6
+use_parent_material = true
+position = Vector2(71, 93)
+frame = 1
+
+[node name="Cog12" parent="Cogs/FrontCogs" instance=ExtResource("2_3gekb")]
+light_mask = 6
+use_parent_material = true
+position = Vector2(77, 88)
+frame = 2
+spun = true
+
+[node name="Cog13" parent="Cogs/FrontCogs" instance=ExtResource("2_3gekb")]
+light_mask = 6
+use_parent_material = true
+position = Vector2(83, 93)
+frame = 2
+
+[node name="Cog14" parent="Cogs/FrontCogs" instance=ExtResource("2_3gekb")]
+light_mask = 6
+use_parent_material = true
+position = Vector2(90, 89)
+frame = 1
+spun = true
+
+[node name="Cog15" parent="Cogs/FrontCogs" instance=ExtResource("2_3gekb")]
+light_mask = 6
+use_parent_material = true
+position = Vector2(98, 92)
+
+[node name="Cog16" parent="Cogs/FrontCogs" instance=ExtResource("2_3gekb")]
+light_mask = 6
+use_parent_material = true
+position = Vector2(105, 88)
+frame = 2
+spun = true
+
+[node name="Cog17" parent="Cogs/FrontCogs" instance=ExtResource("2_3gekb")]
+light_mask = 6
+use_parent_material = true
+position = Vector2(111, 93)
+frame = 2
+
+[node name="Cog18" parent="Cogs/FrontCogs" instance=ExtResource("2_3gekb")]
+light_mask = 6
+use_parent_material = true
+position = Vector2(119, 90)
+spun = true
+
+[node name="Cog19" parent="Cogs/FrontCogs" instance=ExtResource("2_3gekb")]
+light_mask = 6
+use_parent_material = true
+position = Vector2(127, 93)
+frame = 1
+
+[node name="Cog20" parent="Cogs/FrontCogs" instance=ExtResource("2_3gekb")]
+light_mask = 6
+use_parent_material = true
+position = Vector2(135, 90)
+spun = true
+
+[node name="Cog21" parent="Cogs/FrontCogs" instance=ExtResource("2_3gekb")]
+light_mask = 6
+use_parent_material = true
+position = Vector2(143, 93)
+frame = 1
+
+[node name="Cog22" parent="Cogs/FrontCogs" instance=ExtResource("2_3gekb")]
+light_mask = 6
+use_parent_material = true
+position = Vector2(150, 89)
+frame = 1
+spun = true
+
+[node name="Cog23" parent="Cogs/FrontCogs" instance=ExtResource("2_3gekb")]
+light_mask = 6
+use_parent_material = true
+position = Vector2(158, 92)
+
+[node name="Cog24" parent="Cogs/FrontCogs" instance=ExtResource("2_3gekb")]
+light_mask = 6
+use_parent_material = true
+position = Vector2(165, 88)
+frame = 2
+spun = true
+
 [node name="Foreground" type="Sprite2D" parent="."]
 light_mask = 6
-z_index = 2
 use_parent_material = true
 position = Vector2(80, 45)
+texture = ExtResource("3_gxujx")
 
 [node name="Boundary" type="Node2D" parent="."]
 z_index = 2
@@ -47,14 +432,14 @@ collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Boundary/Ground"]
 position = Vector2(192, 208)
-shape = SubResource("RectangleShape2D_futbi")
+shape = SubResource("RectangleShape2D_k48wu")
 
 [node name="GroundCheck" type="Area2D" parent="Boundary"]
 collision_mask = 12
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Boundary/GroundCheck"]
 position = Vector2(192, 208)
-shape = SubResource("RectangleShape2D_puw2r")
+shape = SubResource("RectangleShape2D_5nejf")
 
 [node name="LeftWall" type="StaticBody2D" parent="Boundary"]
 position = Vector2(-152, -24)
@@ -62,8 +447,8 @@ collision_layer = 64
 collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Boundary/LeftWall"]
-position = Vector2(172, 224)
-shape = SubResource("RectangleShape2D_bhg2f")
+position = Vector2(136, 224)
+shape = SubResource("RectangleShape2D_2u0dx")
 
 [node name="LeftJump" type="Area2D" parent="Boundary"]
 modulate = Color(0, 1, 0, 1)
@@ -72,16 +457,16 @@ collision_layer = 128
 collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Boundary/LeftJump"]
-position = Vector2(176, 224)
-shape = SubResource("RectangleShape2D_6dell")
+position = Vector2(140, 224)
+shape = SubResource("RectangleShape2D_3jg5n")
 
 [node name="RightWall" type="StaticBody2D" parent="Boundary"]
 collision_layer = 64
 collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Boundary/RightWall"]
-position = Vector2(364, 200)
-shape = SubResource("RectangleShape2D_bhg2f")
+position = Vector2(400, 200)
+shape = SubResource("RectangleShape2D_2u0dx")
 
 [node name="RightJump" type="Area2D" parent="Boundary"]
 modulate = Color(0, 1, 0, 1)
@@ -90,5 +475,5 @@ collision_layer = 128
 collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Boundary/RightJump"]
-position = Vector2(480, 224)
-shape = SubResource("RectangleShape2D_jw5gc")
+position = Vector2(516, 224)
+shape = SubResource("RectangleShape2D_32jbt")

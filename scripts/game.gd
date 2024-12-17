@@ -19,7 +19,9 @@ func _ready() -> void:
 	Global.spawn.connect(spawn)
 	Global.spawn_on_plane.connect(spawn_on_plane)
 	
-	add_child(levels[Global.levelList[Global.levelNum]].instantiate())
+	Global.level = Global.levelList[Global.levelNum]
+	add_child(levels[Global.level].instantiate())
+	Audio.set_song(Global.level)
 	
 	Global.health = 36
 	Global.points = 0

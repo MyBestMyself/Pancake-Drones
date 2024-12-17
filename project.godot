@@ -22,6 +22,7 @@ Global="*res://scripts/Global.gd"
 Heart="*res://scenes/Heart.tscn"
 Score="*res://scenes/Score.tscn"
 IrisWipe="*res://scenes/irisWipe.tscn"
+Audio="*res://scenes/Audio.tscn"
 
 [display]
 

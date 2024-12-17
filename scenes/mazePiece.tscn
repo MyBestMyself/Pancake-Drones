@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://6cknak7e5ijj"]
+
+[ext_resource type="Texture2D" uid="uid://imhb5axenipx" path="res://sprites/game/levels/MazeWall.png" id="1_h32i8"]
+[ext_resource type="Script" path="res://scripts/mazePiece.gd" id="2_3iv81"]
+
+[node name="MazePiece" type="Sprite2D"]
+texture_filter = 1
+texture = ExtResource("1_h32i8")
+hframes = 3
+script = ExtResource("2_3iv81")
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

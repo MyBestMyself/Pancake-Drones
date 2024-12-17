@@ -54,6 +54,7 @@ func _on_parachute_fall_area_entered(area: Area2D) -> void:
 
 func _on_pancake_fall_area_entered(area: Area2D) -> void:
 	$Pancake/PancakeFall.queue_free()
+	$Pancake/Eat.queue_free()
 	Global.landingPos = position
 	Global.emit_signal("spawn", pancakeFall)
 	$Pancake.texture = parachute

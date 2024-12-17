@@ -15,14 +15,13 @@ radius = 5.6667
 height = 14.0
 
 [node name="Drone" type="Node2D"]
-z_index = 1
 texture_filter = 1
 material = SubResource("CanvasItemMaterial_snrin")
 scale = Vector2(0.75, 0.75)
 script = ExtResource("1_xugw3")
 
 [node name="StuntDrone" type="Sprite2D" parent="."]
-light_mask = 4
+light_mask = 6
 use_parent_material = true
 texture = ExtResource("2_0emaq")
 hframes = 7
