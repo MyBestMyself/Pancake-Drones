@@ -119,7 +119,6 @@ texture_filter = 1
 material = SubResource("CanvasItemMaterial_h617n")
 scale = Vector2(0.75, 0.75)
 collision_layer = 0
-collision_mask = 65
 script = ExtResource("1_lfhfq")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]

@@ -8,7 +8,7 @@ var pantsColor = Color(0.043137, 0.152941, 0.815686, 1)
 
 #Gameplay
 var levelList = ["The Only Ocean", "Crustacean Caves", "The Ouchlands", "Marble Flats", "Savory Swamp", "Frozen Plateau", "Hectic Maze", "Vinethread Island", "Mechanical Skies", "A Black Room", "Chaotic Cliffs", "Experimental Zone"]
-var levelNum = 5
+var levelNum = 8
 var level = levelList[levelNum]
 var points = 0
 var health = 36
@@ -42,6 +42,7 @@ var pancakeSeedNum = 0
 var pancakeCycles = 0
 var mazeCanShift = false
 var mazeSetup = false
+var initialClouds = false
 
 #Config
 var configMenuOpen = false

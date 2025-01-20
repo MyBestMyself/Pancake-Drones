@@ -7,10 +7,10 @@
 light_mode = 2
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_futbi"]
-size = Vector2(312, 16)
+size = Vector2(416, 16)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_puw2r"]
-size = Vector2(312, 16)
+size = Vector2(416, 16)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bhg2f"]
 size = Vector2(16, 32)
@@ -75,7 +75,7 @@ collision_layer = 128
 collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Boundary/LeftJump"]
-position = Vector2(176, 224)
+position = Vector2(120, 224)
 shape = SubResource("RectangleShape2D_6dell")
 
 [node name="RightWall" type="StaticBody2D" parent="Boundary"]
@@ -93,5 +93,5 @@ collision_layer = 128
 collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Boundary/RightJump"]
-position = Vector2(480, 224)
+position = Vector2(536, 224)
 shape = SubResource("RectangleShape2D_jw5gc")

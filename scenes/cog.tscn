@@ -4,6 +4,7 @@
 [ext_resource type="Script" path="res://scripts/cog.gd" id="2_b33y2"]
 
 [node name="Cog" type="Sprite2D"]
+texture_filter = 1
 texture = ExtResource("1_gfepf")
 hframes = 9
 script = ExtResource("2_b33y2")
