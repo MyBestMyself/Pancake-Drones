@@ -1,9 +1,13 @@
-[gd_scene load_steps=9 format=3 uid="uid://bp8c88cl06pwl"]
+[gd_scene load_steps=11 format=3 uid="uid://bp8c88cl06pwl"]
 
 [ext_resource type="Texture2D" uid="uid://bmtcinvop4fvy" path="res://sprites/game/levels/CavesBG.png" id="1_wggh1"]
 [ext_resource type="Texture2D" uid="uid://dleuu7vxv5k2b" path="res://sprites/game/levels/CavesFG.png" id="2_74qy0"]
+[ext_resource type="Script" path="res://scripts/crabSpawner.gd" id="2_n3qmk"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_3c78f"]
+light_mode = 2
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_khmlk"]
 light_mode = 2
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_futbi"]
@@ -26,7 +30,6 @@ z_index = -2
 texture_filter = 1
 material = SubResource("CanvasItemMaterial_3c78f")
 scale = Vector2(2.4, 2.4)
-metadata/_edit_group_ = true
 
 [node name="Background" type="Sprite2D" parent="."]
 light_mask = 6
@@ -34,9 +37,16 @@ use_parent_material = true
 position = Vector2(80, 45)
 texture = ExtResource("1_wggh1")
 
+[node name="Crab Spawner" type="Node2D" parent="."]
+material = SubResource("CanvasItemMaterial_khmlk")
+script = ExtResource("2_n3qmk")
+
+[node name="Timer" type="Timer" parent="Crab Spawner"]
+one_shot = true
+
 [node name="Foreground" type="Sprite2D" parent="."]
 light_mask = 6
-z_index = 2
+z_index = 4
 use_parent_material = true
 position = Vector2(80, 45)
 texture = ExtResource("2_74qy0")
@@ -95,3 +105,5 @@ collision_mask = 0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Boundary/RightJump"]
 position = Vector2(536, 224)
 shape = SubResource("RectangleShape2D_jw5gc")
+
+[connection signal="timeout" from="Crab Spawner/Timer" to="Crab Spawner" method="_on_timer_timeout"]

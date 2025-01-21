@@ -37,6 +37,8 @@ func _process(_delta):
 		queue_free()
 
 func settle_momentum():
+	
+	
 	if momentum != 0:
 		if momentum > 0:
 			momentum -= 0.1

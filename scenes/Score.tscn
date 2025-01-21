@@ -49,7 +49,7 @@ _data = {
 light_mode = 2
 
 [node name="Score" type="Node2D"]
-z_index = 2
+z_index = 3
 texture_filter = 1
 position = Vector2(368, 24)
 script = ExtResource("1_gjlpy")
