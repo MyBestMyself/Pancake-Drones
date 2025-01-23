@@ -148,10 +148,10 @@ libraries = {
 [node name="WalkTimer" type="Timer" parent="."]
 wait_time = 0.1
 
-[node name="ShockwaveTImer" type="Timer" parent="."]
+[node name="ShockwaveTimer" type="Timer" parent="."]
 wait_time = 0.2
 one_shot = true
 
 [connection signal="animation_finished" from="Animate" to="." method="_on_animate_animation_finished"]
 [connection signal="timeout" from="WalkTimer" to="." method="walk"]
-[connection signal="timeout" from="ShockwaveTImer" to="." method="_on_shockwave_t_imer_timeout"]
+[connection signal="timeout" from="ShockwaveTimer" to="." method="_on_shockwave_timer_timeout"]

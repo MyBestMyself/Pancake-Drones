@@ -10,6 +10,7 @@ func wipe():
 	$Animate.play("Wipe")
 
 func quick_wipe():
+	$Animate.stop()
 	position = Global.playerPosition
 	$Animate.play("QuickWipe")
 

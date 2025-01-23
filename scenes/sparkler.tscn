@@ -228,11 +228,13 @@ texture = ExtResource("3_tlrgd")
 hframes = 3
 
 [node name="Sparks" type="Node2D" parent="Drone"]
+use_parent_material = true
 position = Vector2(0, 17.3333)
 scale = Vector2(0.75, 0.75)
 
 [node name="Sparks1" type="CPUParticles2D" parent="Drone/Sparks"]
 light_mask = 3
+use_parent_material = true
 position = Vector2(-7.3, -10.667)
 emitting = false
 amount = 50
@@ -247,6 +249,7 @@ color_ramp = SubResource("Gradient_hgg5l")
 
 [node name="Sparks2" type="CPUParticles2D" parent="Drone/Sparks"]
 light_mask = 3
+use_parent_material = true
 position = Vector2(11, -6.6)
 emitting = false
 amount = 50
@@ -261,6 +264,7 @@ color_ramp = SubResource("Gradient_hgg5l")
 
 [node name="Sparks3" type="CPUParticles2D" parent="Drone/Sparks"]
 light_mask = 3
+use_parent_material = true
 position = Vector2(7.44444, -1.26667)
 emitting = false
 amount = 50
@@ -275,6 +279,7 @@ color_ramp = SubResource("Gradient_hgg5l")
 
 [node name="Sparks4" type="CPUParticles2D" parent="Drone/Sparks"]
 light_mask = 3
+use_parent_material = true
 position = Vector2(16.6, 6.5)
 emitting = false
 amount = 50
@@ -289,6 +294,7 @@ color_ramp = SubResource("Gradient_hgg5l")
 
 [node name="Sparks5" type="CPUParticles2D" parent="Drone/Sparks"]
 light_mask = 3
+use_parent_material = true
 position = Vector2(21.933, 25.3)
 emitting = false
 amount = 50
@@ -303,6 +309,7 @@ color_ramp = SubResource("Gradient_hgg5l")
 
 [node name="Sparks6" type="CPUParticles2D" parent="Drone/Sparks"]
 light_mask = 3
+use_parent_material = true
 position = Vector2(12.75, 33.3)
 emitting = false
 amount = 50
@@ -317,6 +324,7 @@ color_ramp = SubResource("Gradient_hgg5l")
 
 [node name="Sparks7" type="CPUParticles2D" parent="Drone/Sparks"]
 light_mask = 3
+use_parent_material = true
 position = Vector2(-7.25, 37)
 emitting = false
 amount = 50
@@ -331,6 +339,7 @@ color_ramp = SubResource("Gradient_hgg5l")
 
 [node name="Sparks8" type="CPUParticles2D" parent="Drone/Sparks"]
 light_mask = 3
+use_parent_material = true
 position = Vector2(-17.917, 29)
 emitting = false
 amount = 50
@@ -345,6 +354,7 @@ color_ramp = SubResource("Gradient_hgg5l")
 
 [node name="Sparks9" type="CPUParticles2D" parent="Drone/Sparks"]
 light_mask = 3
+use_parent_material = true
 position = Vector2(-20.75, 12)
 emitting = false
 amount = 50
@@ -359,6 +369,7 @@ color_ramp = SubResource("Gradient_hgg5l")
 
 [node name="Sparks10" type="CPUParticles2D" parent="Drone/Sparks"]
 light_mask = 3
+use_parent_material = true
 position = Vector2(-12.6, 2.75)
 emitting = false
 amount = 50

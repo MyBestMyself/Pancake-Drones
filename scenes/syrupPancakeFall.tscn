@@ -60,9 +60,11 @@ position = Vector2(0, -1)
 sprite_frames = ExtResource("2_4hnaf")
 animation = &"PancakeFall"
 autoplay = "PancakeFall"
+frame = 1
+frame_progress = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(1.33333, 8.33333)
+position = Vector2(-2.74181e-06, 7)
 shape = SubResource("RectangleShape2D_ud2mn")
 
 [node name="Animate" type="AnimationPlayer" parent="."]
