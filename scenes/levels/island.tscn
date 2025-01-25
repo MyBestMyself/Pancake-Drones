@@ -1,7 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://lv86vlaxvuf2"]
+[gd_scene load_steps=10 format=3 uid="uid://lv86vlaxvuf2"]
 
-[ext_resource type="Texture2D" uid="uid://m6o4qtv8hkll" path="res://sprites/game/levels/IslandBG.png" id="1_1gpas"]
+[ext_resource type="Texture2D" uid="uid://d3l4dh32kcn2c" path="res://sprites/game/levels/IslandBG.png" id="1_1gpas"]
 [ext_resource type="Texture2D" uid="uid://cbhgf07uap4ni" path="res://sprites/menu/ui/Chip.png" id="2_upmmd"]
+[ext_resource type="Texture2D" uid="uid://m6o4qtv8hkll" path="res://sprites/game/levels/IslandFG.png" id="3_et5hj"]
+[ext_resource type="Script" path="res://scripts/cloudSpawner.gd" id="3_ptath"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_3c78f"]
 light_mode = 2
@@ -30,11 +32,23 @@ use_parent_material = true
 position = Vector2(80, 45)
 texture = ExtResource("1_1gpas")
 
+[node name="Clouds" type="Node2D" parent="."]
+modulate = Color(1, 1, 1, 0.498039)
+light_mask = 6
+use_parent_material = true
+position = Vector2(-40, 0)
+script = ExtResource("3_ptath")
+
+[node name="Timer" type="Timer" parent="Clouds"]
+wait_time = 0.001
+one_shot = true
+autostart = true
+
 [node name="Foreground" type="Sprite2D" parent="."]
 light_mask = 6
-z_index = 2
 use_parent_material = true
 position = Vector2(80, 45)
+texture = ExtResource("3_et5hj")
 
 [node name="Chip" type="Sprite2D" parent="."]
 use_parent_material = true
@@ -76,7 +90,7 @@ collision_layer = 64
 collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Boundary/LeftWall"]
-position = Vector2(117, 259)
+position = Vector2(144, 259)
 shape = SubResource("RectangleShape2D_bhg2f")
 
 [node name="LeftJump" type="Area2D" parent="Boundary"]
@@ -94,7 +108,7 @@ collision_layer = 64
 collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Boundary/RightWall"]
-position = Vector2(419, 200)
+position = Vector2(392, 200)
 shape = SubResource("RectangleShape2D_bhg2f")
 
 [node name="RightJump" type="Area2D" parent="Boundary"]
@@ -106,3 +120,5 @@ collision_mask = 0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Boundary/RightJump"]
 position = Vector2(535, 224)
 shape = SubResource("RectangleShape2D_jw5gc")
+
+[connection signal="timeout" from="Clouds/Timer" to="Clouds" method="_on_timer_timeout"]

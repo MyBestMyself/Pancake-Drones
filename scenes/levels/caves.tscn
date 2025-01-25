@@ -47,13 +47,13 @@ one_shot = true
 
 [node name="Foreground" type="Sprite2D" parent="."]
 light_mask = 6
-z_index = 5
+z_index = 4
 use_parent_material = true
 position = Vector2(80, 45)
 texture = ExtResource("2_74qy0")
 
 [node name="Boundary" type="Node2D" parent="."]
-z_index = 5
+z_index = 4
 scale = Vector2(0.416667, 0.416667)
 
 [node name="Ground" type="StaticBody2D" parent="Boundary"]

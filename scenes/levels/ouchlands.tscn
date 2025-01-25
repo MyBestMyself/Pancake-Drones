@@ -1,10 +1,15 @@
-[gd_scene load_steps=9 format=3 uid="uid://bpgpiyqthiqed"]
+[gd_scene load_steps=12 format=3 uid="uid://bpgpiyqthiqed"]
 
 [ext_resource type="Texture2D" uid="uid://irvwkesfr35n" path="res://sprites/game/levels/OuchlandsBG.png" id="1_d4yty"]
 [ext_resource type="Texture2D" uid="uid://dnt0vlhst3who" path="res://sprites/game/levels/OuchlandsFG.png" id="2_hqsa4"]
+[ext_resource type="Shader" path="res://assets/shaders/Sun.gdshader" id="3_4tb24"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_3c78f"]
 light_mode = 2
+
+[sub_resource type="Gradient" id="Gradient_q2ba7"]
+offsets = PackedFloat32Array(0, 0.72, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_futbi"]
 size = Vector2(416, 16)
@@ -20,6 +25,22 @@ size = Vector2(8, 16)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jw5gc"]
 size = Vector2(8, 16)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_uxoew"]
+shader = ExtResource("3_4tb24")
+shader_parameter/angle = 0.5
+shader_parameter/position = 0.45
+shader_parameter/spread = 0.5
+shader_parameter/cutoff = 0.1
+shader_parameter/falloff = 0.5
+shader_parameter/edge_fade = 0.15
+shader_parameter/speed = 1.0
+shader_parameter/ray1_density = 8.0
+shader_parameter/ray2_density = 30.0
+shader_parameter/ray2_intensity = 0.25
+shader_parameter/color = Color(1, 0.900833, 0.65, 0.498039)
+shader_parameter/hdr = false
+shader_parameter/seed = 5.0
 
 [node name="Level" type="Node2D"]
 z_index = -2
@@ -40,6 +61,29 @@ z_index = 2
 use_parent_material = true
 position = Vector2(80, 45)
 texture = ExtResource("2_hqsa4")
+
+[node name="Dust" type="CPUParticles2D" parent="."]
+modulate = Color(0.54902, 0.027451, 0.027451, 1)
+light_mask = 6
+use_parent_material = true
+position = Vector2(80, 80)
+rotation = 0.0872665
+emitting = false
+amount = 50
+lifetime = 2.5
+preprocess = 15.0
+emission_shape = 3
+emission_rect_extents = Vector2(100, 1)
+direction = Vector2(-1, -1)
+spread = 25.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 5.0
+initial_velocity_max = 10.0
+angular_velocity_min = 25.0
+angular_velocity_max = 250.0
+scale_amount_min = 2.0
+scale_amount_max = 2.0
+color_ramp = SubResource("Gradient_q2ba7")
 
 [node name="Boundary" type="Node2D" parent="."]
 z_index = 2
@@ -95,3 +139,11 @@ collision_mask = 0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Boundary/RightJump"]
 position = Vector2(536, 224)
 shape = SubResource("RectangleShape2D_jw5gc")
+
+[node name="GodRays" type="ColorRect" parent="."]
+light_mask = 6
+z_index = 4
+material = SubResource("ShaderMaterial_uxoew")
+offset_right = 160.0
+offset_bottom = 90.0
+mouse_filter = 2

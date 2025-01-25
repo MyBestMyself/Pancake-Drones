@@ -8,7 +8,11 @@ func _ready() -> void:
 	
 	speed = randf_range(0.2, 0.5)
 	
-	position.y = randf_range(0, 75)
+	if Global.level == "Mechanical Skies":
+		position.y = randf_range(0, 75)
+	else:
+		position.y = randf_range(0, 50)
+	
 	frame = randi_range(0, 7)
 	scale.x = randi_range(3, 5)
 	scale.y = randi_range(3, 5)

@@ -8,7 +8,7 @@ var pantsColor = Color(0.043137, 0.152941, 0.815686, 1)
 
 #Gameplay
 var levelList = ["The Only Ocean", "Crustacean Caves", "The Ouchlands", "Marble Flats", "Savory Swamp", "Frozen Plateau", "Hectic Maze", "Vinethread Island", "Mechanical Skies", "A Black Room", "Chaotic Cliffs", "Experimental Zone"]
-var levelNum = 7
+var levelNum = 0
 var level = levelList[levelNum]
 var points = 0
 var health = 36

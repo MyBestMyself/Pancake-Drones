@@ -1,8 +1,9 @@
-[gd_scene load_steps=10 format=3 uid="uid://dn7prtvjxsbvj"]
+[gd_scene load_steps=11 format=3 uid="uid://dn7prtvjxsbvj"]
 
 [ext_resource type="Texture2D" uid="uid://cxbpobuxselms" path="res://sprites/game/levels/OceanBG.png" id="1_8wyr6"]
 [ext_resource type="PackedScene" uid="uid://cuuw6vndai55" path="res://scenes/waves.tscn" id="2_jckb3"]
 [ext_resource type="Texture2D" uid="uid://dx23pcox80ye2" path="res://sprites/game/levels/OceanFG.png" id="3_iihuw"]
+[ext_resource type="Script" path="res://scripts/cloudSpawner.gd" id="4_vbt55"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_3c78f"]
 light_mode = 2
@@ -23,11 +24,11 @@ size = Vector2(8, 16)
 size = Vector2(8, 16)
 
 [node name="Level" type="Node2D"]
+light_mask = 6
 z_index = -2
 texture_filter = 1
 material = SubResource("CanvasItemMaterial_3c78f")
 scale = Vector2(2.4, 2.4)
-metadata/_edit_group_ = true
 
 [node name="Background" type="Sprite2D" parent="."]
 light_mask = 6
@@ -99,3 +100,17 @@ collision_mask = 0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Boundary/RightJump"]
 position = Vector2(476, 224)
 shape = SubResource("RectangleShape2D_jw5gc")
+
+[node name="Clouds" type="Node2D" parent="."]
+modulate = Color(1, 1, 1, 0.498039)
+light_mask = 6
+use_parent_material = true
+position = Vector2(-40, 0)
+script = ExtResource("4_vbt55")
+
+[node name="Timer" type="Timer" parent="Clouds"]
+wait_time = 0.001
+one_shot = true
+autostart = true
+
+[connection signal="timeout" from="Clouds/Timer" to="Clouds" method="_on_timer_timeout"]

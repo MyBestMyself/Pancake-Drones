@@ -5,6 +5,7 @@
 
 [node name="Cloud" type="Sprite2D"]
 light_mask = 6
+use_parent_material = true
 position = Vector2(0, 40)
 scale = Vector2(5, 5)
 texture = ExtResource("1_6hh58")

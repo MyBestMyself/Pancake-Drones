@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d3l4dh32kcn2c"
-path="res://.godot/imported/IslandBG.png-97a672af74adaf024621a4a4659264ee.ctex"
+uid="uid://m6o4qtv8hkll"
+path="res://.godot/imported/IslandFG.png-394e183e4fbfc232f82b3592ef428769.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/game/levels/IslandBG.png"
-dest_files=["res://.godot/imported/IslandBG.png-97a672af74adaf024621a4a4659264ee.ctex"]
+source_file="res://sprites/game/levels/IslandFG.png"
+dest_files=["res://.godot/imported/IslandFG.png-394e183e4fbfc232f82b3592ef428769.ctex"]
 
 [params]
 
