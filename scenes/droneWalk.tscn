@@ -125,10 +125,8 @@ script = ExtResource("1_lfhfq")
 light_mask = 6
 use_parent_material = true
 sprite_frames = ExtResource("2_xm83q")
-animation = &"DroneJump"
+animation = &"DroneWalk"
 autoplay = "DroneWalk"
-frame = 1
-frame_progress = 1.0
 
 [node name="Overlay" type="Sprite2D" parent="."]
 light_mask = 6

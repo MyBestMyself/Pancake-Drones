@@ -41,6 +41,7 @@ func _process(delta):
 
 func _on_eat_area_entered(area: Area2D) -> void:
 	if !Global.iFrames:
+		Audio.play_sound("Hurt Big")
 		Global.iFrames = true
 		Global.health -= 48
 		Heart.hurt()

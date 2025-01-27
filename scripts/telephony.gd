@@ -109,6 +109,7 @@ func _on_pancake_fall_area_entered(area: Area2D) -> void:
 
 func _on_eat_area_entered(area: Area2D) -> void:
 	if !Global.iFrames:
+		Audio.play_sound("Hurt")
 		Global.iFrames = true
 		Global.health -= 32
 		Heart.hurt()

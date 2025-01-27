@@ -33,7 +33,7 @@ position = Vector2(80, 45)
 texture = ExtResource("1_1gpas")
 
 [node name="Clouds" type="Node2D" parent="."]
-modulate = Color(1, 1, 1, 0.498039)
+modulate = Color(0.870588, 0.901961, 1, 1)
 light_mask = 6
 use_parent_material = true
 position = Vector2(-40, 0)

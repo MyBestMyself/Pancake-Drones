@@ -11,6 +11,7 @@ func _ready():
 	Global.cameraShake.connect(shake)
 	Global.cameraShakeLight.connect(light_shake)
 	Global.cameraShakeTiny.connect(tiny_shake)
+	
 
 func _process(delta):
 	if shake_strength > 0:
@@ -18,6 +19,9 @@ func _process(delta):
 	else:
 		shake_strength = 0
 	offset = Vector2(rng.randf_range(-shake_strength, shake_strength), rng.randf_range(-shake_strength, shake_strength))
+	
+	if Input.is_action_just_pressed("ui_accept"):
+		shake()
 
 func shake():
 	shake_strength = strengthRange

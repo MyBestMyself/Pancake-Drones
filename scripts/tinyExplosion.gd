@@ -16,6 +16,7 @@ func _ready():
 
 func _on_explosion_area_entered(area: Area2D) -> void:
 	if !Global.iFrames:
+		Audio.play_sound("Hurt")
 		Global.iFrames = true
 		Global.health -= 32
 		Heart.hurt()

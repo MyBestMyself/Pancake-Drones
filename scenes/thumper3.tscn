@@ -15,7 +15,7 @@ offsets = PackedFloat32Array(0.833333, 1)
 colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_b5qmy"]
-size = Vector2(64, 27.3)
+size = Vector2(64, 26.6666)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_4t4au"]
 radius = 34.0
@@ -303,7 +303,7 @@ initial_velocity_max = 300.0
 color_ramp = SubResource("Gradient_aj2en")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-2.27374e-13, 24.3167)
+position = Vector2(-3.63798e-12, 24)
 shape = SubResource("RectangleShape2D_b5qmy")
 metadata/_edit_lock_ = true
 
@@ -325,11 +325,11 @@ position = Vector2(0, 34.6667)
 target_position = Vector2(34, 0)
 
 [node name="DetectFloor" type="RayCast2D" parent="Raycasts"]
-position = Vector2(0, 35.7334)
+position = Vector2(0, 36)
 target_position = Vector2(0, 1.7)
 
 [node name="DetectRise" type="RayCast2D" parent="Raycasts"]
-position = Vector2(0, 34.9334)
+position = Vector2(0, 35.2)
 target_position = Vector2(0, 1.7)
 
 [node name="Animate" type="AnimationPlayer" parent="."]

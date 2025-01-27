@@ -55,6 +55,7 @@ func _on_parachute_fall_area_entered(area: Area2D) -> void:
 	queue_free()
 
 func _on_pancake_fall_area_entered(area: Area2D) -> void:
+	Audio.play_sound("Splat")
 	$Pancake/PancakeFall.queue_free()
 	$Pancake/Eat.queue_free()
 	Global.landingPos = position
@@ -67,6 +68,7 @@ func _on_eat_area_entered(area: Area2D) -> void:
 	$Pancake/Eat.queue_free()
 	
 	if Global.points <= 50:
+		Audio.play_sound("Munch")
 		Global.landingPos = position
 		Global.emit_signal("spawn", crumbs)
 		$Pancake.texture = parachute

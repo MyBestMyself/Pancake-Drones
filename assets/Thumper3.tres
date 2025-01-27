@@ -46,49 +46,49 @@ region = Rect2(760, 0, 76, 76)
 atlas = ExtResource("1")
 region = Rect2(1064, 0, 76, 76)
 
-[sub_resource type="AtlasTexture" id="51"]
+[sub_resource type="AtlasTexture" id="55"]
 atlas = ExtResource("1")
-region = Rect2(1596, 0, 76, 76)
-
-[sub_resource type="AtlasTexture" id="52"]
-atlas = ExtResource("1")
-region = Rect2(1672, 0, 76, 76)
-
-[sub_resource type="AtlasTexture" id="53"]
-atlas = ExtResource("1")
-region = Rect2(1748, 0, 76, 76)
+region = Rect2(1900, 0, 76, 76)
 
 [sub_resource type="AtlasTexture" id="54"]
 atlas = ExtResource("1")
 region = Rect2(1824, 0, 76, 76)
 
-[sub_resource type="AtlasTexture" id="55"]
+[sub_resource type="AtlasTexture" id="53"]
 atlas = ExtResource("1")
-region = Rect2(1900, 0, 76, 76)
+region = Rect2(1748, 0, 76, 76)
+
+[sub_resource type="AtlasTexture" id="52"]
+atlas = ExtResource("1")
+region = Rect2(1672, 0, 76, 76)
+
+[sub_resource type="AtlasTexture" id="51"]
+atlas = ExtResource("1")
+region = Rect2(1596, 0, 76, 76)
 
 [sub_resource type="AtlasTexture" id="44"]
 atlas = ExtResource("1")
 region = Rect2(760, 0, 76, 76)
 
-[sub_resource type="AtlasTexture" id="45"]
+[sub_resource type="AtlasTexture" id="49"]
 atlas = ExtResource("1")
-region = Rect2(1140, 0, 76, 76)
-
-[sub_resource type="AtlasTexture" id="46"]
-atlas = ExtResource("1")
-region = Rect2(1216, 0, 76, 76)
-
-[sub_resource type="AtlasTexture" id="47"]
-atlas = ExtResource("1")
-region = Rect2(1292, 0, 76, 76)
+region = Rect2(1444, 0, 76, 76)
 
 [sub_resource type="AtlasTexture" id="48"]
 atlas = ExtResource("1")
 region = Rect2(1368, 0, 76, 76)
 
-[sub_resource type="AtlasTexture" id="49"]
+[sub_resource type="AtlasTexture" id="47"]
 atlas = ExtResource("1")
-region = Rect2(1444, 0, 76, 76)
+region = Rect2(1292, 0, 76, 76)
+
+[sub_resource type="AtlasTexture" id="46"]
+atlas = ExtResource("1")
+region = Rect2(1216, 0, 76, 76)
+
+[sub_resource type="AtlasTexture" id="45"]
+atlas = ExtResource("1")
+region = Rect2(1140, 0, 76, 76)
 
 [sub_resource type="AtlasTexture" id="63"]
 atlas = ExtResource("1")
@@ -178,46 +178,46 @@ animations = [{
 "texture": SubResource("62")
 }, {
 "duration": 1.0,
-"texture": SubResource("51")
-}, {
-"duration": 1.0,
-"texture": SubResource("52")
-}, {
-"duration": 1.0,
-"texture": SubResource("53")
+"texture": SubResource("55")
 }, {
 "duration": 1.0,
 "texture": SubResource("54")
 }, {
 "duration": 1.0,
-"texture": SubResource("55")
+"texture": SubResource("53")
+}, {
+"duration": 1.0,
+"texture": SubResource("52")
+}, {
+"duration": 1.0,
+"texture": SubResource("51")
 }],
 "loop": true,
 "name": &"DroneWalkLeft",
-"speed": 20.0
+"speed": 15.0
 }, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("44")
 }, {
 "duration": 1.0,
-"texture": SubResource("45")
-}, {
-"duration": 1.0,
-"texture": SubResource("46")
-}, {
-"duration": 1.0,
-"texture": SubResource("47")
+"texture": SubResource("49")
 }, {
 "duration": 1.0,
 "texture": SubResource("48")
 }, {
 "duration": 1.0,
-"texture": SubResource("49")
+"texture": SubResource("47")
+}, {
+"duration": 1.0,
+"texture": SubResource("46")
+}, {
+"duration": 1.0,
+"texture": SubResource("45")
 }],
 "loop": true,
 "name": &"DroneWalkRight",
-"speed": 20.0
+"speed": 15.0
 }, {
 "frames": [{
 "duration": 1.0,

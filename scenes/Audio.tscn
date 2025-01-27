@@ -1,11 +1,15 @@
-[gd_scene load_steps=2 format=3 uid="uid://j830v0ecgfnx"]
+[gd_scene load_steps=3 format=3 uid="uid://j830v0ecgfnx"]
 
 [ext_resource type="Script" path="res://scripts/Audio.gd" id="1_mebkk"]
+[ext_resource type="PackedScene" uid="uid://br4p7fqgtq0sb" path="res://scenes/sfx.tscn" id="2_ebr1s"]
 
 [node name="Audio" type="Node"]
 script = ExtResource("1_mebkk")
 
 [node name="Music" type="AudioStreamPlayer" parent="."]
+
+[node name="Sfx" parent="." instance=ExtResource("2_ebr1s")]
+volume_db = -16.0
 
 [node name="TimerTimer" type="Timer" parent="."]
 wait_time = 1.8

@@ -1,6 +1,7 @@
 extends Node
 
 var currentSong = "Experimental Zone"
+var currentSound
 
 var songList = {
 	"The Only Ocean" : preload("res://assets/audio/music/A Watered-Down Bottle of Syrup.ogg"),
@@ -16,8 +17,11 @@ var songList = {
 	"Chaotic Cliffs" : preload("res://assets/audio/music/Severe Hyperphagia.ogg"),
 }
 
-func stop_song():
-	$Music.stop()
+var sfx = preload("res://scenes/sfx.tscn")
+
+func play_sound(sound):
+	currentSound = sound
+	add_child(sfx.instantiate())
 
 func set_song(song):
 	if song != currentSong:
