@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://dyq8b588am7dq"]
+[gd_scene load_steps=22 format=3 uid="uid://dyq8b588am7dq"]
 
 [ext_resource type="Texture2D" uid="uid://bbhrskhu32n5g" path="res://sprites/game/CarrierBlades.png" id="1_v2440"]
 [ext_resource type="Script" path="res://scripts/droneCarrier.gd" id="2_uyg62"]
@@ -190,8 +190,152 @@ tracks/2/keys = {
 }]
 }
 
+[sub_resource type="Animation" id="Animation_o0k4n"]
+resource_name = "BigLoop"
+length = 8.0
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(3.8, 7.8),
+"transitions": PackedFloat32Array(-2, -2),
+"update": 0,
+"values": [Vector2(368, 40), Vector2(16, 40)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(2, 4, 6, 8),
+"transitions": PackedFloat32Array(2, 0.5, 2, 0.5),
+"update": 0,
+"values": [0.20944, -0.0349066, -0.20944, 0.0349066]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.2, 4.65),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [],
+"method": &"make"
+}, {
+"args": [],
+"method": &"make"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_vtxbn"]
+resource_name = "Loop"
+length = 7.0
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(3.3, 6.8),
+"transitions": PackedFloat32Array(-2, -2),
+"update": 0,
+"values": [Vector2(340, 40), Vector2(44, 40)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(1.75, 3.5, 5.25, 7),
+"transitions": PackedFloat32Array(2, 0.5, 2, 0.5),
+"update": 0,
+"values": [0.20944, -0.0349066, -0.20944, 0.0349066]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.43, 3.93),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [],
+"method": &"make"
+}, {
+"args": [],
+"method": &"make"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_cskpe"]
+resource_name = "CliffsLoop"
+length = 5.0
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(2.3, 4.8),
+"transitions": PackedFloat32Array(-2, -2),
+"update": 0,
+"values": [Vector2(208, 40), Vector2(32, 40)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(1.25, 2.5, 3.75, 5),
+"transitions": PackedFloat32Array(2, 0.5, 2, 0.5),
+"update": 0,
+"values": [0.20944, -0.0349066, -0.20944, 0.0349066]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.2, 2.7),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [],
+"method": &"make"
+}, {
+"args": [],
+"method": &"make"
+}]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_1yf0x"]
 _data = {
+"BigLoop": SubResource("Animation_o0k4n"),
+"CliffsLoop": SubResource("Animation_cskpe"),
+"Loop": SubResource("Animation_vtxbn"),
 "RESET": SubResource("Animation_i7ti0"),
 "SmallLoop": SubResource("Animation_1n6r8")
 }

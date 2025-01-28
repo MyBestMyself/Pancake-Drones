@@ -13,6 +13,10 @@ var timerDone = false
 
 func _ready() -> void:
 	position.x = Global.planePosition.x
+	
+	if Global.isBlack:
+		$Drone.self_modulate = Color8(0,0,0)
+		$Overlay.self_modulate = Color8(0,0,0)
 
 func _process(_delta):
 	#momentum

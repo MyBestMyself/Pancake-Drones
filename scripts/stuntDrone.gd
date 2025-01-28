@@ -19,6 +19,10 @@ func _ready() -> void:
 	else:
 		$Getup.play("Right")
 		Global.planeSide = "Left"
+	
+	if Global.isBlack:
+		$Drone.self_modulate = Color8(0,0,0)
+		$Drone/Eye.visible = true
 
 
 func _process(delta: float) -> void:

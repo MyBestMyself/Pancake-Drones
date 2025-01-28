@@ -11,6 +11,11 @@ var flyaway = false
 
 func _ready() -> void:
 	position = Vector2(Global.planePosition.x, 32.333)
+	
+	if Global.isBlack:
+		get_parent().get_node("Drone").play("black")
+	else:
+		get_parent().get_node("Drone").play("default")
 
 func _process(_delta):
 	#momentum

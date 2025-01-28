@@ -109,7 +109,7 @@ collision_layer = 64
 collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Boundary/LeftWall"]
-position = Vector2(172, 224)
+position = Vector2(136, 224)
 shape = SubResource("RectangleShape2D_bhg2f")
 
 [node name="LeftJump" type="Area2D" parent="Boundary"]
@@ -127,7 +127,7 @@ collision_layer = 64
 collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Boundary/RightWall"]
-position = Vector2(364, 200)
+position = Vector2(400, 200)
 shape = SubResource("RectangleShape2D_bhg2f")
 
 [node name="RightJump" type="Area2D" parent="Boundary"]

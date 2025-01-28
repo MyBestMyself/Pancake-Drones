@@ -106,6 +106,8 @@ func _on_pancake_fall_area_entered(area: Area2D) -> void:
 	
 	position.y -= 12.5
 	$Drone.play("Parachute")
+	if Global.isBlack:
+		$Drone.modulate = Color8(0,0,0)
 
 func _on_eat_area_entered(area: Area2D) -> void:
 	if !Global.iFrames:

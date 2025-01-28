@@ -7,6 +7,7 @@ var momentum
 var parachute = preload("res://sprites/game/Parachute.png")
 var pancakeFall = preload("res://scenes/droneWalk.tscn")
 var parachuteFall = preload("res://scenes/parachuteFall.tscn")
+var blackDroneSpin = preload("res://sprites/game/BlackDroneSpin.png")
 
 @export var flavor = "drone"
 
@@ -14,7 +15,13 @@ func _ready() -> void:
 	position = Global.splittingPos
 	momentum = Global.splitMomentum
 	
-	$Animate.play(Global.splitSway)
+	if Global.splitSway != null:
+		$Animate.play(Global.splitSway)
+	else:
+		show()
+	
+	if Global.isBlack:
+		$Drone.texture = blackDroneSpin
 
 func _process(_delta):
 	#momentum
@@ -60,6 +67,8 @@ func _on_pancake_fall_area_entered(area: Area2D) -> void:
 	
 	$Drone.hframes = 1
 	$Drone.texture = parachute
+	if Global.isBlack:
+		$Drone.modulate = Color8(0,0,0)
 
 
 func _on_eat_area_entered(area: Area2D) -> void:

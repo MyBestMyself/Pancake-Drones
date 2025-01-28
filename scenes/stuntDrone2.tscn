@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://bf2xfwwf1144u"]
+[gd_scene load_steps=7 format=3 uid="uid://bf2xfwwf1144u"]
 
 [ext_resource type="Script" path="res://scripts/stuntDrone2.gd" id="1_xugw3"]
 [ext_resource type="Texture2D" uid="uid://dhk65rvmrsyg5" path="res://sprites/game/StuntDrone.png" id="2_0emaq"]
+[ext_resource type="Texture2D" uid="uid://dfx617e2beixe" path="res://sprites/game/overlay/Basic.png" id="3_132sg"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_snrin"]
 light_mode = 2
@@ -20,11 +21,17 @@ material = SubResource("CanvasItemMaterial_snrin")
 scale = Vector2(0.75, 0.75)
 script = ExtResource("1_xugw3")
 
-[node name="StuntDrone" type="Sprite2D" parent="."]
+[node name="Drone" type="Sprite2D" parent="."]
 light_mask = 6
 use_parent_material = true
 texture = ExtResource("2_0emaq")
 hframes = 7
+
+[node name="Eye" type="Sprite2D" parent="Drone"]
+visible = false
+light_mask = 3
+position = Vector2(0, 1)
+texture = ExtResource("3_132sg")
 
 [node name="Eat" type="Area2D" parent="."]
 position = Vector2(0, 0.3333)

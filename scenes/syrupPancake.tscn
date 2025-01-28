@@ -1,9 +1,10 @@
-[gd_scene load_steps=12 format=3 uid="uid://3vmmnngxevpt"]
+[gd_scene load_steps=13 format=3 uid="uid://3vmmnngxevpt"]
 
 [ext_resource type="Script" path="res://scripts/pancake.gd" id="1_2d3oc"]
 [ext_resource type="Texture2D" uid="uid://dayu6rcu8b6gy" path="res://sprites/game/SyrupPancake.png" id="2_ouhp7"]
 [ext_resource type="PackedScene" uid="uid://cxyhjteymej58" path="res://scenes/syrupPancakeFall.tscn" id="2_xddda"]
 [ext_resource type="PackedScene" uid="uid://dsb7wtp1pmd7f" path="res://scenes/syrupCrumbs.tscn" id="3_ntouh"]
+[ext_resource type="Texture2D" uid="uid://78m2llxg34qe" path="res://sprites/game/BlackSyrupPancake.png" id="3_tiifh"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_psqdy"]
 light_mode = 2
@@ -81,6 +82,7 @@ scale = Vector2(0.75, 0.75)
 script = ExtResource("1_2d3oc")
 pointValue = 3
 pancakeFall = ExtResource("2_xddda")
+blackPancake = ExtResource("3_tiifh")
 crumbs = ExtResource("3_ntouh")
 
 [node name="Pancake" type="Sprite2D" parent="."]

@@ -12,6 +12,9 @@ func _ready() -> void:
 	position = Global.planePosition
 	Global.planeUnderside.push_back("me")
 	$Crawl.play("CrawlLeft")
+	
+	if Global.isBlack:
+		$Drone.self_modulate = Color8(0,0,0)
 
 func _process(delta: float) -> void:
 	x1 = Global.planePosition.x
@@ -39,9 +42,11 @@ func _on_detect_area_entered(area: Area2D) -> void:
 
 func _on_brace_area_entered(area: Area2D) -> void:
 	$Drone.frame = 1
+	$Drone/Eye.position.y = 6
 
 func _on_brace_area_exited(area: Area2D) -> void:
 	$Drone.frame = 0
+	$Drone/Eye.position.y = 2
 
 func stop_animation():
 	$Drone.stop()

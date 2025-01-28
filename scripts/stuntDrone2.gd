@@ -19,6 +19,10 @@ func _ready():
 		direction = "Left"
 	elif rotation_degrees == 0 and side == "Left":
 		direction = "Right"
+	
+	if Global.isBlack:
+		$Drone.self_modulate = Color8(0,0,0)
+		$Drone/Eye.visible = true
 
 func _process(delta: float) -> void:
 	if direction == "Left": #and rotation_degrees < 180:

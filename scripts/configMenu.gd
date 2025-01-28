@@ -17,7 +17,7 @@ func _ready():
 	$"SpawnList/Acrobatic2/14".set_pressed_no_signal(Global.droneSpawnList.has("thumper"))
 	
 	$"SpawnList/Center Plane/Center Plane".set_pressed_no_signal(Global.planeCentered)
-	$SpawnList/Level/Label.text = "Level " + str(Global.levelNum)
+	$SpawnList/Level/Label.text = "Level " + str(Global.levelNum + 1)
 
 
 func _on__pancake_toggled(toggled_on: bool) -> void:

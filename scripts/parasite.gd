@@ -30,6 +30,9 @@ func _ready() -> void:
 		direction = "right"
 	elif speed < 0:
 		direction = "left"
+	
+	if Global.isBlack:
+		$Drone.self_modulate = Color8(0,0,0)
 
 func _process(_delta):
 	show()

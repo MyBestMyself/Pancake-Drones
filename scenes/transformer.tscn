@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://d3ah4qdvc6afj"]
+[gd_scene load_steps=15 format=3 uid="uid://d3ah4qdvc6afj"]
 
 [ext_resource type="Script" path="res://scripts/transformer.gd" id="1_hqltq"]
 [ext_resource type="SpriteFrames" uid="uid://tnw51v3x5uvb" path="res://assets/Transformer.tres" id="2_wtl5m"]
@@ -134,10 +134,45 @@ tracks/1/keys = {
 }]
 }
 
+[sub_resource type="Animation" id="Animation_fn103"]
+resource_name = "TransformBlack"
+length = 1.9
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Drone:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.9),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [&"DarkPeek", &"DarkLand"]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(1.4, 1.9),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [],
+"method": &"animate_sprite"
+}, {
+"args": [],
+"method": &"animate_sprite"
+}]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_5cuio"]
 _data = {
 "RESET": SubResource("Animation_b7rcu"),
-"Transform": SubResource("Animation_oqtb2")
+"Transform": SubResource("Animation_oqtb2"),
+"TransformBlack": SubResource("Animation_fn103")
 }
 
 [node name="Drone" type="Node2D"]
@@ -194,7 +229,6 @@ libraries = {
 libraries = {
 "": SubResource("AnimationLibrary_5cuio")
 }
-autoplay = "Transform"
 
 [connection signal="area_entered" from="Drone/Eat" to="." method="_on_eat_area_entered"]
 [connection signal="area_entered" from="Drone/PancakeFall" to="." method="_on_pancake_fall_area_entered"]

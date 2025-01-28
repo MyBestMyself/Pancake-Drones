@@ -1,10 +1,39 @@
-[gd_scene load_steps=13 format=3 uid="uid://0fmh4d5torte"]
+[gd_scene load_steps=21 format=3 uid="uid://0fmh4d5torte"]
 
 [ext_resource type="Script" path="res://scripts/botfly.gd" id="1_ydibr"]
 [ext_resource type="Texture2D" uid="uid://cm5ropxub3yl7" path="res://sprites/game/Botfly.png" id="2_bsrwb"]
+[ext_resource type="Texture2D" uid="uid://bx81nlkk8l4gv" path="res://sprites/game/BlackBotfly.png" id="2_lfndv"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_knnhd"]
 light_mode = 2
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pfhxn"]
+atlas = ExtResource("2_lfndv")
+region = Rect2(0, 0, 32, 36)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7b1ae"]
+atlas = ExtResource("2_lfndv")
+region = Rect2(64, 0, 32, 36)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r0rvo"]
+atlas = ExtResource("2_lfndv")
+region = Rect2(32, 0, 32, 36)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_icrd0"]
+atlas = ExtResource("2_lfndv")
+region = Rect2(96, 0, 32, 36)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l3sjc"]
+atlas = ExtResource("2_lfndv")
+region = Rect2(160, 0, 32, 36)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lpyy6"]
+atlas = ExtResource("2_lfndv")
+region = Rect2(128, 0, 32, 36)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_igeps"]
+atlas = ExtResource("2_lfndv")
+region = Rect2(192, 0, 32, 36)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_y8cil"]
 atlas = ExtResource("2_bsrwb")
@@ -36,6 +65,47 @@ region = Rect2(192, 0, 32, 36)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_bv2ef"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pfhxn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7b1ae")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r0rvo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_icrd0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l3sjc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lpyy6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_igeps")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lpyy6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l3sjc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_icrd0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r0rvo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7b1ae")
+}],
+"loop": true,
+"name": &"black",
+"speed": 50.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_y8cil")
@@ -107,7 +177,8 @@ material = SubResource("CanvasItemMaterial_knnhd")
 use_parent_material = true
 scale = Vector2(0.75, 0.75)
 sprite_frames = SubResource("SpriteFrames_bv2ef")
-autoplay = "default"
+animation = &"black"
+frame_progress = 0.478226
 
 [node name="Eat" type="Area2D" parent="Drone"]
 position = Vector2(0, -3.8147e-05)

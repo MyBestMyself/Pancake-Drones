@@ -15,7 +15,7 @@ var overlay = {
 	"drone" : [preload("res://sprites/game/overlay/Pancake.png"), preload("res://sprites/game/overlay/Basic.png")],
 	"transformer" : [preload("res://sprites/game/overlay/SyrupPancake.png"), preload("res://sprites/game/overlay/Mimetic.png")],
 	"parasite" : [preload("res://sprites/game/overlay/Pancake.png"), preload("res://sprites/game/overlay/Mimetic.png")],
-	"telephony" : [preload("res://sprites/game/overlay/TelePancake.png"), preload("res://sprites/game/overlay/Aerodynamic.png")],
+	"telephony" : [preload("res://sprites/game/overlay/TelePancake2.png"), preload("res://sprites/game/overlay/Aerodynamic.png")],
 	"IEDrone" : [preload("res://sprites/game/overlay/IEPancake.png"), preload("res://sprites/game/overlay/Basic.png")],
 }
 
@@ -23,6 +23,11 @@ var overlay = {
 func _ready():
 	$Overlay.texture = overlay[Global.landingFlavor][0]
 	$Overlay/Eye.texture = overlay[Global.landingFlavor][1]
+	if Global.isBlack:
+		$AnimatedSprite2D.self_modulate = Color8(0,0,0)
+		if Global.landingFlavor != "telephony":
+			$Overlay.self_modulate = Color8(0,0,0)
+	
 	position = Global.landingPos
 	rotation_degrees = 0
 	move_and_collide(Vector2(0,11))

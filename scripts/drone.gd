@@ -16,6 +16,9 @@ func _ready() -> void:
 		$Animate.play("swayRight")
 	elif Global.planeRotation < 0:
 		$Animate.play("swayLeft")
+	
+	if Global.isBlack:
+		$Drone.self_modulate = Color8(0, 0, 0)
 
 func _process(_delta):
 	#momentum
@@ -59,6 +62,7 @@ func _on_pancake_fall_area_entered(area: Area2D) -> void:
 	
 	position.y -= 12.5
 	$Drone.texture = parachute
+	$Drone/Eye.queue_free()
 
 
 func _on_eat_area_entered(area: Area2D) -> void:

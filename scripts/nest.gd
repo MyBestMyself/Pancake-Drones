@@ -33,6 +33,12 @@ func _ready() -> void:
 	$Drone/Head1/Crumbs.rotation_degrees -= (origin + rotation_degrees)
 	$Drone/Head2/Crumbs.rotation_degrees -= (origin2 + rotation_degrees)
 	$Drone/Head3/Crumbs.rotation_degrees -= (origin3+ rotation_degrees)
+	
+	if Global.isBlack:
+		$Drone.self_modulate = Color8(0,0,0)
+		$Drone/Head1/Crumbs.modulate = Color8(0,0,0)
+		$Drone/Head2/Crumbs.modulate = Color8(0,0,0)
+		$Drone/Head3/Crumbs.modulate = Color8(0,0,0)
 
 func _process(_delta):
 	#momentum
@@ -68,17 +74,21 @@ func _on_parachute_fall_area_entered(area: Area2D) -> void:
 	queue_free()
 
 func headpop():
+	var selectedAnimation = "PopOut"
+	if Global.isBlack:
+		selectedAnimation = "PopOutDark"
+	
 	headNum += 1
 	if headNum == 1:
-		$Drone/Head1.play("PopOut")
+		$Drone/Head1.play(selectedAnimation)
 		$Drone/Head1/Crumbs/Crumbs1.emitting = true
 		$Drone/Head1/Crumbs/Crumbs2.emitting = true
 	elif headNum == 2:
-		$Drone/Head2.play("PopOut")
+		$Drone/Head2.play(selectedAnimation)
 		$Drone/Head2/Crumbs/Crumbs1.emitting = true
 		$Drone/Head2/Crumbs/Crumbs2.emitting = true
 	elif headNum == 3:
-		$Drone/Head3.play("PopOut")
+		$Drone/Head3.play(selectedAnimation)
 		$Drone/Head3/Crumbs/Crumbs1.emitting = true
 		$Drone/Head3/Crumbs/Crumbs2.emitting = true
 	else:

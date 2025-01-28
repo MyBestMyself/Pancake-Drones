@@ -17,7 +17,7 @@ func _ready():
 	if Global.isBlack:
 		$BigChunks.self_modulate.v = 0
 		$BreadCrumbs.self_modulate.v = 0
-		$DroneParts1.self_modulate.v = 0
+		$DroneParts.self_modulate.v = 0
 		$DroneParts2.self_modulate.v = 0
 		$DroneParts3.self_modulate.v = 0
 

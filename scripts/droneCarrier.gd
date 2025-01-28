@@ -5,6 +5,21 @@ var droneQueue = []
 
 var isCentered = false
 
+var loopList = {
+	"The Only Ocean" : "SmallLoop",
+	"Crustacean Caves" : "Loop",
+	"The Ouchlands" : "Loop",
+	"Marble Flats" : "Loop",
+	"Savory Swamp" : "Loop",
+	"Frozen Plateau" : "Loop",
+	"Hectic Maze" : "Loop",
+	"Vinethread Island" : "Loop",
+	"Mechanical Skies" : "Loop",
+	"A Black Room" : "Loop",
+	"Chaotic Cliffs" : "CliffsLoop",
+	"Experimental Zone" : "Loop"
+}
+
 var spawnables = {
 	"pancake" : preload("res://scenes/pancake.tscn"),
 	"syrupPancake" : preload("res://scenes/syrupPancake.tscn"),
@@ -27,7 +42,6 @@ var rng = RandomNumberGenerator.new()
 func _ready() -> void:
 	Global.resetQueue.connect(reset_queues)
 	reset_queues()
-	sync()
 
 func _process(delta: float) -> void:
 	Global.planePosition = position
@@ -41,7 +55,7 @@ func _process(delta: float) -> void:
 		sync()
 
 func sync():
-	$Animate.play("SmallLoop")
+	$Animate.play(loopList[Global.level])
 
 func make():
 	$SpawnRate.start()

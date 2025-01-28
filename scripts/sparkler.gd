@@ -24,6 +24,9 @@ func _ready() -> void:
 	
 	for x in $Drone/Sparks.get_children():
 		x.emitting = true
+	
+	if Global.isBlack:
+		$Drone.self_modulate = Color8(0,0,0)
 
 func _process(_delta):
 	#momentum
@@ -68,7 +71,11 @@ func _on_timer_timeout() -> void:
 		Global.landingPos = position
 		Global.emit_signal("spawn", explosion)
 		explode = true
-		$Explode.play("Explode")
+		
+		if Global.isBlack:
+			$Explode.play("BlackExplode")
+		else:
+			$Explode.play("Explode")
 		
 		rng.randomize()
 		Global.splitSeed = rng.randi_range(1, 4)

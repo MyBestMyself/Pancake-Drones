@@ -22,6 +22,13 @@ func _ready() -> void:
 	Global.level = Global.levelList[Global.levelNum]
 	add_child(levels[Global.level].instantiate())
 	Audio.set_song(Global.level)
+	if Global.level == "A Black Room":
+		Global.isBlack = true
+		$DroneCarrier.self_modulate = Color8(0,0,0)
+		$DroneCarrier/Overlay.self_modulate = Color8(0,0,0)
+	else:
+		Global.isBlack = false
+	$DroneCarrier.sync()
 	
 	Global.health = 36
 	Global.points = 0

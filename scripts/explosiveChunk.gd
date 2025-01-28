@@ -12,6 +12,10 @@ var tinyExplosion = preload("res://scenes/tinyExplosion.tscn")
 func _ready():
 	hide()
 	rng.randomize()
+	
+	if Global.isBlack:
+		$AnimatedSprite.self_modulate = Color8(0,0,0)
+	
 	position = Global.splittingPos
 	num = Global.splitNum
 	for x in Global.splitSeed + num:

@@ -2,6 +2,7 @@ extends Node2D
 
 @export var pointValue = 1
 @export var pancakeFall = preload("res://scenes/pancakeFall.tscn")
+@export var blackPancake = preload("res://sprites/game/BlackPancake.png")
 @export var crumbs = preload("res://scenes/crumbs.tscn")
 
 var x1
@@ -18,6 +19,9 @@ func _ready() -> void:
 		$Animate.play("swayRight")
 	elif Global.planeRotation < 0:
 		$Animate.play("swayLeft")
+	
+	if Global.isBlack:
+		$Pancake.texture = blackPancake
 
 func _process(_delta):
 	#momentum
@@ -61,6 +65,8 @@ func _on_pancake_fall_area_entered(area: Area2D) -> void:
 	Global.landingPos = position
 	Global.emit_signal("spawn", pancakeFall)
 	$Pancake.texture = parachute
+	if Global.isBlack:
+		$Pancake.modulate = Color8(0,0,0)
 
 
 func _on_eat_area_entered(area: Area2D) -> void:
@@ -72,6 +78,8 @@ func _on_eat_area_entered(area: Area2D) -> void:
 		Global.landingPos = position
 		Global.emit_signal("spawn", crumbs)
 		$Pancake.texture = parachute
+		if Global.isBlack:
+			$Pancake.modulate = Color8(0,0,0)
 		
 		Global.points += pointValue
 		Global.health += pointValue * 1.5

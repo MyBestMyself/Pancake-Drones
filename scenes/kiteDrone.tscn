@@ -1,7 +1,8 @@
-[gd_scene load_steps=21 format=3 uid="uid://cxb7y1yylmhmu"]
+[gd_scene load_steps=22 format=3 uid="uid://cxb7y1yylmhmu"]
 
 [ext_resource type="Script" path="res://scripts/kiteDrone.gd" id="1_bx0rf"]
 [ext_resource type="SpriteFrames" uid="uid://cvfap6nvhov4u" path="res://assets/KiteDrone.tres" id="2_od7vn"]
+[ext_resource type="Texture2D" uid="uid://dfx617e2beixe" path="res://sprites/game/overlay/Basic.png" id="3_b2pgw"]
 [ext_resource type="Texture2D" uid="uid://dptlxw6n0tv4p" path="res://sprites/particles/Smoke.png" id="3_luun7"]
 [ext_resource type="Material" uid="uid://b4pkdoelp21wm" path="res://assets/particles/DroneParts.tres" id="4_b3lo8"]
 [ext_resource type="Texture2D" uid="uid://bsg1irdrck6d8" path="res://sprites/particles/DroneParts1.png" id="5_33mhn"]
@@ -262,8 +263,13 @@ position = Vector2(0, -17.3333)
 sprite_frames = ExtResource("2_od7vn")
 animation = &"Be A Kite"
 autoplay = "Be A Kite"
-frame_progress = 0.104963
 offset = Vector2(0, 31.3333)
+
+[node name="Eye" type="Sprite2D" parent="Drone"]
+light_mask = 3
+use_parent_material = true
+position = Vector2(0, 23.35)
+texture = ExtResource("3_b2pgw")
 
 [node name="Eat" type="Area2D" parent="Drone"]
 position = Vector2(0, 17.3333)

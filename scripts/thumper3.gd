@@ -24,6 +24,9 @@ func _ready():
 	$Impact2.emitting = true
 	
 	Global.cameraShake.emit()
+	
+	if Global.isBlack:
+		$Drone.self_modulate = Color8(0,0,0)
 
 func set_impact_color():
 	var colorsMap = {

@@ -15,6 +15,11 @@ func _ready() -> void:
 		$Animate.play("swayRight")
 	elif Global.planeRotation < 0:
 		$Animate.play("swayLeft")
+	
+	if Global.isBlack:
+		$Transform.play("TransformBlack")
+	else:
+		$Transform.play("Transform")
 
 func _process(_delta):
 	#momentum
@@ -57,6 +62,8 @@ func _on_pancake_fall_area_entered(area: Area2D) -> void:
 	
 	position.y -= 12.5
 	$Drone.play("Parachute")
+	if Global.isBlack:
+		$Drone.modulate = Color8(0,0,0)
 
 
 func _on_eat_area_entered(area: Area2D) -> void:
